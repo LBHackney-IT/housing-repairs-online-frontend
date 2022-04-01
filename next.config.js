@@ -26,6 +26,6 @@ const moduleExports =  {
 
 module.exports = withSentryConfig(moduleExports, {
   authToken: process.env.SENTRY_AUTH_TOKEN || process.env.NEXT_PUBLIC_SENTRY_AUTH_TOKEN,
-  dryRun: false,
+  dryRun: (process.env.NODE_ENV == 'development' || process.env.NEXT_PUBLIC_APP_ENV == 'test'),
   include: './.next'
 });
