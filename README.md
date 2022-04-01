@@ -15,6 +15,13 @@ Copy the `example.sentryclirc` file and set the token to from your sentry accoun
 ```bash
 cp example.sentryclirc .sentryclirc
 ```
+
+Copy the `sample.env` file and set the environment variables:
+
+```bash
+cp sample.env .env
+```
+
 Globally install azure function tools:
 
 ```bash
