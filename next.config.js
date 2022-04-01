@@ -25,8 +25,6 @@ const moduleExports =  {
 };
 
 module.exports = withSentryConfig(moduleExports, {
-  org: 'housing-repairs-online',
-  project: 'housing-repairs-online-frontend',
   authToken: process.env.SENTRY_AUTH_TOKEN || process.env.NEXT_PUBLIC_SENTRY_AUTH_TOKEN,
   dryRun: false,
   include: './.next'
