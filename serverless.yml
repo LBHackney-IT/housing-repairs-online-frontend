@@ -1,0 +1,4 @@
+housing-repairs-online-frontend:
+  component: "@sls-next/serverless-component@3.7.0"
+  inputs:
+    useServerlessTraceTarget: true
