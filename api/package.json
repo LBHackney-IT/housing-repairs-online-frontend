@@ -10,7 +10,8 @@
     "@sentry/node": "^6.17.5",
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
-    "node-fetch": "2.6.1"
+    "node-fetch": "2.6.1",
+    "restana": "^4.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

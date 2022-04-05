@@ -17,6 +17,12 @@ functions:
   HousingRepairsOnlineFrontend:
     name: ${self:service}-${self:provider.stage}
     handler: lambda.handler
+    package:
+      include:
+        - lambda.js
+        - next.config.js
+        - public/**
+        - node_modules/**
     role: lambdaExecutionRole
     events:
       - http:

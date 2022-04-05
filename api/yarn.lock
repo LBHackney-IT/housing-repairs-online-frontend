@@ -2,6 +2,15 @@
 # yarn lockfile v1
 
 
+"0http@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/0http/-/0http-3.1.2.tgz#61673c44633f6696016029eb37bfc86a5870e26a"
+  integrity sha512-Cs/dy31/kvPNZnTxEJCyrWEqwl4LOF5Xv9+/tButVWTLJWiFZiECWzOcZKkctmJFWTCd0k0vL5bwmEOmxDJqfQ==
+  dependencies:
+    lru-cache "^6.0.0"
+    regexparam "^2.0.0"
+    trouter "^3.2.0"
+
 "@babel/code-frame@^7.16.0":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.0.tgz#0dfc80309beec8411e65e706461c408b0bb9b431"
@@ -1195,6 +1204,13 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
+lru-cache@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
+  integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
+  dependencies:
+    yallist "^4.0.0"
+
 lru_map@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/lru_map/-/lru_map-0.3.3.tgz#b5c8351b9464cbd750335a79650a0ec0e56118dd"
@@ -1269,6 +1285,16 @@ regenerator-transform@^0.14.2:
   dependencies:
     "@babel/runtime" "^7.8.4"
 
+regexparam@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/regexparam/-/regexparam-1.3.0.tgz#2fe42c93e32a40eff6235d635e0ffa344b92965f"
+  integrity sha512-6IQpFBv6e5vz1QAqI+V4k8P2e/3gRrqfCJ9FI+O1FLQTO+Uz6RXZEZOPmTJ6hlGj7gkERzY5BRCv09whKP96/g==
+
+regexparam@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/regexparam/-/regexparam-2.0.0.tgz#059476767d5f5f87f735fc7922d133fd1a118c8c"
+  integrity sha512-gJKwd2MVPWHAIFLsaYDZfyKzHNS4o7E/v8YmNf44vmeV2e4YfVoDToTOKTvE7ab68cRJ++kLuEXJBaEeJVt5ow==
+
 regexpu-core@^4.7.1:
   version "4.8.0"
   resolved "https://registry.yarnpkg.com/regexpu-core/-/regexpu-core-4.8.0.tgz#e5605ba361b67b1718478501327502f4479a98f0"
@@ -1300,6 +1326,13 @@ resolve@^1.14.2:
   dependencies:
     is-core-module "^2.2.0"
     path-parse "^1.0.6"
+
+restana@^4.9.3:
+  version "4.9.3"
+  resolved "https://registry.yarnpkg.com/restana/-/restana-4.9.3.tgz#b33aedf0d00c76a7e39c8199126f4e07d69d8859"
+  integrity sha512-oyGgDPmO+zUSjShjUwEFX/7Tk3x1K3bYBBpIa5uZwHLBdkqdEApmGq32+U9yOk6zP7h4xcWyGKsLDRUJKHtXow==
+  dependencies:
+    "0http" "^3.1.2"
 
 safe-buffer@~5.1.1:
   version "5.1.2"
@@ -1333,6 +1366,13 @@ to-fast-properties@^2.0.0:
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
 
+trouter@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/trouter/-/trouter-3.2.0.tgz#a9c510fce21b8e659a28732c9de9d82871efe8df"
+  integrity sha512-rLLXbhTObLy2MBVjLC+jTnoIKw99n0GuJs9ov10J870vDw5qhTurPzsDrudNtBf5w/CZ9ctZy2p2IMmhGcel2w==
+  dependencies:
+    regexparam "^1.3.0"
+
 tslib@^1.9.3:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
@@ -1360,3 +1400,8 @@ unicode-property-aliases-ecmascript@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-2.0.0.tgz#0a36cb9a585c4f6abd51ad1deddb285c165297c8"
   integrity sha512-5Zfuy9q/DFr4tfO7ZPeVXb1aPoeQSdeFMLpYuFebehDAhbuevLs5yxSZmIFN1tP5F9Wl4IpJrYojg85/zgyZHQ==
+
+yallist@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
+  integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
