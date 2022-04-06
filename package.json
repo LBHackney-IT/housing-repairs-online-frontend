@@ -17,7 +17,8 @@
   "dependencies": {
     "@sentry/nextjs": "^6.17.4",
     "@zeit/next-sass": "^1.0.1",
-    "azure-functions-core-tools": "3",
+    "body-parser": "^1.20.0",
+    "@babel/plugin-transform-runtime": "^7.15.8",
     "dotenv": "^10.0.0",
     "govuk-frontend": "^3.14.0",
     "image-to-base64": "^2.2.0",
@@ -28,7 +29,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "restana": "^4.9.3",
-    "serverless": "^3.7.0",
+    "serve-static": "^1.15.0",
+    "serverless-http": "^3.0.1",
     "swr": "^1.0.1"
   },
   "eslintConfig": {
@@ -56,6 +58,7 @@
     "http-proxy-middleware": "^2.0.1",
     "jest": "^27.3.1",
     "node-sass": "^6.0.1",
+    "serverless": "^3.7.0",
     "start-server-and-test": "^1.14.0"
   }
 }

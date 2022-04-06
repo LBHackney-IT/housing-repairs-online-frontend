@@ -2,7 +2,7 @@ service: housing-repairs-online-frontend
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   stage: ${opt:stage}
   region: eu-west-2
   versionFunctions: true
@@ -10,7 +10,6 @@ provider:
     shouldStartNameWithService: true
 
 package:
-  individually: true
   excludeDevDependencies: true
 
 functions:
