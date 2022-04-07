@@ -2,8 +2,7 @@ const Sentry = require('@sentry/node');
 
 const {availableAppointmentsGateway, sentryParams} = require('../gateways');
 
-module.exports = async function (context, req) {
-  context.log('JavaScript HTTP trigger function processed a request.');
+module.exports = async function handler (req, res) {
   Sentry.init(sentryParams);
 
   let status;
@@ -25,7 +24,7 @@ module.exports = async function (context, req) {
     results = new Error('Error searching');
   }
 
-  context.res = {
+  res = {
     status: status,
     body: results,
   };

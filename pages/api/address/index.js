@@ -2,10 +2,10 @@ const Sentry = require('@sentry/node');
 
 const {searchPropertiesGateway, sentryParams} = require('../gateways');
 
-module.exports = async function (context, req) {
+module.exports = async function handler (req, res) {
+  console.log('HIT ADDRESS ENDPOINT')
   Sentry.init(sentryParams);
 
-  context.log('JavaScript HTTP trigger function processed a request.');
 
   let status;
   let results;
@@ -20,7 +20,7 @@ module.exports = async function (context, req) {
     results = new Error('Error searching');
   }
 
-  context.res = {
+  res = {
     status: status,
     body: results,
   };
