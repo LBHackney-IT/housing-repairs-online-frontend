@@ -1,0 +1,172 @@
+version: 2.1
+
+orbs:
+  cypress: cypress-io/cypress@1
+  aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
+
+executors:
+  docker-python:
+    docker:
+      - image: circleci/python:3.7
+  node:
+    docker:
+      - image: circleci/node:14
+
+references:
+  workspace_root: &workspace_root '~'
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
+
+commands:
+  assume-role-and-persist-workspace:
+    description: 'Assumes deployment role and persists credentials across jobs'
+    parameters:
+      aws-account:
+        type: string
+    steps:
+      - checkout
+      - aws_assume_role/assume_role:
+          account: <<parameters.aws-account>>
+          profile_name: default
+          role: 'LBH_Circle_CI_Deployment_Role'
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - .aws
+  deploy-lambda:
+    description: 'Deploys application'
+    parameters:
+      stage:
+        type: string
+        default: staging
+    steps:
+      - *attach_workspace
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install Node.js
+          command: |
+            curl -sL https://deb.nodesource.com/setup_14.x | bash -
+            apt-get update && apt-get install -y nodejs
+      - run:
+          name: Install serverless CLI
+          command: sudo npm i -g serverless
+      - run:
+          name: Install serverless component
+          command: sudo npm install -g @serverless/cli
+      - run:
+          name: Deploy application
+          command: |
+            npm run build
+            npm prune --production
+            sls deploy -s <<parameters.stage>>
+
+jobs:
+  check-code-formatting:
+    executor: node
+    steps:
+      - checkout
+      - run:
+          name: Format
+          command: yarn lint
+  build-and-test:
+    executor: node
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: build
+          command: yarn build
+      - run:
+          name: Run tests
+          command: yarn test
+
+  deploy-to-development:
+    executor: node
+    steps:
+      - deploy-lambda:
+          stage: "development"
+  assume-role-development:
+    executor: docker-python
+    steps:
+      - assume-role-and-persist-workspace:
+          aws-account: $AWS_ACCOUNT_DEVELOPMENT
+  deploy-to-staging:
+    executor: node
+    steps:
+      - deploy-lambda:
+          stage: "staging"
+  assume-role-staging:
+    executor: docker-python
+    steps:
+      - assume-role-and-persist-workspace:
+          aws-account: $AWS_ACCOUNT_STAGING
+  deploy-to-production:
+    executor: node
+    steps:
+      - authenticate-nuget
+      - deploy-lambda:
+          stage: "production"
+  assume-role-production:
+    executor: docker-python
+    steps:
+      - assume-role-and-persist-workspace:
+          aws-account: $AWS_ACCOUNT_PRODUCTION
+
+
+workflows:
+  check-and-deploy-development:
+    - check-code-formatting
+    - build-and-test
+    - assume-role-development:
+        context: api-assume-role-housing-development-context
+        requires:
+          - build-and-test
+        filters:
+          branches:
+            only: development
+          - deploy-to-development:
+              requires:
+                - assume-role-development
+      check-and-deploy-staging-and-production:
+        jobs:
+          - build-and-test:
+              context: api-nuget-token-context
+              filters:
+                branches:
+                  only: main
+          - assume-role-staging:
+              context: api-assume-role-housing-staging-context
+              requires:
+                - build-and-test
+              filters:
+                branches:
+                  only: main
+          - deploy-to-staging:
+              context: api-nuget-token-context
+              requires:
+                - assume-role-staging
+              filters:
+                branches:
+                  only: main
+          - permit-production-release:
+              type: approval
+              requires:
+                - deploy-to-staging
+          - assume-role-production:
+              context: api-assume-role-housing-production-context
+              requires:
+                - permit-production-release
+              filters:
+                branches:
+                  only: main
+          - deploy-to-production:
+              context: api-nuget-token-context
+              requires:
+                - permit-production-release
+                - assume-role-production
+              filters:
+                branches:
+                  only: main
+
