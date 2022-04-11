@@ -69,6 +69,12 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Set up sentry cli
+          command: |
+            export SENTRY_ORG=$SENTRY_ORGANISATION
+            export SENTRY_PROJECT=$SENTRY_PROJECT
+            export SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
+      - run:
           name: install node modules
           command: yarn install
       - run:
