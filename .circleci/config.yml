@@ -48,14 +48,13 @@ commands:
           name: Install serverless CLI
           command: sudo npm i -g serverless
       - run:
-          name: Install serverless component
-          command: sudo npm install -g @serverless/cli
-      - run:
           name: Deploy application
           command: |
-            npm run build
-            npm prune --production
-            sls deploy -s <<parameters.stage>>
+            yarn install
+            yarn build
+            rm -rf node_modules
+            yarn install --production
+            sls deploy
 
 jobs:
   build-and-test:
