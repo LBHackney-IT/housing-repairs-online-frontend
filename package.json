@@ -55,7 +55,6 @@
     "http-proxy-middleware": "^2.0.1",
     "jest": "^27.3.1",
     "node-sass": "^6.0.1",
-    "serverless": "^3.7.0",
     "start-server-and-test": "^1.14.0"
   }
 }
