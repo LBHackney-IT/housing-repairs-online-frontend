@@ -8,7 +8,7 @@ const moduleExports =  {
   },
 
   reactStrictMode: true,
-
+  distDir: 'build/_next',
   async redirects() {
     return [
       {
