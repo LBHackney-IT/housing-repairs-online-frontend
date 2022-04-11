@@ -2,26 +2,17 @@ const Sentry = require('@sentry/node');
 
 const {searchPropertiesGateway, sentryParams} = require('../gateways');
 
-module.exports = async function handler (req, res) {
-  console.log('HIT ADDRESS ENDPOINT')
+export default async function handler (req, res) {
   Sentry.init(sentryParams);
 
-
-  let status;
-  let results;
-
   try {
-    results = await searchPropertiesGateway(req.query.postcode);
+    let results = await searchPropertiesGateway(req.query.postcode);
+    res.status(200).json(results)
+
   } catch (e) {
     Sentry.captureException(e);
     await Sentry.flush(2000);
-
-    status = 500;
-    results = new Error('Error searching');
+    let results = new Error('Error searching');
+    res.status(500).json(results)
   }
-
-  res = {
-    status: status,
-    body: results,
-  };
 };

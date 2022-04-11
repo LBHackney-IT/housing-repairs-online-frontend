@@ -2,25 +2,18 @@ const Sentry = require('@sentry/node');
 
 const {saveRepairGateway, sentryParams} = require('../gateways');
 
-module.exports = async function (req, res) {
+export default async function (req, res) {
   Sentry.init(sentryParams);
 
-  let status;
-  let result;
-
   try {
-    result = await saveRepairGateway(req.body);
-    status = 200;
+    let result = await saveRepairGateway(req.body);
+    res.status(200).json(result)
+
   } catch (e) {
     Sentry.captureException(e);
     await Sentry.flush(2000);
 
-    status = 500;
-    result = new Error('Error saving');
+    let result = new Error('Error saving');
+    res.status(500).json(result)
   }
-
-  res = {
-    status: status,
-    body: result
-  };
 };
