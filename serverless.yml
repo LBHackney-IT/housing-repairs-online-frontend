@@ -1,4 +1,4 @@
-service: housing-repairs-online-frontend-testing-2
+service: housing-repairs-online-frontend
 
 provider:
   name: aws
