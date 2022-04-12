@@ -100,7 +100,6 @@ jobs:
   deploy-to-production:
     executor: node
     steps:
-      - authenticate-nuget
       - deploy-lambda:
           stage: "production"
   assume-role-production:
