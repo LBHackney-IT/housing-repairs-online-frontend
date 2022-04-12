@@ -4,6 +4,7 @@ provider:
   name: aws
   runtime: nodejs14.x
   region: eu-west-2
+  stage: ${opt:stage}
   versionFunctions: true
 
 package:
@@ -11,7 +12,7 @@ package:
 
 functions:
   HousingRepairsOnlineFrontend:
-    name: ${self:service}
+    name: ${self:service}-${self:provider.stage}
     handler: lambda.handler
     package:
       include:
@@ -21,8 +22,8 @@ functions:
         - public/**
         - node_modules/**
     environment:
-      REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/develeopment/api-identifier}
-      REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/development/base-url}
+      REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
+      REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/repairs-api-base-url}
     role: lambdaExecutionRole
     events:
       - httpApi:

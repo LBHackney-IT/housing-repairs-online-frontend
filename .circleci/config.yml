@@ -54,7 +54,7 @@ commands:
             yarn build
             rm -rf node_modules
             yarn install --production
-            sls deploy
+            sls deploy --stage << parameters.stage_name >>
 
 jobs:
   build-and-test:
