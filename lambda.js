@@ -6,11 +6,12 @@ const bodyParser = require('body-parser');
 const nextRequestHandler = app.getRequestHandler();
 
 server.use(files(path.join(__dirname, 'build')));
+server.use(files(path.join(__dirname, 'public')))
 
-server.all('/api/*', bodyParser.json(), bodyParser.urlencoded(), (req, res) =>
+server.all('/api/*', bodyParser.json(), bodyParser.urlencoded({ extended: true}), (req, res) =>
   nextRequestHandler(req, res)
 );
-
+server.all('', (req, res) => nextRequestHandler(req, res));
 server.all('*', (req, res) => nextRequestHandler(req, res));
 
 module.exports.handler = require('serverless-http')(server);

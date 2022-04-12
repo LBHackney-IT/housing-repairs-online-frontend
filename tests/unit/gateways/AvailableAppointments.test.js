@@ -1,18 +1,18 @@
-import dummyData from '../../fixtures/availableAppointments.json'
+import stubbedData from '../../fixtures/availableAppointments.json'
 
 describe('SearchProperties', () => {
   const repairLocation = 'Kitchen'
   const repairProblem = 'Cupboards, including damaged cupboard doors'
   const repairIssue = 'Missing door'
   const locationId = '100023336956'
-  const dummyData = dummyData;
+  const dummyData = stubbedData;
 
   let mockGetRequest;
   let AvailableAppointmentsGateway;
 
   beforeAll(() => {
     mockGetRequest =  jest.fn().mockImplementation(({url, params}) => Promise.resolve({data: dummyData}));
-    AvailableAppointmentsGateway = require('../../../api/gateways/AvailableAppointmentsGateway')(mockGetRequest);
+    AvailableAppointmentsGateway = require('../../../pages/api/gateways/AvailableAppointmentsGateway')(mockGetRequest);
   });
 
   test('api gets called appropriately', async () => {

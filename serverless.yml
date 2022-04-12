@@ -1,4 +1,86 @@
-housing-repairs-online-frontend:
-  component: '@sls-next/serverless-component@3.7.0'
-  inputs:
-    useServerlessTraceTarget: true
+service: housing-repairs-online-frontend-testing-2
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: eu-west-2
+  versionFunctions: true
+
+package:
+  excludeDevDependencies: true
+
+functions:
+  HousingRepairsOnlineFrontend:
+    name: ${self:service}
+    handler: lambda.handler
+    package:
+      include:
+        - lambda.js
+        - next.config.js
+        - build/_next/**
+        - public/**
+        - node_modules/**
+    environment:
+      REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/develeopment/api-identifier}
+      REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/development/base-url}
+    role: lambdaExecutionRole
+    events:
+      - httpApi:
+          path: /
+          method: ANY
+      - httpApi:
+          path: /{any+}
+          method: ANY
+
+resources:
+  Resources:
+    lambdaExecutionRole:
+      Type: AWS::IAM::Role
+      Properties:
+        Path: /${self:service}/
+        RoleName: ${self:service}-lambdaExecutionRole
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+              Action: sts:AssumeRole
+        ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+          - arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess
+        Policies:
+          - PolicyName: manageLogs
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - logs:CreateLogGroup
+                    - logs:CreateLogStream
+                    - logs:PutLogEvents
+                  Resource:
+                    - 'Fn::Join':
+                        - ':'
+                        - - 'arn:aws:logs'
+                          - Ref: 'AWS::Region'
+                          - Ref: 'AWS::AccountId'
+                          - 'log-group:/aws/lambda/*:*:*'
+                - Effect: 'Allow'
+                  Action:
+                    - 's3:PutObject'
+                    - 's3:GetObject'
+                  Resource:
+                    Fn::Join:
+                      - ''
+                      - - 'arn:aws:s3:::'
+                        - 'Ref': 'ServerlessDeploymentBucket'
+          - PolicyName: lambdaInvocation
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - 'lambda:InvokeFunction'
+                  Resource: '*'

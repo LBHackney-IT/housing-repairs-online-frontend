@@ -7,7 +7,7 @@ describe('SearchProperties', () => {
   describe('when api is up', () => {
     beforeAll(() => {
       mockGetRequest =  jest.fn().mockImplementation(({url, params}) => Promise.resolve({data: dummyData}));
-      SearchPropertiesGateway = require('../../../api/gateways/SearchPropertiesGateway')(mockGetRequest);
+      SearchPropertiesGateway = require('../../../pages/api/gateways/SearchPropertiesGateway')(mockGetRequest);
     });
 
     test('api gets called appropriately', async () => {
