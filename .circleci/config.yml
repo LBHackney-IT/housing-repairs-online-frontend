@@ -39,7 +39,6 @@ commands:
     parameters:
       stage:
         type: string
-        default: staging
     steps:
       - *attach_workspace
       - checkout
@@ -54,7 +53,7 @@ commands:
             yarn build
             rm -rf node_modules
             yarn install --production
-            sls deploy --stage << parameters.stage_name >>
+            sls deploy --stage << parameters.stage >>
 
 jobs:
   build-and-test:
