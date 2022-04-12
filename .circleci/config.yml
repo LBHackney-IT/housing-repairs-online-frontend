@@ -128,10 +128,10 @@ workflows:
             - assume-role-development
   check-and-deploy-staging-and-production:
     jobs:
-      - build-and-test
-        filters:
-          branches:
-            only: main
+      - build-and-test:
+          filters:
+            branches:
+              only: main
       - assume-role-staging:
           context: api-assume-role-housing-staging-context
           requires:
