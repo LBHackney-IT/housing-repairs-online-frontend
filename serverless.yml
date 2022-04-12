@@ -20,6 +20,9 @@ functions:
         - build/_next/**
         - public/**
         - node_modules/**
+    environment:
+      REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/develeopment/api-identifier}
+      REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/development/base-url}
     role: lambdaExecutionRole
     events:
       - httpApi:
