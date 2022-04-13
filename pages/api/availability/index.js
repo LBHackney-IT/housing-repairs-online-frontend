@@ -20,7 +20,7 @@ export default async function (req, res) {
     await Sentry.flush(2000);
 
     let results = new Error('Error searching');
-    res.status(200).json(results)
+    res.status(500).json(results)
 
   }
 
