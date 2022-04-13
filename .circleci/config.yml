@@ -11,6 +11,9 @@ executors:
   node:
     docker:
       - image: circleci/node:14
+  test:
+    docker:
+      - image: circleci/node:12.22-browsers
 
 references:
   workspace_root: &workspace_root '~'
@@ -57,7 +60,7 @@ commands:
 
 jobs:
   build-and-test:
-    executor: node
+    executor: test
     steps:
       - checkout
       - setup_remote_docker
