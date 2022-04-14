@@ -8,7 +8,7 @@ const moduleExports =  {
   },
 
   reactStrictMode: true,
-
+  distDir: 'build/_next',
   async redirects() {
     return [
       {
@@ -25,9 +25,7 @@ const moduleExports =  {
 };
 
 module.exports = withSentryConfig(moduleExports, {
-  org: 'housing-repairs-online',
-  project: 'housing-repairs-online-frontend',
   authToken: process.env.SENTRY_AUTH_TOKEN || process.env.NEXT_PUBLIC_SENTRY_AUTH_TOKEN,
-  dryRun: false,
+  dryRun: (process.env.NODE_ENV == 'development' || process.env.NEXT_PUBLIC_APP_ENV == 'test'),
   include: './.next'
 });

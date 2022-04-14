@@ -10,7 +10,7 @@ describe('SaveRepairGateway', () => {
 
   beforeAll(() => {
     mockPostRequest =  jest.fn().mockImplementation(({url, params}) => Promise.resolve({data: dummyID}));
-    SaveRepairGateway = require('../../../api/gateways/SaveRepairGateway')(mockPostRequest);
+    SaveRepairGateway = require('../../../pages/api/gateways/SaveRepairGateway')(mockPostRequest);
   });
 
   test('api gets called appropriately', async () => {
