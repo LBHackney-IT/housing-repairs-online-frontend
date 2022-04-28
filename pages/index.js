@@ -4,6 +4,7 @@ import TextLink from '../compoments/textLink';
 import React from 'react';
 import Link from 'next/link'
 import ContactNumbers from '../compoments/contactNumbers';
+import OpeningHours from '../compoments/report-repair/opening-hours';
 
 export default function Home() {
 
@@ -58,13 +59,7 @@ export default function Home() {
             <p>
               Opening times:
             </p>
-            <ul>
-              <li>Monday 9am - 5pm</li>
-              <li>Tuesday 9am - 5pm</li>
-              <li>Wednesday 10am - 4.30pm</li>
-              <li>Thursday 9am - 5pm</li>
-              <li>Friday 9am - 4.30pm</li>
-            </ul>
+            <OpeningHours/>
           </div>
         </Details>
         <Link href="/report-repair/priority-list">
