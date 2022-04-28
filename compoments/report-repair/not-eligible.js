@@ -1,6 +1,7 @@
 import Details from '../details';
 import React from 'react';
 import ContactNumbers from '../contactNumbers';
+import OpeningHours from './opening-hours';
 
 
 const NotEligible = () => {
@@ -16,11 +17,7 @@ const NotEligible = () => {
         </p>
         <ContactNumbers/>
         <Details summary="Opening times" testid="opening-times">
-          <li>Monday 9am - 5pm</li>
-          <li>Tuesday 9am - 5pm</li>
-          <li>Wednesday 9am - 4.30pm</li>
-          <li>Thursday 10am - 5pm</li>
-          <li>Friday 9am - 4.30pm</li>
+          <OpeningHours/>
         </Details>
         <p>
           Please do not call the emergency out of hours number if the repair is

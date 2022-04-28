@@ -7,6 +7,7 @@ import {
 } from '../../helpers/validators';
 import RadioFieldSet from '../radioFieldSet';
 import Details from '../details';
+import OpeningHours from './opening-hours';
 
 const ContactDetails = ({handleChange, values}) => {
   const name = 'contactDetails'
@@ -32,11 +33,7 @@ const ContactDetails = ({handleChange, values}) => {
     <Details summary="I have neither a mobile number nor an email address" testid="no-applicable-contact-options-prompt">
       <div data-testid='no-applicable-contact-options-info'>
         Please call 01522 873333 to report your repair during the office hours below
-        <li>Monday 9am - 5pm</li>
-        <li>Tuesday 9am - 5pm</li>
-        <li>Wednesday 9am - 4.30pm</li>
-        <li>Thursday 10am - 5pm</li>
-        <li>Friday 9am - 4.30pm</li>
+        <OpeningHours/>
       </div>
     </Details>
   );
