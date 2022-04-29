@@ -24,6 +24,7 @@ import Confirmation from '../../compoments/report-repair/confirmation';
 import Error from '../../compoments/error';
 import NotEligibleNonEmergency from '../../compoments/report-repair/not-eligible-non-emergency';
 import UnableToBook from '../../compoments/report-repair/unable-to-book';
+import {customerServicesTelephoneNumber} from '../../globals';
 
 function ReportRepair() {
   const [state, setState] = useState({data:{}, step: 'priority-list'});
@@ -94,7 +95,7 @@ function ReportRepair() {
         <Error
           name="summary"
           heading="An error occurred while processing your request"
-          body="Please call 01522 873333 to complete your repair request" />
+          body={`Please call ${customerServicesTelephoneNumber} to complete your repair request`} />
       )
     })
   }
