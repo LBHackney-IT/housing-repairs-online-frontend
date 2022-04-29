@@ -7,6 +7,7 @@ import useSWR from 'swr'
 import {fetcher} from '../../helpers/fetcher';
 import Loader from '../loader';
 import Error from '../error';
+import {customerServicesTelephoneNumber} from '../../globals';
 
 const Address = ({handleChange, values}) => {
   const [state, setState] = useState({error: {}, value: 'null'});
@@ -16,7 +17,7 @@ const Address = ({handleChange, values}) => {
   if (error) return <Error
     name="summary"
     heading="An error occurred while looking for your address"
-    body="Please try again later or call 01522 873333 to complete your repair request" />
+    body={`Please try again later or call ${customerServicesTelephoneNumber} to complete your repair request`} />
 
   if (!data) return <Loader/>
 
