@@ -1,5 +1,6 @@
 import React from 'react';
 import OpeningHours from './opening-hours';
+import {customerServicesTelephoneNumber} from '../../globals';
 
 const NotEligibleCommunalRepairs = () => {
   return (
@@ -11,11 +12,11 @@ const NotEligibleCommunalRepairs = () => {
         <OpeningHours/>
         <p>
           If you think the council is responsible for your property, please call&nbsp;
-          <strong>01522 873333</strong>.
+          <strong>{customerServicesTelephoneNumber}</strong>.
         </p>
         <p>
           If you are a leaseholder you can still report communal repairs on&nbsp;
-          <strong>01522 873333</strong>.
+          <strong>{customerServicesTelephoneNumber}</strong>.
         </p>
       </div>
     </div>
