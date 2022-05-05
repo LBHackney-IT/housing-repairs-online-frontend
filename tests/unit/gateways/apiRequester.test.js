@@ -49,7 +49,7 @@ describe('apiRequester', () => {
 
     });
 
-    test('a post request is made with headers', async () => {
+    test('a post request is made with authorization headers', async () => {
       const body = {
         a: 1, b: 2
       }
@@ -60,6 +60,22 @@ describe('apiRequester', () => {
       expect(mockedAxiosInstance.defaults.headers.common['Authorization']).toEqual(`Bearer ${jwt}`);
 
       expect(mockedPost).toHaveBeenNthCalledWith(2, uri, body);
+    });
+
+    test('a post request is made with supplied headers', async () => {
+      const body = {
+        a: 1, b: 2
+      }
+      const headers = {
+        'foo':'bar'
+      }
+      await apiRequester.makePostRequest({uri, body, headers});
+
+      expect(mockedPost).toHaveBeenNthCalledWith(1, `/authentication?identifier=${api_identifier}`);
+
+      expect(mockedAxiosInstance.defaults.headers.common['Authorization']).toEqual(`Bearer ${jwt}`);
+
+      expect(mockedPost).toHaveBeenNthCalledWith(2, uri, body, {headers: headers});
     });
   });
 });

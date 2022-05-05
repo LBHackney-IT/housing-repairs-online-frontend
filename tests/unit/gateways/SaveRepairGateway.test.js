@@ -29,7 +29,8 @@ describe('SaveRepairGateway', () => {
           repairLocation: repairLocation,
           repairProblem: repairProblem,
           locationId: locationId
-        }
+        },
+        headers: {'Content-Type': 'application/json'}
       }
     )
     expect(result).toEqual(dummyID)
