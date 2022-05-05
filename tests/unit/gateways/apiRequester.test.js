@@ -71,10 +71,6 @@ describe('apiRequester', () => {
       }
       await apiRequester.makePostRequest({uri, body, headers});
 
-      expect(mockedPost).toHaveBeenNthCalledWith(1, `/authentication?identifier=${api_identifier}`);
-
-      expect(mockedAxiosInstance.defaults.headers.common['Authorization']).toEqual(`Bearer ${jwt}`);
-
       expect(mockedPost).toHaveBeenNthCalledWith(2, uri, body, {headers: headers});
     });
   });
