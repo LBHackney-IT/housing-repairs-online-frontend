@@ -1,2 +1,2 @@
-export const customerServicesTelephoneNumber = '01522 873333'
-export const outOfHoursCustomerServicesTelephoneNumber = '01522 534747'
+export const customerServicesTelephoneNumber = '0208 356 3691'
+export const outOfHoursCustomerServicesTelephoneNumber = '0208 356 3691'
