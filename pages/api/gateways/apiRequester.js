@@ -18,7 +18,7 @@ module.exports = axios => {
         })
     },
 
-    makePostRequest: ({uri, body ={}}) =>{
+    makePostRequest: ({uri, body ={}, headers}) =>{
       var identifier = process.env.REPAIRS_API_IDENTIFIER
       var baseUrl = process.env.REPAIRS_API_BASE_URL;
       const axiosInstance = axios.create({
@@ -28,7 +28,11 @@ module.exports = axios => {
         .then(response => {
           var jwt = response.data;
           axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
-          return axiosInstance.post(uri, body);
+          if (headers){
+            return axiosInstance.post(uri, body, {headers: headers});
+          } else {
+            return axiosInstance.post(uri, body);
+          }
         })
     }
   }

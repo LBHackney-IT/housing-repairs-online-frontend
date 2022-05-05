@@ -5,7 +5,8 @@ module.exports = makePostRequest => {
 
     result = await makePostRequest({
       uri: '/repair',
-      body
+      body,
+      headers: {'Content-Type': 'application/json'},
     }).then(response => {
       return response.data;
     });
