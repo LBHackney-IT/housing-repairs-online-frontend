@@ -74,15 +74,15 @@ const RepairDescription = ({handleChange, values}) => {
 
   return <div className="govuk-grid-row" data-cy="repair-description">
     <div className="govuk-grid-column-two-thirds">
-      <h1 className="govuk-heading-l">
+      <h1 className="lbh-heading-h1">
         Describe your problem in more detail
       </h1>
       <div className={error.text ? 'govuk-form-group--error' : 'govuk-form-group'}>
         <form action="" className='govuk-!-padding-0'>
-          <label className="govuk-label" htmlFor="description">
+          <label className="govuk-label lbh-label" htmlFor="description">
             <div>
-              <p>Please describe:</p>
-              <ul className="govuk-list govuk-list--bullet">
+              <p className={'lbh-body govuk-body-m'}>Please describe:</p>
+              <ul className="govuk-list govuk-list--bullet lbh-list--bullet">
                 <li>the size and location of the problem</li>
                 <li>the source of the problem</li>
                 <li>how long you have been experiencing the problem</li>
@@ -107,11 +107,11 @@ const RepairDescription = ({handleChange, values}) => {
           </div>
         </form>
       </div>
-      <h3 className="govuk-heading-m">
+      <h3 className="lbh-heading-h2">
         Upload a photo (optional)
       </h3>
       <div className={error.img ? 'govuk-form-group--error' : 'govuk-form-group'}>
-        <label className="govuk-label" htmlFor="upload-a-photo">
+        <label className="govuk-label lbh-label" htmlFor="upload-a-photo">
           Upload a file
         </label>
         <span id="upload-a-photo-error" className="govuk-error-message">
@@ -126,7 +126,7 @@ const RepairDescription = ({handleChange, values}) => {
                 </td>
                 <td align="center" valign="center">
                   <button
-                    className="govuk-button govuk-button--warning"
+                    className="govuk-button lbh-button govuk-button--warning"
                     onClick={()=>setSelectedImage(null)}>
                     Delete
                   </button>
