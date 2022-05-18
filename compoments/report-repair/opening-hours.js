@@ -2,7 +2,7 @@ import React from 'react';
 
 const OpeningHours = () => {
 
-  return <ul>
+  return <ul className={'govuk-list govuk-list--bullet lbh-list--bullet'}>
     <li>Monday 8am - 7pm</li>
     <li>Tuesday 8am - 7pm</li>
     <li>Wednesday 8am - 7pm</li>
