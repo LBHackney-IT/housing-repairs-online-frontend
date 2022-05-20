@@ -62,11 +62,7 @@ class RadioFieldSet extends Component {
   };
 
   render(){
-
     return (
-
-
-
       <div>
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset lbh-fieldset" id="repair-emergency"
@@ -121,7 +117,6 @@ class RadioFieldSet extends Component {
                 ))}
               </div>
             </div>
-
           </fieldset>
         </div>
         <div>
