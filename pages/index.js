@@ -17,7 +17,7 @@ export default function Home() {
           This service can only be used to request one repair at a time to a council property.
         </WarningText>
         <p className={'lbh-body-m'}>
-          If you <strong>own the property</strong>, please see our <TextLink href="https://www.lincoln.gov.uk/council-housing/council-leaseholders/3" target={'_blank'}>leaseholder contact details page </TextLink>.
+          If you <strong>own the property</strong>, please see our <TextLink href="https://www.lincoln.gov.uk/council-housing/council-leaseholders/3" target={'_blank'}>leaseholder contact details page</TextLink>.
         </p>
         <p className={'lbh-body-m'}>
           To request a repair for a <strong>communal area</strong>, please see customer services contact <TextLink href="https://www.lincoln.gov.uk/contact-1/get-touch" target={'_blank'}>details page</TextLink>.
@@ -42,13 +42,15 @@ export default function Home() {
           (minicom) on 0800 371 787
         </WarningText>
         <WarningText testid="landing-page-emergency-warning"  className="lbh-body lbh-!-font-weight-bold">
-          For other emergency repairs, please see customer services <TextLink href="https://www.lincoln.gov.uk/contact-1/get-touch" target={'_blank'}>contact details page</TextLink>.
+          For other emergency repairs, please see customer services <TextLink href="https://hackney.gov.uk/repairs/#tackle" target={'_blank'}>contact details page</TextLink>.
         </WarningText>
         <Details summary="What is an emergency?" className="govuk-!-margin-top-6" testid="landing-page-emergency-prompt">
           <div data-testid='landing-page-emergency-info'>
-            An emergency is defined as something which could cause danger to
-            someone’s health or safety or cause serious damage and destruction
-            to property.
+            <p>
+              An emergency is defined as something which could cause danger to
+              someone’s health or safety or cause serious damage and destruction
+              to property.
+            </p>
             <ContactNumbers/>
             <p>
               Opening times:

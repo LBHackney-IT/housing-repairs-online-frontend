@@ -14,11 +14,11 @@ const EmergencyRepair = () => {
         someone’s health or safety or cause serious damage and destruction to
         property.
       </p>
-      <br/>
       <ContactNumbers/>
       <p>
         Opening times:
       </p>
+      <br/>
       <OpeningHours/>
       <p>
         Please do not call the emergency out of hours number if the repair is not urgent.
