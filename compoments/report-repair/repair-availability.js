@@ -87,10 +87,10 @@ const RepairAvailability = ({handleChange, values, fromDate}) => {
 
   return <div className="govuk-grid-row" data-cy="repair-availability">
     <div className="govuk-grid-column-two-thirds">
-      <h1 className="govuk-heading-l">
+      <h1 className="govuk-heading-l lbh-heading-h1">
         When are you available?
       </h1>
-      <p className="govuk-body-l">
+      <p className="lbh-body-l">
         A responsible adult must be at the property
         for all of the repair appointment time slot and during the repair
         appointment.

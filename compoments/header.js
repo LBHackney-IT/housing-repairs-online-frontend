@@ -6,7 +6,7 @@ export default function Header({href, target, children }) {
       <header className="lbh-header ">
         <div className="lbh-header__main">
           <div className="lbh-container lbh-header__wrapper">
-            <h1 className="lbh-header__title">
+            <div className="lbh-header__title">
               <a href="/" className="lbh-header__title-link">
                 <svg
                   className="lbh-header__logo"
@@ -54,11 +54,10 @@ export default function Header({href, target, children }) {
                   ></image>
                 </svg>
                 <span className="lbh-header__logo-text"> Hackney </span>
-                <div className="lbh-header__service-name">Housing Repairs
-                  Online
-                </div>
+                <span
+                  className="lbh-header__service-name">Housing Repairs Online</span>
               </a>
-            </h1>
+            </div>
           </div>
         </div>
       </header>
