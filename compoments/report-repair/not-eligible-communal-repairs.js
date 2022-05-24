@@ -6,7 +6,7 @@ const NotEligibleCommunalRepairs = () => {
   return (
     <div className="govuk-grid-row govuk-body-m">
       <div className="govuk-grid-column-two-thirds">
-        <h1 className='govuk-heading-xl lbh-heading-h1'>
+        <h1 className='govuk-heading-xl'>
           For communal repairs, please call us during the office hours below
         </h1>
         <OpeningHours/>

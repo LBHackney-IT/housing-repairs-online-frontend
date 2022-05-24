@@ -33,7 +33,7 @@ const ContactDetails = ({handleChange, values}) => {
   const beforeButton =  (
     <Details summary="I have neither a mobile number nor an email address" testid="no-applicable-contact-options-prompt">
       <div data-testid='no-applicable-contact-options-info'>
-        <p>Please call {customerServicesTelephoneNumber} to report your repair during the office hours below</p>
+        Please call {customerServicesTelephoneNumber} to report your repair during the office hours below
         <OpeningHours/>
       </div>
     </Details>
