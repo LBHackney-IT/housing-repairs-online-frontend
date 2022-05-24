@@ -31,15 +31,15 @@ const Summary = ({values, getNextStepFromCondition, submit, goToStep}) => {
       <div data-cy="summary">
         <div className="govuk-grid-row govuk-body-m">
           <div className="govuk-grid-column-two-thirds">
-            <h1 className='govuk-heading-xl lbh-heading-h1'>Request summary</h1>
+            <h1 className='govuk-heading-xl'>Request summary</h1>
 
-            <h2 className="lbh-heading-h2 govuk-heading-m">Personal details</h2>
+            <h2 className="govuk-heading-m">Personal details</h2>
             <SummaryList goToStep={goToStep} summary={personalDetailsSummary}/>
 
-            <h2 className="lbh-heading-h2 govuk-heading-m">Repair details</h2>
+            <h2 className="govuk-heading-m">Repair details</h2>
             <SummaryList goToStep={goToStep} summary={repairDetailsSummary}/>
 
-            <h2 className="lbh-heading-h2 govuk-heading-m">Appointment details</h2>
+            <h2 className="govuk-heading-m">Appointment details</h2>
             <SummaryList goToStep={goToStep} summary={appointmentDetailsSummary}/>
 
           </div>

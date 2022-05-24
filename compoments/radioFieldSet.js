@@ -62,10 +62,11 @@ class RadioFieldSet extends Component {
   };
 
   render(){
+
     return (
       <div>
         <div className="govuk-form-group">
-          <fieldset className="govuk-fieldset lbh-fieldset" id="repair-emergency"
+          <fieldset className="govuk-fieldset" id="repair-emergency"
             name="repair-emergency">
             <legend className="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-1">
               <h1 className="govuk-fieldset__heading">
@@ -77,7 +78,7 @@ class RadioFieldSet extends Component {
                 className="govuk-error-message govuk-!-margin-bottom-0">
                 {this.state.error}
               </span>
-              <div className={this.conditional ?'govuk-radios--conditional' : 'govuk-radios lbh-radios' }>
+              <div className={this.conditional ?'govuk-radios--conditional' : 'govuk-radios' }>
                 {this.options.map((o, i) => (
                   <span key={i}>
                     { this.includeOrDivider(i) ? <div className="govuk-radios__divider">or</div> : <div className="govuk-!-margin-bottom-2"></div>}
@@ -89,7 +90,7 @@ class RadioFieldSet extends Component {
                         onChange={this.setValue.bind(this)}
                         data-aria-controls={`conditional-${this.name}-${i}`}
                       />
-                      <label className="govuk-label govuk-radios__label lbh-label"
+                      <label className="govuk-label govuk-radios__label"
                         htmlFor={`${this.name}-${i}`}>
                         {o.title}
                       </label>
@@ -117,6 +118,7 @@ class RadioFieldSet extends Component {
                 ))}
               </div>
             </div>
+
           </fieldset>
         </div>
         <div>

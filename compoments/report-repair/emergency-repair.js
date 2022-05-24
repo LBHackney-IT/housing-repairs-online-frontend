@@ -7,8 +7,8 @@ const EmergencyRepair = () => {
 
   return <div className="govuk-grid-row govuk-body-m">
     <div className="govuk-grid-column-two-thirds">
-      <h1 className='govuk-heading-xl lbh-heading-h1'>Your repair could be an emergency</h1>
-      <h3 className='lbh-heading-h2'>Emergencies</h3>
+      <h1 className='govuk-heading-xl'>Your repair could be an emergency</h1>
+      <h3 className='govuk-heading-m'>Emergencies</h3>
       <p>
         An emergency is defined as something which could cause danger to
         someone’s health or safety or cause serious damage and destruction to
@@ -18,7 +18,6 @@ const EmergencyRepair = () => {
       <p>
         Opening times:
       </p>
-      <br/>
       <OpeningHours/>
       <p>
         Please do not call the emergency out of hours number if the repair is not urgent.

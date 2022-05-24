@@ -23,7 +23,6 @@
     "dotenv": "^10.0.0",
     "govuk-frontend": "^3.14.0",
     "image-to-base64": "^2.2.0",
-    "lbh-frontend": "^3.6.1",
     "libphonenumber-js": "^1.9.44",
     "moment": "^2.29.1",
     "next": "12.0.2",
