@@ -50,14 +50,14 @@ const Address = ({handleChange, values}) => {
 
   return <div className="govuk-grid-row" data-cy="address">
     <div className="govuk-grid-column-two-thirds">
-      <h1 className="govuk-heading-l lbh-heading-h1">Select an address</h1>
+      <h1 className="govuk-heading-l">Select an address</h1>
       <form action="">
         <div className={state.error.msg ? 'govuk-form-group govuk-form-group--error' : 'govuk-form-group'}>
           <span id={'address-error'}
             className="govuk-error-message">
             {state.error.msg}
           </span>
-          <label className="govuk-label lbh-label" htmlFor="select-address-dropdown">
+          <label className="govuk-label" htmlFor="select-address-dropdown">
             Select an address
           </label>
           <Select
