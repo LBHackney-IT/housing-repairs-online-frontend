@@ -47,7 +47,7 @@ export default function Home() {
             (minicom) on 0800 371 787
         </WarningText>
         <WarningText testid="landing-page-emergency-warning"  className="">
-          For other emergency repairs, please see customer services <TextLink href="https://www.lincoln.gov.uk/contact-1/get-touch" target={'_blank'}>contact details page</TextLink>.
+          For other emergency repairs, please see customer services <strong>{customerServicesTelephoneNumber}</strong>.
         </WarningText>
         <Details summary="What is an emergency?" className="govuk-!-margin-top-6" testid="landing-page-emergency-prompt">
           <div data-testid='landing-page-emergency-info'>
