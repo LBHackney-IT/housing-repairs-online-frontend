@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps, err  }) {
     </div>
     <footer className="govuk-footer " role="contentinfo">
       <div className="govuk-width-container ">
-        <a className="footer-custom-link" href="https://www.lincoln.gov.uk/accessibility">Accessibility</a>
+        <a className="footer-custom-link" href="https://hackney.gov.uk/accessibility-help">Accessibility</a>
         <div className="govuk-footer__meta">
           <div
             className="govuk-footer__meta-item govuk-footer__meta-item--grow">
