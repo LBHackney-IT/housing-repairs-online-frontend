@@ -21,9 +21,8 @@ describe('App', () => {
   it('displays a emergency repair warning on the landing page', () => {
     cy.get('[data-testid=landing-page-emergency-warning]').should(
       'have.contain',
-      'For other emergency repairs, please see customer services contact details page.'
+      'For other emergency repairs, please call customer services'
     );
-    cy.get('[data-testid=landing-page-emergency-warning] a').should('have.attr', 'href', 'https://www.lincoln.gov.uk/contact-1/get-touch');;
   });
 
   context('emergency prompt', () => {
@@ -49,6 +48,6 @@ describe('App', () => {
   });
 
   it('has an accessibility link', () => {
-    cy.get('a').contains('Accessibility').should('have.attr', 'href', 'https://www.lincoln.gov.uk/accessibility');
+    cy.get('a').contains('Accessibility').should('have.attr', 'href', 'https://hackney.gov.uk/accessibility-help');
   });
 });
