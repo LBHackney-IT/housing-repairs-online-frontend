@@ -21,7 +21,7 @@ export default function Home() {
           If you <strong>own the property</strong>, please see our <TextLink href="https://hackney.gov.uk/leaseholders-and-freeholders" target={'_blank'}>leaseholder contact details page </TextLink>.
         </p>
         <p>
-          To request a repair for a <strong>communal area</strong>, please see customer services contact <strong>{customerServicesTelephoneNumber}</strong>.
+          To request a repair for a <strong>communal area</strong>, please call customer services <strong>{customerServicesTelephoneNumber}</strong>.
         </p>
         <Details summary="What is a communal area?" className="govuk-!-margin-top-6" data-testid="landing-page-communal-prompt">
           <div data-testid='landing-page-communal-info'>
@@ -47,7 +47,7 @@ export default function Home() {
             (minicom) on 0800 371 787
         </WarningText>
         <WarningText testid="landing-page-emergency-warning"  className="">
-          For other emergency repairs, please see customer services <strong>{customerServicesTelephoneNumber}</strong>.
+          For other emergency repairs, please call customer services <strong>{customerServicesTelephoneNumber}</strong>.
         </WarningText>
         <Details summary="What is an emergency?" className="govuk-!-margin-top-6" testid="landing-page-emergency-prompt">
           <div data-testid='landing-page-emergency-info'>
