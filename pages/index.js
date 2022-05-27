@@ -18,7 +18,7 @@ export default function Home() {
           This service can only be used to request one repair at a time to a council property.
         </WarningText>
         <p>
-          If you <strong>own the property</strong>, please see our <TextLink href="https://www.lincoln.gov.uk/council-housing/council-leaseholders/3" target={'_blank'}>leaseholder contact details page </TextLink>.
+          If you <strong>own the property</strong>, please see our <TextLink href="https://hackney.gov.uk/leaseholders-and-freeholders" target={'_blank'}>leaseholder contact details page </TextLink>.
         </p>
         <p>
           To request a repair for a <strong>communal area</strong>, please see customer services contact <strong>{customerServicesTelephoneNumber}</strong>.
