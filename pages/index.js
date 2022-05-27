@@ -5,6 +5,7 @@ import React from 'react';
 import Link from 'next/link'
 import ContactNumbers from '../compoments/contactNumbers';
 import OpeningHours from '../compoments/report-repair/opening-hours';
+import {customerServicesTelephoneNumber} from '../globals';
 
 export default function Home() {
 
@@ -17,10 +18,10 @@ export default function Home() {
           This service can only be used to request one repair at a time to a council property.
         </WarningText>
         <p>
-          If you <strong>own the property</strong>, please see our <TextLink href="https://www.lincoln.gov.uk/council-housing/council-leaseholders/3" target={'_blank'}>leaseholder contact details page </TextLink>.
+          If you <strong>own the property</strong>, please see our <TextLink href="https://hackney.gov.uk/leaseholders-and-freeholders" target={'_blank'}>leaseholder contact details page </TextLink>.
         </p>
         <p>
-          To request a repair for a <strong>communal area</strong>, please see customer services contact <TextLink href="https://www.lincoln.gov.uk/contact-1/get-touch" target={'_blank'}>details page</TextLink>.
+          To request a repair for a <strong>communal area</strong>, please call customer services <strong>{customerServicesTelephoneNumber}</strong>.
         </p>
         <Details summary="What is a communal area?" className="govuk-!-margin-top-6" data-testid="landing-page-communal-prompt">
           <div data-testid='landing-page-communal-info'>
@@ -46,7 +47,7 @@ export default function Home() {
             (minicom) on 0800 371 787
         </WarningText>
         <WarningText testid="landing-page-emergency-warning"  className="">
-          For other emergency repairs, please see customer services <TextLink href="https://www.lincoln.gov.uk/contact-1/get-touch" target={'_blank'}>contact details page</TextLink>.
+          For other emergency repairs, please call customer services <strong>{customerServicesTelephoneNumber}</strong>.
         </WarningText>
         <Details summary="What is an emergency?" className="govuk-!-margin-top-6" testid="landing-page-emergency-prompt">
           <div data-testid='landing-page-emergency-info'>

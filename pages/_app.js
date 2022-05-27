@@ -16,7 +16,6 @@ function MyApp({ Component, pageProps, err  }) {
       <div className="govuk-header__container govuk-width-container">
         <div className="govuk-header__logo">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="https://www.lincoln.gov.uk/" className="govuk-header__logotype" target="_blank" rel="noopener noreferrer"/>
         </div>
         <div className="govuk-header__content">
           <Link href="/">
@@ -46,7 +45,7 @@ function MyApp({ Component, pageProps, err  }) {
     </div>
     <footer className="govuk-footer " role="contentinfo">
       <div className="govuk-width-container ">
-        <a className="footer-custom-link" href="https://www.lincoln.gov.uk/accessibility">Accessibility</a>
+        <a className="footer-custom-link" href="https://hackney.gov.uk/accessibility-help">Accessibility</a>
         <div className="govuk-footer__meta">
           <div
             className="govuk-footer__meta-item govuk-footer__meta-item--grow">
@@ -58,7 +57,7 @@ function MyApp({ Component, pageProps, err  }) {
           </div>
           <div className="govuk-footer__meta-item">
             <a className="govuk-footer__link govuk-footer__copyright-logo"
-              href="https://www.lincoln.gov.uk" target="_blank" rel="noopener noreferrer" >©
+              href="https://hackney.gov.uk" target="_blank" rel="noopener noreferrer" >©
               Crown copyright</a>
           </div>
         </div>
