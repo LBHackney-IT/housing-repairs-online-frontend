@@ -16,7 +16,6 @@ function MyApp({ Component, pageProps, err  }) {
       <div className="govuk-header__container govuk-width-container">
         <div className="govuk-header__logo">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="https://www.lincoln.gov.uk/" className="govuk-header__logotype" target="_blank" rel="noopener noreferrer"/>
         </div>
         <div className="govuk-header__content">
           <Link href="/">
