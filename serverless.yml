@@ -27,7 +27,7 @@ functions:
         - '!node_modules/@next/swc-darwin-arm64'       
         - '!node_modules/@sentry/cli/sentry-cli'         
     environment:
-     REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
+      REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
       REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/repairs-api-base-url}
     role: lambdaExecutionRole
     events:
