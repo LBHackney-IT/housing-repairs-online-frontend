@@ -8,7 +8,9 @@ provider:
   versionFunctions: true
 
 package:
-  excludeDevDependencies: true
+  individually: true
+  patterns:
+    - '!./**'
 
 functions:
   HousingRepairsOnlineFrontend:
@@ -16,14 +18,16 @@ functions:
     handler: lambda.handler
     timeout: 30
     package:
-      include:
-        - lambda.js
-        - next.config.js
-        - build/_next/**
-        - public/**
-        - node_modules/**
+      patterns:
+        - 'lambda.js'
+        - 'next.config.js'
+        - 'build/_next/**'
+        - 'public/**'
+        - 'node_modules/**'
+        - '!node_modules/@next/swc-darwin-arm64'       
+        - '!node_modules/@sentry/cli/sentry-cli'         
     environment:
-      REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
+     REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
       REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/repairs-api-base-url}
     role: lambdaExecutionRole
     events:
