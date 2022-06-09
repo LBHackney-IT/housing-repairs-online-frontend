@@ -15,7 +15,7 @@ export default function Button({onClick, children, preventDoubleClick = false })
     <button
       disabled={disabled ? 'disabled' : false}
       aria-disabled={disabled}
-      className={`govuk-button ${disabled ? 'govuk-button--disabled' : '' }`}
+      className={`govuk-button lbh-button ${disabled ? 'govuk-button--disabled lbh-button--disabled' : '' }`}
       data-prevent-double-click={preventDoubleClick}
       onClick={click}
       data-module="govuk-button">

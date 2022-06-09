@@ -7,10 +7,10 @@ import {customerServicesTelephoneNumber} from '../../globals';
 
 const NotEligible = () => {
   return (
-    <div className="govuk-grid-row govuk-body-m">
+    <div className="govuk-grid-row lbh-body-m">
       <div className="govuk-grid-column-two-thirds">
-        <h1 className='govuk-heading-xl'>The council may not be responsible for repairs at this property</h1>
-        <h3 className='govuk-heading-m'>Emergencies</h3>
+        <h1 className='govuk-heading-xl lbh-heading-h1'>The council may not be responsible for repairs at this property</h1>
+        <h3 className='lbh-heading-h2'>Emergencies</h3>
         <p>
           An emergency is defined as something which could cause danger to
           someone’s health or safety or cause serious damage and destruction to

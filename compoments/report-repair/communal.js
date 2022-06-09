@@ -16,7 +16,7 @@ const Communal = ({handleChange, values}) => {
       <span data-testid="communal-area-info">
         <p>Communal repairs are usually in areas that people share.</p>
         <p>They can include:</p>
-        <ul className={'govuk-list govuk-list--bullet'}>
+        <ul className={'govuk-list govuk-list--bullet lbh-list--bullet'}>
           <li>repairs to door entry systems</li>
           <li>lock repairs to communal doors</li>
           <li>lighting repairs to shared areas</li>
