@@ -91,3 +91,62 @@ resources:
                   Action:
                     - 'lambda:InvokeFunction'
                   Resource: '*'
+    CloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Aliases:
+            - ${self:custom.aliases.${self:provider.stage}}
+          PriceClass: PriceClass_100
+          ViewerCertificate:
+            AcmCertificateArn: ${self:custom.certificate-arn.${self:provider.stage}}
+            MinimumProtocolVersion: TLSv1.2_2018
+            SslSupportMethod: sni-only
+          DefaultCacheBehavior:
+            TargetOriginId: ${self:service}-${self:provider.stage}-custom-origin
+            ViewerProtocolPolicy: 'redirect-to-https'
+            AllowedMethods:
+              - GET
+              - HEAD
+              - OPTIONS
+              - PUT
+              - PATCH
+              - POST
+              - DELETE
+            DefaultTTL: 0
+            MaxTTL: 0
+            MinTTL: 0
+            ForwardedValues:
+              QueryString: true
+              Cookies:
+                Forward: all
+          Enabled: true
+          Origins:
+            - Id: ${self:service}-${self:provider.stage}-custom-origin
+              DomainName: ${self:custom.domain-name}
+              OriginPath: /${self:provider.stage}
+              CustomOriginConfig:
+                HTTPPort: 80
+                HTTPSPort: 443
+                OriginProtocolPolicy: https-only
+    staticImagesBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: repairs-online-${opt:stage}-static-images
+
+custom:
+  domain-name:
+    Fn::Join:
+      - '.'
+      - - Ref: ApiGatewayRestApi
+        - execute-api
+        - eu-west-2
+        - amazonaws.com
+  aliases:
+    development: repairsonline-development.hackney.gov.uk
+    staging: repairsonline-staging.hackney.gov.uk
+    production: repairsonline.hackney.gov.uk
+  certificate-arn:
+    development: arn:aws:acm:us-east-1:364864573329:certificate/16b47245-6094-4d58-8559-f99cfbef54b8
+    staging: arn:aws:acm:us-east-1:087586271961:certificate/097e3ca7-ac2e-44cf-a8c7-e2a36650c171
+    production: arn:aws:acm:us-east-1:282997303675:certificate/14372658-63fa-407b-b6ae-e802b33f4202
