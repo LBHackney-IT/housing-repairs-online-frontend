@@ -42,7 +42,7 @@ export default function Home() {
           to the Gas Emergency Service on 0800 111 999 or via textphone
           (minicom) on 0800 371 787
         </WarningText>
-        <WarningText testid="landing-page-emergency-warning"  className="lbh-body lbh-!-font-weight-bold">
+        <WarningText testid="landing-page-emergency-warning" className="lbh-body lbh-!-font-weight-bold">
           For other emergency repairs, please call customer services <strong>{customerServicesTelephoneNumber}</strong>.
         </WarningText>
         <Details summary="What is an emergency?" className="govuk-!-margin-top-6" testid="landing-page-emergency-prompt">

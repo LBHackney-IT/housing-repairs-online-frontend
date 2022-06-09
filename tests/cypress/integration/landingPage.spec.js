@@ -8,7 +8,7 @@ describe('App', () => {
   });
 
   it('displays correct phase banner', () => {
-    cy.get('[data-testid=phase-banner]').should('have.contain', 'beta');
+    cy.get('[data-testid=phase-banner]').should('have.contain', 'Beta');
   });
 
   it('displays a smell gas warning on the landing page', () => {
@@ -21,7 +21,7 @@ describe('App', () => {
   it('displays a emergency repair warning on the landing page', () => {
     cy.get('[data-testid=landing-page-emergency-warning]').should(
       'have.contain',
-      'For other emergency repairs, please call customer services'
+      'For other emergency repairs, please call customer services' 
     );
   });
 
@@ -48,6 +48,6 @@ describe('App', () => {
   });
 
   it('has an accessibility link', () => {
-    cy.get('a').contains('Accessibility').should('have.attr', 'href', 'https://hackney.gov.uk/accessibility-help');
+    cy.get('[data-test-id=accessability_link]').contains('Accessibility').should('have.attr', 'href', 'https://hackney.gov.uk/accessibility-help');
   });
 });
