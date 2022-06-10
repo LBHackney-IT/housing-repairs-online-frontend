@@ -143,9 +143,9 @@ custom:
         - eu-west-2
         - amazonaws.com
   aliases:
-    development: repairsonline-development.hackney.gov.uk
-    staging: repairsonline-staging.hackney.gov.uk
-    production: repairsonline.hackney.gov.uk
+    development: housingrepairs-development.hackney.gov.uk
+    staging: housingrepairs-staging.hackney.gov.uk
+    production: housingrepairs.hackney.gov.uk
   certificate-arn:
     development: arn:aws:acm:us-east-1:364864573329:certificate/16b47245-6094-4d58-8559-f99cfbef54b8
     staging: arn:aws:acm:us-east-1:087586271961:certificate/097e3ca7-ac2e-44cf-a8c7-e2a36650c171
