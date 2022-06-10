@@ -138,7 +138,7 @@ custom:
   domain-name:
     Fn::Join:
       - '.'
-      - - Ref: ApiGatewayRestApi
+      - ${self:custom.gateway-id.${self:provider.stage}}
         - execute-api
         - eu-west-2
         - amazonaws.com
@@ -150,3 +150,7 @@ custom:
     development: arn:aws:acm:us-east-1:364864573329:certificate/16b47245-6094-4d58-8559-f99cfbef54b8
     staging: arn:aws:acm:us-east-1:087586271961:certificate/097e3ca7-ac2e-44cf-a8c7-e2a36650c171
     production: arn:aws:acm:us-east-1:282997303675:certificate/14372658-63fa-407b-b6ae-e802b33f4202
+  gateway-id:
+    development: n2sbci4mna
+    staging: 03aez9g0ka
+    production: salzoo2y60
