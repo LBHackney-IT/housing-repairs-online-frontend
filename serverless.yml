@@ -147,9 +147,9 @@ custom:
     staging: housingrepairs-staging.hackney.gov.uk
     production: housingrepairs.hackney.gov.uk
   certificate-arn:
-    development: arn:aws:acm:us-east-1:364864573329:certificate/16b47245-6094-4d58-8559-f99cfbef54b8
-    staging: arn:aws:acm:us-east-1:087586271961:certificate/097e3ca7-ac2e-44cf-a8c7-e2a36650c171
-    production: arn:aws:acm:us-east-1:282997303675:certificate/14372658-63fa-407b-b6ae-e802b33f4202
+    development: arn:aws:acm:us-east-1:364864573329:certificate/a5935e70-ab94-4326-b2f0-c527eb7c214f
+    staging: arn:aws:acm:us-east-1:087586271961:certificate/ff3800a6-62f7-497a-a2d0-e482d76614ec
+    production: arn:aws:acm:us-east-1:282997303675:certificate/6714a979-786f-426b-9fe0-349b65ba825f
   gateway-id:
     development: n2sbci4mna
     staging: 03aez9g0ka
