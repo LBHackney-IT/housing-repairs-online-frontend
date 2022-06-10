@@ -124,7 +124,6 @@ resources:
           Origins:
             - Id: ${self:service}-${self:provider.stage}-custom-origin
               DomainName: ${self:custom.domain-name}
-              OriginPath: /${self:provider.stage}
               CustomOriginConfig:
                 HTTPPort: 80
                 HTTPSPort: 443
