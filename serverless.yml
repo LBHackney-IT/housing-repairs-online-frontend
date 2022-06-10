@@ -138,7 +138,7 @@ custom:
   domain-name:
     Fn::Join:
       - '.'
-      - ${self:custom.gateway-id.${self:provider.stage}}
+      - - ${self:custom.gateway-id.${self:provider.stage}}
         - execute-api
         - eu-west-2
         - amazonaws.com
