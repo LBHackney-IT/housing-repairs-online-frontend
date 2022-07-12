@@ -8,7 +8,7 @@ describe('App', () => {
   });
 
   it('displays correct phase banner', () => {
-    cy.get('[data-testid=phase-banner]').should('have.contain', 'Beta');
+    cy.contains('This is our new website design - it\'s work in progress');
   });
 
   it('displays a smell gas warning on the landing page', () => {
