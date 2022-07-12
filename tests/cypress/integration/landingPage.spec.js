@@ -48,6 +48,6 @@ describe('App', () => {
   });
 
   it('has an accessibility link', () => {
-    cy.get('[data-test-id=accessability_link]').contains('Accessibility').should('have.attr', 'href', 'https://hackney.gov.uk/accessibility-help');
+    cy.get('a').contains('Accessibility').should('have.attr', 'href', 'https://hackney.gov.uk/accessibility-help');
   });
 });
