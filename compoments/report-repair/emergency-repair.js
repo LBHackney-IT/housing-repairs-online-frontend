@@ -19,6 +19,7 @@ const EmergencyRepair = () => {
       <p>
         Opening times:
       </p>
+      <br/>
       <OpeningHours/>
       <p>
         Please do not call the emergency out of hours number if the repair is not urgent.

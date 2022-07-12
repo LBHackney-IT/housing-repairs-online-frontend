@@ -16,8 +16,8 @@ function MyApp({ Component, pageProps, err  }) {
     <div className="govuk-width-container">
       <div className="govuk-phase-banner lbh-phase-banner lbh-container">
         <p className="govuk-phase-banner__content">
-          <strong className="govuk-tag govuk-phase-banner__content__tag lbh-tag"  data-testid='phase-banner'>
-          Beta
+          <strong className="govuk-tag govuk-phase-banner__content__tag lbh-tag">
+            Beta
           </strong>
           <span className="govuk-phase-banner__text">This is our new website design - it&apos;s work in progress.<a href="#feedback" title="Tell us what you think">Tell us what you think</a>, your feedback will help us to improve it.</span>
         </p>
@@ -56,12 +56,6 @@ function MyApp({ Component, pageProps, err  }) {
               </a>
             , except where otherwise stated
             </span>
-          </div>
-          <div className="govuk-footer__meta-item">
-            <a data-test-id='accessability_link' className="footer-custom-link" href="https://hackney.gov.uk/accessibility-help">Accessibility</a>
-            <a className="govuk-footer__link govuk-footer__copyright-logo"
-              href="https://hackney.gov.uk" target="_blank" rel="noopener noreferrer" >©
-              Crown copyright</a>
           </div>
         </div>
       </div>

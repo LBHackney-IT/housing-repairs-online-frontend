@@ -62,7 +62,6 @@ class RadioFieldSet extends Component {
   };
 
   render(){
-
     return (
 
 
@@ -121,7 +120,6 @@ class RadioFieldSet extends Component {
                 ))}
               </div>
             </div>
-
           </fieldset>
         </div>
         <div>
