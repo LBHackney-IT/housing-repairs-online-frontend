@@ -15,7 +15,7 @@ class MyDocument extends Document {
           <script src="/js/all.js"></script>
           <link rel="shortcut icon" href="/static/favicon.ico" />
         </Head>
-        <body className={'js-enabled'}>
+        <body className={'js-enabled lbh-body'}>
           <Main />
           <NextScript />
         </body>

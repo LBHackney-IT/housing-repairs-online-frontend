@@ -8,7 +8,7 @@ describe('App', () => {
   });
 
   it('displays correct phase banner', () => {
-    cy.get('[data-testid=phase-banner]').should('have.contain', 'beta');
+    cy.contains('This is our new website design - it\'s work in progress');
   });
 
   it('displays a smell gas warning on the landing page', () => {
@@ -21,7 +21,7 @@ describe('App', () => {
   it('displays a emergency repair warning on the landing page', () => {
     cy.get('[data-testid=landing-page-emergency-warning]').should(
       'have.contain',
-      'For other emergency repairs, please call customer services'
+      'For other emergency repairs, please call customer services' 
     );
   });
 

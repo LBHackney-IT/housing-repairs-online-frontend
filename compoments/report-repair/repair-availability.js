@@ -87,15 +87,15 @@ const RepairAvailability = ({handleChange, values, fromDate}) => {
 
   return <div className="govuk-grid-row" data-cy="repair-availability">
     <div className="govuk-grid-column-two-thirds">
-      <h1 className="govuk-heading-l">
+      <h1 className="govuk-heading-l lbh-heading-h1">
         When are you available?
       </h1>
-      <p className="govuk-body-l">
+      <p className="lbh-body-l">
         A responsible adult must be at the property
         for all of the repair appointment time slot and during the repair
         appointment.
       </p>
-      <h3 className="govuk-heading-m govuk-!-padding-top-4">Please select a
+      <h3 className="govuk-!-padding-top-4">Please select a
         suitable time slot
       </h3>
       <hr/>
@@ -107,16 +107,16 @@ const RepairAvailability = ({handleChange, values, fromDate}) => {
         <div className="govuk-radios" onChange={onChange}>
           {Object.keys(availability).map((date, i) => (
             <div key={i} className='govuk-!-padding-bottom-4'>
-              <h3 className="govuk-heading-m govuk-!-padding-top-4">
+              <h3 className="govuk-!-padding-top-4">
                 {date}
               </h3>
               {availability[date].map((timeSlot, ti)=>(
-                <div className="govuk-radios__item" key={`${i}-${ti}`}>
-                  <input data-cy={`availability-slot-${i}-${ti}`} className="govuk-radios__input govuk-input--width-10"
+                <div className="govuk-radios__item lbh-radios" key={`${i}-${ti}`}>
+                  <input data-cy={`availability-slot-${i}-${ti}`} className="govuk-radios__input govuk-input--width-10 "
                     id={`${fieldName}-${i}-${ti}`} name={fieldName}
                     type="radio" value={timeSlot.appointmentSlotKey}
                     defaultChecked={values.availability?.startDateTime === timeSlot.startDateTime && values.availability?.endDateTime === timeSlot.endDateTime}/>
-                  <label className="govuk-label govuk-radios__label"
+                  <label className="govuk-label govuk-radios__label lbh-label"
                     htmlFor={`${fieldName}-${i}-${ti}`}>
                     {timeSlot.timeString}
                   </label>
@@ -128,11 +128,11 @@ const RepairAvailability = ({handleChange, values, fromDate}) => {
       </div>
       <div>
         {fromDate ? (
-          <a className="govuk-button govuk-button--secondary" onClick={()=>{
+          <a className="govuk-button govuk-button--secondary lbh-button lbh-button--secondary" onClick={()=>{
             router.push(`${router.asPath}`, 'repair-availability', { shallow: true })
           }}>Previous 5 days</a>
         ) : (
-          <a className="govuk-button govuk-button--secondary" onClick={()=>{
+          <a className="govuk-button govuk-button--secondary lbh-button lbh-button--secondary" onClick={()=>{
             router.push(`${router.asPath}/?fromDate=${nextAppointmentSearchFromDate}`, `${router.asPath}/?next=true`, { shallow: true })
           }}>Next 5 days</a>
         )}
