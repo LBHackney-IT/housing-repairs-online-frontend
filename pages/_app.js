@@ -4,13 +4,17 @@ import React from 'react';
 import App from 'next/app'
 import Header from '../compoments/header';
 import { useEffect } from 'react';
+import { hotjar } from 'react-hotjar'
 
 function MyApp({ Component, pageProps, err  }) {
   const enableJavascript = () => {
     window.GOVUKFrontend.initAll()
   }
   useEffect(enableJavascript, [])
-
+  useEffect(() => {
+    hotjar.initialize(783901, 6)
+  }, [])
+  
   return <>
     <Header/>
     <div className="govuk-width-container">
