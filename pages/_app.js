@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps, err  }) {
   useEffect(() => {
     hotjar.initialize(783901, 6)
   }, [])
-  
   return <>
     <Header/>
     <div className="govuk-width-container">
