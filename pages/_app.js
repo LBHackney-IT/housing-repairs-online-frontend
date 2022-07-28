@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps, err  }) {
   }
   useEffect(enableJavascript, [])
   useEffect(() => {
-    hotjar.initialize(3085570, 6)
+    hotjar.initialize(3085563, 6)
   }, [])
   return <>
     <Header/>
