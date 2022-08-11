@@ -4,7 +4,7 @@ describe('repair description', () => {
   });
 
   it('displays the question', () => {
-    cy.contains('Describe your problem in more detail');
+    cy.contains('Describe the repair in more detail');
   });
 
   it('displays what the description should include', () => {
@@ -15,7 +15,7 @@ describe('repair description', () => {
   });
 
   it('displays "report one repair" disclaimer', () => {
-    cy.contains('Please report only one problem at a time. You will have a ' +
+    cy.contains('Please report only one repair at a time. You will have a ' +
       'chance to report another repair after this one.');
   });
 

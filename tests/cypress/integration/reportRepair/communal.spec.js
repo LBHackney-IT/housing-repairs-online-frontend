@@ -8,7 +8,7 @@ describe('communal', () => {
   });
 
   it('displays the question', () => {
-    cy.contains('Is the problem in a communal area?');
+    cy.contains('Is the repair in a communal area?');
   });
 
   it('displays button with correct text', () => {
