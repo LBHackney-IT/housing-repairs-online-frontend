@@ -6,7 +6,7 @@ import React from 'react';
 
 const Communal = ({handleChange, values}) => {
   const name =  'communal';
-  const title =  'Is the problem in a communal area?';
+  const title =  'Is the repair in a communal area?';
   const options =  [
     { value: 'yes', title: 'Yes'},
     { value: 'no', title: 'No'}
