@@ -26,8 +26,8 @@ describe('repairLocation', () => {
       cy.contains('Living Areas');
     });
 
-    it('displays "Outside" as an option', () => {
-      cy.contains('Outside');
+    it('does not display the "Outside" option', () => {
+      cy.contains('Outside').should('not.exist');
     });
   });
 

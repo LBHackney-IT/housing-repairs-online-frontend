@@ -29,7 +29,6 @@ class Flow {
         {condition: 'bathroom', nextStep: 'repair-bathroom-problems'},
         {condition: 'bedroom', nextStep: 'repair-bedroom-problems'},
         {condition: 'livingAreas', nextStep: 'repair-living-areas-problems'},
-        {condition: 'outside', nextStep: 'repair-outside-problems'}
       ]},
       'repair-outside-problems': { prevSteps: 'repair-location', nextStep: [
         {condition: 'securityLights', nextStep: 'repair-description'},
