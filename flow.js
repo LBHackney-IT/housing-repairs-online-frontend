@@ -122,7 +122,16 @@ class Flow {
       'repair-window-problems': {nextStep: 'repair-description'},
       'repair-bedroom-lighting-problems': { prevStep: 'repair-bedroom-problems', nextStep: 'repair-description'},
       'repair-living-areas-lighting-problems': { prevStep: 'repair-living-areas-problems', nextStep: 'repair-description'},
-      'wall-floor-ceiling-problems': {nextStep: 'repair-description'},
+      'wall-floor-ceiling-problems': { prevStep: 'repair-location',    
+        nextStep: [
+        {condition: 'floorTiles', nextStep: 'unable-to-book'},
+        {condition: 'skirtingBoardArchitrave', nextStep: 'unable-to-book'},
+        {condition: 'wallTiles', nextStep: 'repair-description'},
+        {condition: 'lightFitting', nextStep: 'repair-description'},
+        {condition: 'plasteringCeiling', nextStep: 'repair-description'},
+        {condition: 'plasteringWalls', nextStep: 'repair-description'},
+        {condition: 'woodenFloorboards', nextStep: 'repair-description'},
+      ]},
       'repair-kitchen-cupboard-problems': {prevStep: 'repair-kitchen-problems', nextStep: 'repair-description'},
       'bathroom-damp-mould-problems': { prevStep: 'repair-bathroom-problems',
         nextStep: [
