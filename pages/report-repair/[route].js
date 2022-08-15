@@ -266,6 +266,7 @@ function ReportRepair() {
             commonProblems.dampOrMould,
             { value: 'stairs', title: 'Stairs (including handrail)'},
             commonProblems.heating,
+            commonProblems.windows,
           ]}
         />
       )
@@ -427,6 +428,7 @@ function ReportRepair() {
           options={[
             { value: 'internalDoorIssue', title: 'Internal door issue, including hinges, handle, sticking'},
             { value: 'adjustingDoorAfterCarpetFitting', title: 'Adjusting a door after a carpet fitting'},
+            { value: 'lockOnBedroomDoor', title: 'Lock on the door'},
           ]}
         />
       )
