@@ -21,7 +21,7 @@ describe('App', () => {
   it('displays a emergency repair warning on the landing page', () => {
     cy.get('[data-testid=landing-page-emergency-warning]').should(
       'have.contain',
-      'For other emergency repairs, please call customer services' 
+      'For other emergency repairs, please call customer services'
     );
   });
 
