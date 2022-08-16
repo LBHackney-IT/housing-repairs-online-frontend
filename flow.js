@@ -29,7 +29,6 @@ class Flow {
         {condition: 'bathroom', nextStep: 'repair-bathroom-problems'},
         {condition: 'bedroom', nextStep: 'repair-bedroom-problems'},
         {condition: 'livingAreas', nextStep: 'repair-living-areas-problems'},
-        {condition: 'outside', nextStep: 'repair-outside-problems'}
       ]},
       'repair-outside-problems': { prevSteps: 'repair-location', nextStep: [
         {condition: 'securityLights', nextStep: 'repair-description'},
@@ -62,21 +61,32 @@ class Flow {
         {condition: 'notFlushing', nextStep: 'repair-description'},
         {condition: 'overflowing', nextStep: 'repair-description'},
         {condition: 'looseFromFloorOrWall', nextStep: 'repair-description'},
-        {condition: 'cracked', nextStep: 'repair-description'},
-        {condition: 'seat', nextStep: 'not-eligible-non-emergency'}]},
+        {condition: 'cracked', nextStep: 'unable-to-book'},
+        {condition: 'seat', nextStep: 'unable-to-book'}]},
       'damp-mould-problems':  { prevSteps: '', nextStep: [
         {condition: 'dampMouldCausedByLeak', nextStep: 'emergency-repair'},
         {condition: 'dampOrMould', nextStep: 'repair-description'}]},
       'repair-shower-problems': { prevSteps: '', nextStep: [
-        {condition: 'electricShowerUnit', nextStep: 'repair-description'},
-        {condition: 'showerTap', nextStep: 'repair-description'},
-        {condition: 'showerHose', nextStep: 'repair-description'},
-        {condition: 'showerHead', nextStep: 'repair-description'},
-        {condition: 'showerTrayBroken', nextStep: 'repair-description'},
-        {condition: 'cubicleDoorBroken', nextStep: 'repair-description'},
+        {condition: 'electricShowerUnit', nextStep: 'unable-to-book'},
+        {condition: 'showerTap', nextStep: 'unable-to-book'},
+        {condition: 'showerHose', nextStep: 'unable-to-book'},
+        {condition: 'showerHead', nextStep: 'unable-to-book'},
+        {condition: 'showerTrayBroken', nextStep: 'unable-to-book'},
+        {condition: 'cubicleDoorBroken', nextStep: 'unable-to-book'},
         {condition: 'showerDrainBlocked', nextStep: 'emergency-repair'},]},
-      'sink-problems': {nextStep: 'repair-description'},
-      'kitchen-door-problems': { prevStep: 'repair-kitchen-problems', nextStep: 'repair-description'},
+      'sink-problems': { prevSteps: '', nextStep: [
+        {condition: 'taps', nextStep: 'repair-description'},
+        {condition: 'pipeworkLeak', nextStep: 'repair-description'},
+        {condition: 'leakBlockage', nextStep: 'repair-description'},
+        {condition: 'damageSink', nextStep: 'unable-to-book'},
+      ]},
+      'kitchen-door-problems': { prevStep: 'repair-kitchen-problems', nextStep: [
+        {condition: 'backDoorWooden', nextStep: 'repair-description'},
+        {condition: 'backDoorUPVC', nextStep: 'repair-description'},
+        {condition: 'backFrenchDoors', nextStep: 'repair-description'},
+        {condition: 'internal', nextStep: 'repair-description'},
+        {condition: 'sliding', nextStep: 'unable-to-book'},
+      ]},
       'kitchen-electrical-problems': {prevStep: 'repair-kitchen-problems', nextStep: 'repair-description'},
       'repair-bathroom-problems': { prevStep: 'repair-location', nextStep: [
         {condition: 'wallsFloorsCeiling', nextStep: 'wall-floor-ceiling-problems'},
@@ -107,8 +117,14 @@ class Flow {
         {condition: 'dampOrMould', nextStep: 'damp-mould-problems'},
         {condition: 'stairs', nextStep: 'repair-stairs-problems'},
         {condition: 'heating', nextStep: 'unable-to-book'},
+        {condition: 'windows', nextStep: 'emergency-repair'},
       ]},
-      'repair-bathroom-electric-problems': { prevStep: 'repair-bathroom-problems', nextStep: 'repair-description'},
+      'repair-bathroom-electric-problems': { prevStep: 'repair-bathroom-problems', nextStep: [
+        {condition: 'spotLights', nextStep: 'unable-to-book'},
+        {condition: 'tubeLights', nextStep: 'repair-description'},
+        {condition: 'pullCord', nextStep: 'repair-description'},
+        {condition: 'extractorFan', nextStep: 'repair-description'}
+      ]},
       'repair-stairs-problems': { prevStep: 'repair-living-areas-problems', nextStep: 'repair-description'},
       'repair-living-area-door-problems': { prevSteps: '', nextStep: [
         {condition: 'internalDoorIssue', nextStep: 'repair-description'},
@@ -117,14 +133,42 @@ class Flow {
       ]},
       'repair-bedroom-door-problems': { prevSteps: 'repair-location', nextStep: [
         {condition: 'internalDoorIssue', nextStep: 'repair-description'},
-        {condition: 'adjustingDoorAfterCarpetFitting', nextStep: 'not-eligible-non-emergency'}
+        {condition: 'adjustingDoorAfterCarpetFitting', nextStep: 'not-eligible-non-emergency'},
+        {condition: 'lockOnBedroomDoor', nextStep: 'unable-to-book'},
       ]},
-      'bath-problems': { prevStep: 'repair-bathroom-problems', nextStep: 'repair-description'},
-      'repair-window-problems': {nextStep: 'repair-description'},
+      'bath-problems': { prevStep: 'repair-bathroom-problems', nextStep: [
+        {condition: 'bathTaps', nextStep: 'repair-description'},
+        {condition: 'sealAroundBath', nextStep: 'repair-description'},
+        {condition: 'bathPanel', nextStep: 'unable-to-book'},
+        {condition: 'bathBlockage', nextStep: 'repair-description'}
+      ]},
+      'repair-window-problems': { prevSteps: 'repair-location',
+        nextStep: [
+          {condition: 'smashed', nextStep: 'emergency-repair'},
+          {condition: 'stuckOpen', nextStep: 'emergency-repair'},
+          {condition: 'stuckShut', nextStep: 'repair-description'},
+          {condition: 'condensation', nextStep: 'repair-description'}
+        ]
+      },
       'repair-bedroom-lighting-problems': { prevStep: 'repair-bedroom-problems', nextStep: 'repair-description'},
       'repair-living-areas-lighting-problems': { prevStep: 'repair-living-areas-problems', nextStep: 'repair-description'},
-      'wall-floor-ceiling-problems': {nextStep: 'repair-description'},
-      'repair-kitchen-cupboard-problems': {prevStep: 'repair-kitchen-problems', nextStep: 'repair-description'},
+      'wall-floor-ceiling-problems': { prevStep: 'repair-location',    
+        nextStep: [
+        {condition: 'floorTiles', nextStep: 'unable-to-book'},
+        {condition: 'skirtingBoardArchitrave', nextStep: 'unable-to-book'},
+        {condition: 'wallTiles', nextStep: 'unable-to-book'},
+        {condition: 'lightFitting', nextStep: 'repair-description'},
+        {condition: 'plasteringCeiling', nextStep: 'repair-description'},
+        {condition: 'plasteringWalls', nextStep: 'repair-description'},
+        {condition: 'woodenFloorboards', nextStep: 'unable-to-book'},
+        ]
+      },
+      'repair-kitchen-cupboard-problems': { prevStep: 'repair-kitchen-problems', 
+        nextStep: [
+          {condition: 'doorHangingOff', nextStep: 'repair-description'},
+          {condition: 'doorMissing', nextStep: 'unable-to-book'},
+          ]
+      },
       'bathroom-damp-mould-problems': { prevStep: 'repair-bathroom-problems',
         nextStep: [
           {condition: 'emergency', nextStep: 'emergency-repair'},

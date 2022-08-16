@@ -175,36 +175,4 @@ describe('repairProblem', () => {
       cy.contains('Heating');
     });
   });
-
-  context('Outside', () => {
-    before(() => {
-      navigateToLocation()
-      cy.contains('Outside').click();
-      cy.get('button').click();
-    });
-
-    it('displays the repair problem question', () => {
-      cy.contains('What is the problem?');
-    });
-
-    it('displays a "Door, including shed and outhouse" option', () => {
-      cy.contains('Door, including shed and outhouse');
-    });
-
-    it('displays a "Outdoor security lights" option', () => {
-      cy.contains('Outdoor security lights');
-    });
-
-    it('displays a "Roof, including insulation and shed roof" option', () => {
-      cy.contains('Roof, including insulation and shed roof')
-    });
-
-    it('displays a "Gates and pathways" option', () => {
-      cy.contains('Gates and pathways')
-    });
-
-    it('displays a "Garage, including roof and door" option', () => {
-      cy.contains('Garage, including roof and door');
-    });
-  });
 });
