@@ -128,7 +128,7 @@ class Flow {
       'repair-stairs-problems': { prevStep: 'repair-living-areas-problems', nextStep: 'repair-description'},
       'repair-living-area-door-problems': { prevSteps: '', nextStep: [
         {condition: 'internalDoorIssue', nextStep: 'repair-description'},
-        {condition: 'lockOnDoor', nextStep: 'not-eligible-non-emergency'},
+        {condition: 'lockOnDoor', nextStep: 'repair-description'},
         {condition: 'adjustingDoorAfterCarpetFitting', nextStep: 'not-eligible-non-emergency'}
       ]},
       'repair-bedroom-door-problems': { prevSteps: 'repair-location', nextStep: [
