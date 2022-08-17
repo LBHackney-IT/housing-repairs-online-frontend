@@ -85,7 +85,7 @@ describe('Flow', () => {
 
       expect(setPrevStepsSpy).toHaveBeenCalledWith([]);
 
-      expect(setStateSpy).toHaveBeenCalledWith({"prevStep": "postcode", "step": "postcode"});
+      expect(setStateSpy).toHaveBeenCalledWith({'prevStep': 'postcode', 'step': 'postcode'});
 
       expect(historySpy.push).toHaveBeenCalledWith('postcode');
     });

@@ -16,9 +16,9 @@ const Summary = ({values, getNextStepFromCondition, submit, goToStep}) => {
     {pageName:'Appointment contact number', value: values.contactPersonNumber, link: 'contact-person'},
   ]
   const repairDetailsSummary = [
-    { pageName:'Where is the problem?', value: values.repairLocation?.display, link:'repair-location'},
-    { pageName:'What is the problem?', value: values.repairProblem?.display, link: repairProblemLink},
-    { pageName:'What best describes the problem?', value: values['repairProblemBestDescription']?.display, link: repairProblemBestDescriptionLink},
+    { pageName:'Where is the repair?', value: values.repairLocation?.display, link:'repair-location'},
+    { pageName:'What is the repair?', value: values.repairProblem?.display, link: repairProblemLink},
+    { pageName:'What best describes the repair?', value: values['repairProblemBestDescription']?.display, link: repairProblemBestDescriptionLink},
     { pageName:'Description', value: values.description?.text, link:'repair-description'}
   ]
   const appointmentDetailsSummary = [

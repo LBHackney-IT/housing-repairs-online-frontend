@@ -4,18 +4,18 @@ describe('repair description', () => {
   });
 
   it('displays the question', () => {
-    cy.contains('Describe your problem in more detail');
+    cy.contains('Describe the repair required in more detail');
   });
 
   it('displays what the description should include', () => {
-    cy.contains('the size and location of the problem');
-    cy.contains('the source of the problem');
-    cy.contains('how long you have been experiencing the problem');
+    cy.contains('the size and location of the repair');
+    cy.contains('the source of the repair');
+    cy.contains('when did the issue occur');
     cy.contains('how many items are damaged, for example 3 floor tiles');
   });
 
   it('displays "report one repair" disclaimer', () => {
-    cy.contains('Please report only one problem at a time. You will have a ' +
+    cy.contains('Please report only one repair at a time. You will have a ' +
       'chance to report another repair after this one.');
   });
 
