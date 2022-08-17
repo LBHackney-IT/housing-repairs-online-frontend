@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps, err  }) {
           <strong className="govuk-tag govuk-phase-banner__content__tag lbh-tag">
             Beta
           </strong>
-          <span className="govuk-phase-banner__text">This is our new website design - it&apos;s work in progress.<a href="#feedback" title="Tell us what you think">Tell us what you think</a>, your feedback will help us to improve it.</span>
+          <span className="govuk-phase-banner__text">This is our new website design - it&apos;s work in progress.<a href="repairshub.feedback@hackney.gov.uk" title="Tell us what you think">Tell us what you think</a>, your feedback will help us to improve it.</span>
         </p>
       </div>
       <main className="govuk-main-wrapper govuk-!-padding-0">
