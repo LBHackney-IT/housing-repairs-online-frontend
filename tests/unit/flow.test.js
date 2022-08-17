@@ -246,7 +246,7 @@ describe('Flow', () => {
           }
           flow.handleChange('repairProblemBestDescription', {value: 'internalDoorIssue', display: 'Internal door issue, including hinges, handle, sticking'}, state);
           expect(setStateSpy).toHaveBeenCalledWith({
-            step: 'repair-description',
+            step: 'kitchen-door-problems',
             data: {
               'repairProblem': {value: 'heatingOrHotWater', display: 'Heating or hot water'},
               'repairProblemBestDescription': {value: 'internalDoorIssue', display: 'Internal door issue, including hinges, handle, sticking'}

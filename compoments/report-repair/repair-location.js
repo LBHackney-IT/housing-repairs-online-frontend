@@ -10,7 +10,6 @@ const RepairLocation = ({handleChange, values}) => {
     { value: 'bedroom', title: 'Bedroom'},
     { value: 'bathroom', title: 'Bathroom'},
     { value: 'livingAreas', title: 'Living Areas'},
-    { value: 'outside', title: 'Outside'},
   ];
 
   const Continue = ({val, display}) => {

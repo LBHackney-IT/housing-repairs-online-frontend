@@ -163,10 +163,10 @@ describe('summary', () => {
         page: 'repair-location', option:'Bathroom'
       })
       navigateToPageSelectRadioOptionAndContinue({
-        page: 'repair-problem', option:'Walls, floor or ceiling, excluding damp'
+        page: 'repair-problem', option:'Bath, including taps'
       });
       navigateToPageSelectRadioOptionAndContinue({
-        page: 'repair-problem-best-description', option:'Floor tiles'
+        page: 'repair-problem-best-description', option:'Bath taps'
       })
 
       continueOnPage('repair-description');
@@ -178,18 +178,18 @@ describe('summary', () => {
       cy.contains('What is the repair?')
       cy.contains('Floor tiles')
 
-      cy.get('a[href*="wall-floor-ceiling-problems"]').contains('Change').click();
-      cy.location('href').should('eq', 'http://localhost:3000/report-repair/wall-floor-ceiling-problems');
+      cy.get('a[href*="bath-problems"]').contains('Change').click();
+      cy.location('href').should('eq', 'http://localhost:3000/report-repair/bath-problems');
 
       navigateToPageSelectRadioOptionAndContinue({
-        page: 'repair-problem-best-description', option:'Wall tiles'
+        page: 'repair-problem-best-description', option:'Bath taps'
       })
       continueOnPage('repair-description');
       continueOnPage('contact-person');
       continueOnPage('contact-details');
       continueOnPage('repair-availability');
 
-      cy.contains('Wall tiles')
+      cy.contains('Bath taps')
     });
 
     it('allows you to navigate to change the repair location page ', () => {
