@@ -176,7 +176,7 @@ describe('summary', () => {
       continueOnPage('repair-availability');
       cy.contains('Bathroom')
       cy.contains('What is the repair?')
-      cy.contains('Floor tiles')
+      cy.contains('Bath taps')
 
       cy.get('a[href*="bath-problems"]').contains('Change').click();
       cy.location('href').should('eq', 'http://localhost:3000/report-repair/bath-problems');
