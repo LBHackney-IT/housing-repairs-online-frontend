@@ -4,7 +4,7 @@ import {
 
 const genericWhatIsTheProblemOptions = () => {
   it('displays the repair problem question', () => {
-    cy.contains('What is the problem?');
+    cy.contains('What is the repair?');
   });
 
   it('displays a "walls" option', () => {
@@ -26,7 +26,7 @@ describe('repairProblem', () => {
     });
 
     it('displays the repair problem question', () => {
-      cy.contains('What is the problem?');
+      cy.contains('What is the repair?');
     });
 
     it('displays a "cupboards" option', () => {
@@ -74,7 +74,7 @@ describe('repairProblem', () => {
     });
 
     it('displays the repair problem question', () => {
-      cy.contains('What is the problem?');
+      cy.contains('What is the repair?');
     });
 
     it('displays a "walls" option', () => {

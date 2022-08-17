@@ -4,7 +4,7 @@ import RadioFieldSet from '../radioFieldSet';
 
 const RepairProblemBestDescription = ({handleChange, values, options}) => {
   const name =  'repairProblemBestDescription';
-  const title =  'What best describes the problem?';
+  const title =  'What best describes the repair?';
 
   const Continue = ({val, display}) => {
     handleChange(name, {value:val[name], display: display});

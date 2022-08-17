@@ -89,13 +89,13 @@ describe('summary', () => {
     cy.get('a[href*="contact-person"]').contains('Change')
 
     cy.contains('Repair details')
-    cy.contains('Where is the problem?')
+    cy.contains('Where is the repair?')
     cy.contains('Kitchen')
     cy.get('a[href*="repair-location"]').contains('Change')
-    cy.contains('What is the problem?')
+    cy.contains('What is the repair?')
     cy.contains('Cupboards, including damaged cupboard doors')
     cy.get('a[href*="repair-kitchen-problems"]').contains('Change')
-    cy.contains('What best describes the problem?')
+    cy.contains('What best describes the repair?')
     cy.contains('Hanging door')
     cy.get('a[href*="repair-kitchen-cupboard-problems"]').contains('Change')
     cy.contains('Description')
@@ -175,7 +175,7 @@ describe('summary', () => {
       continueOnPage('contact-details');
       continueOnPage('repair-availability');
       cy.contains('Bathroom')
-      cy.contains('What is the problem?')
+      cy.contains('What is the repair?')
       cy.contains('Bath taps')
 
       cy.get('a[href*="bath-problems"]').contains('Change').click();

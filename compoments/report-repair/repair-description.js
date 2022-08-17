@@ -75,7 +75,7 @@ const RepairDescription = ({handleChange, values}) => {
   return <div className="govuk-grid-row" data-cy="repair-description">
     <div className="govuk-grid-column-two-thirds">
       <h1 className="lbh-heading-h1">
-        Describe your problem in more detail
+        Describe the repair required in more detail
       </h1>
       <div className={error.text ? 'govuk-form-group--error' : 'govuk-form-group'}>
         <form action="" className='govuk-!-padding-0'>
@@ -83,13 +83,13 @@ const RepairDescription = ({handleChange, values}) => {
             <div>
               <p className={'lbh-body govuk-body-m'}>Please describe:</p>
               <ul className="govuk-list govuk-list--bullet lbh-list--bullet">
-                <li>the size and location of the problem</li>
-                <li>the source of the problem</li>
-                <li>how long you have been experiencing the problem</li>
+                <li>the size and location of the repair</li>
+                <li>the source of the repair</li>
+                <li>when did the issue occur</li>
                 <li>how many items are damaged, for example 3 floor tiles</li>
               </ul>
               <div className="govuk-inset-text">
-                Please report <strong>only one problem</strong> at a time. You will have
+                Please report <strong>only one repair</strong> at a time. You will have
                 a chance to report another repair after this one.
               </div>
             </div>

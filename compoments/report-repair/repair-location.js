@@ -4,7 +4,7 @@ import React from 'react';
 
 const RepairLocation = ({handleChange, values}) => {
   const name =  'repairLocation';
-  const title =  'Where is the problem?';
+  const title =  'Where is the repair?';
   const options =  [
     { value: 'kitchen', title: 'Kitchen'},
     { value: 'bedroom', title: 'Bedroom'},

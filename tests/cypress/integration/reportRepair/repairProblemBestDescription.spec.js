@@ -4,7 +4,7 @@ import {
 
 const testWindowOption = () => {
   it('displays the repair issue question', () => {
-    cy.contains('What best describes the problem?');
+    cy.contains('What best describes the repair?');
   });
 
   it('displays a "Smashed window(s)" option', () => {
@@ -27,7 +27,7 @@ const testWindowOption = () => {
 
 const testWallOption = () => {
   it('displays the repair issue question', () => {
-    cy.contains('What best describes the problem?');
+    cy.contains('What best describes the repair?');
   });
 
   it('displays a "Wall tiles" option', () => {
@@ -66,7 +66,7 @@ const electricsOption = () => {
   });
 
   it('displays the repair issue question', () => {
-    cy.contains('What best describes the problem?');
+    cy.contains('What best describes the repair?');
   });
 
   it('displays a "Light" option', () => {
@@ -80,7 +80,7 @@ const electricsOption = () => {
 
 const testSinkOptions = () => {
   it('displays the repair issue question', () => {
-    cy.contains('What best describes the problem?');
+    cy.contains('What best describes the repair?');
   });
 
   it('displays a "Tap(s)" option', () => {
@@ -102,7 +102,7 @@ const testSinkOptions = () => {
 
 const testDoorOption = (testLockOnDoor = true) => {
   it('displays the repair issue question', () => {
-    cy.contains('What best describes the problem?');
+    cy.contains('What best describes the repair?');
   });
 
   it('displays a "Internal door issue, including hinges, handle, sticking" option', () => {
@@ -122,7 +122,7 @@ const testDoorOption = (testLockOnDoor = true) => {
 
 const testDampOrMouldOption = () => {
   it('displays the repair issue question', () => {
-    cy.contains('What best describes the problem?');
+    cy.contains('What best describes the repair?');
   });
 
   it('displays a "Damp or mould caused by a leak" option', () => {
@@ -150,7 +150,7 @@ describe('repairProblemBestDescription', () => {
       });
 
       it('displays the repair issue question', () => {
-        cy.contains('What best describes the problem?');
+        cy.contains('What best describes the repair?');
       });
 
       it('displays a "Hanging door" option', () => {
@@ -290,7 +290,7 @@ describe('repairProblemBestDescription', () => {
       });
 
       it('displays the repair issue question', () => {
-        cy.contains('What best describes the problem?');
+        cy.contains('What best describes the repair?');
       });
 
       it('displays a "Bath taps" option', () => {
@@ -397,7 +397,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     it('displays the repair issue question', () => {
-      cy.contains('What best describes the problem?');
+      cy.contains('What best describes the repair?');
     });
 
     it('displays a "Not flushing" option', () => {
@@ -433,7 +433,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     it('displays the repair issue question', () => {
-      cy.contains('What best describes the problem?');
+      cy.contains('What best describes the repair?');
     });
 
     it('displays a "Electric shower unit" option', () => {
@@ -602,7 +602,7 @@ context('Living Area', () => {
     });
 
     it('displays the repair issue question', () => {
-      cy.contains('What best describes the problem?');
+      cy.contains('What best describes the repair?');
     });
 
     it('displays a "Damaged stairs" option', () => {
