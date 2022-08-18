@@ -27,6 +27,11 @@ class TextInput extends Component {
     id: this.name,
     onChange: this.setValue.bind(this)
   }
+  
+  componentDidMount() {
+    //var textLabel = document.getElementById(`${this.name}-label`)
+    //textLabel.setAttribute("for", this.name)
+  }
 
   setValue(event) {
     this.setState({
@@ -73,13 +78,13 @@ class TextInput extends Component {
               className="govuk-error-message govuk-!-margin-bottom-0">
               {this.state.error.msg}
             </span>
-            <label className="govuk-label lbh-label" htmlFor={this.input.id}>
+            <label className="govuk-label lbh-label" id={`${this.name}-label`} htmlFor={this.name}>
               {this.label}
             </label>
             <div id="event-name-hint" className="govuk-hint">
               {this.hint}
             </div>
-            <input className="govuk-input govuk-!-margin-bottom-6" id={this.input.id}
+            <input className="govuk-input govuk-!-margin-bottom-6" id={this.name}
               name={this.name}
               type={this.type}
               onChange={this.input.onChange}
