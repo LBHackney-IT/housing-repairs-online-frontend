@@ -29,8 +29,8 @@ class TextInput extends Component {
   }
   
   componentDidMount() {
-    //var textLabel = document.getElementById(`${this.name}-label`)
-    //textLabel.setAttribute("for", this.name)
+    var textLabel = document.getElementById(`${this.name}-label`)
+    textLabel.setAttribute("for", this.name)
   }
 
   setValue(event) {
