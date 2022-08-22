@@ -1,8 +1,9 @@
-const path = require('path')
+const path = require('path');
 
 const { withSentryConfig } = require('@sentry/nextjs');
+const { prependOnceListener } = require('process');
 
-const moduleExports =  {
+const moduleExports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
@@ -16,16 +17,28 @@ const moduleExports =  {
         destination: '/report-repair/priority-list',
         permanent: true,
       },
-    ]
+      (process.env.MAINTENANCE_MODE_DEV === 'true' && process.env.NEXT_PUBLIC_APP_ENV === 'test') || 
+      (process.env.MAINTENANCE_MODE_PROD === 'true' && process.env.NEXT_PUBLIC_APP_ENV === 'prod') 
+      
+        ? {
+            source: '/((?!service-unavailable)(?!_next)(?!static)(?!js)(?!assets).*)',
+            destination: '/service-unavailable',
+            permanent: false,
+          }
+        : null,
+    ].filter(Boolean);
   },
 
   images: {
-    loader: 'default'
+    loader: 'default',
   },
 };
 
 module.exports = withSentryConfig(moduleExports, {
-  authToken: process.env.SENTRY_AUTH_TOKEN || process.env.NEXT_PUBLIC_SENTRY_AUTH_TOKEN,
-  dryRun: (process.env.NODE_ENV == 'development' || process.env.NEXT_PUBLIC_APP_ENV == 'test'),
-  include: './.next'
+  authToken:
+    process.env.SENTRY_AUTH_TOKEN || process.env.NEXT_PUBLIC_SENTRY_AUTH_TOKEN,
+  dryRun:
+    process.env.NODE_ENV == 'development' ||
+    process.env.NEXT_PUBLIC_APP_ENV == 'test',
+  include: './.next',
 });
