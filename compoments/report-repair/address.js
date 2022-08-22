@@ -67,6 +67,7 @@ const Address = ({handleChange, values}) => {
             }}
             meta={state.error}
             id={'select-address-dropdown'}
+            label={"Select an address"}
           >
             <option value="null">
               {found_addresses}
