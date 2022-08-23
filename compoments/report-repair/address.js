@@ -57,9 +57,6 @@ const Address = ({handleChange, values}) => {
             className="govuk-error-message">
             {state.error.msg}
           </span>
-          <label className="govuk-label lbh-label" htmlFor="select-address-dropdown">
-            Select an address
-          </label>
           <Select
             input={{
               name: 'address',
