@@ -17,8 +17,7 @@ const moduleExports = {
         destination: '/report-repair/priority-list',
         permanent: true,
       },
-      (process.env.MAINTENANCE_MODE_STAGING === 'true' && process.env.NEXT_PUBLIC_APP_ENV === 'test') || 
-      (process.env.MAINTENANCE_MODE_PROD === 'true' && process.env.NEXT_PUBLIC_APP_ENV === 'prod') 
+      process.env.MAINTENANCE_MODE === 'true' 
       
         ? {
             source: '/((?!service-unavailable)(?!_next)(?!static)(?!js)(?!assets).*)',
