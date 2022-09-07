@@ -16,16 +16,8 @@ const moduleExports = {
         source: '/report-repair',
         destination: '/report-repair/priority-list',
         permanent: true,
-      },
-      process.env.MAINTENANCE_MODE === 'true' 
-      
-        ? {
-            source: '/((?!service-unavailable)(?!_next)(?!static)(?!js)(?!assets).*)',
-            destination: '/service-unavailable',
-            permanent: false,
-          }
-        : null,
-    ].filter(Boolean);
+      }
+    ];
   },
 
   images: {
