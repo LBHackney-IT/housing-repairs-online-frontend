@@ -93,6 +93,17 @@ const navigateToLocation = () => {
   });
 }
 
+function intercept_check_maintenance_mode(enable) {
+  const api_url = 'http://localhost:3000/api';
+
+  cy.intercept('GET', `${api_url}/maintenance`, {
+    statusCode: 200,
+    body: {
+      maintenanceModeEnabled: enable
+    }
+  }).as('maintenance');
+}
+
 export {
   intercept_address_search,
   intercept_availability_search,
@@ -101,5 +112,6 @@ export {
   convertDateToDisplayDate,
   intercept_save_repair,
   continueOnPage,
-  navigateToLocation
+  navigateToLocation,
+  intercept_check_maintenance_mode
 }
