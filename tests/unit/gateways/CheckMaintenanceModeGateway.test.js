@@ -13,7 +13,7 @@ describe('CheckMaintenanceMode', () => {
       const result = await CheckMaintenanceModeGateway();
 
       expect(mockGetRequest).toHaveBeenCalledWith(
-        {uri: `/maintenance`}
+        {uri: '/maintenance'}
       )
 
       expect(result).toEqual(dummyData)
