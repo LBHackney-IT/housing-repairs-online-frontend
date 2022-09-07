@@ -14,6 +14,6 @@ export default async function (req, res) {
     await Sentry.flush(2000);
 
     let result = new Error('Error checking');
-    res.status(500).json(result)
+    res.status(500).send();
   }
 };
