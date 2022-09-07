@@ -93,11 +93,11 @@ const navigateToLocation = () => {
   });
 }
 
-function intercept_check_maintenance_mode(enable) {
+function intercept_check_maintenance_mode(enable, statusCode = 200) {
   const api_url = 'http://localhost:3000/api';
 
   cy.intercept('GET', `${api_url}/maintenance`, {
-    statusCode: 200,
+    statusCode: statusCode,
     body: {
       maintenanceModeEnabled: enable
     }

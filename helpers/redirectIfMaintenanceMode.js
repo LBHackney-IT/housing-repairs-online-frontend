@@ -5,7 +5,7 @@ export default function redirectIfMaintenanceMode() {
     .then((res) => {
       if (res.status === 500) {
         console.error('Error fetching maintenance mode status {Status}', res.status);
-        return;
+        return null;
       }
       return res.json();
     })

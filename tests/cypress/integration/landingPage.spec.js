@@ -57,7 +57,7 @@ describe('App', () => {
     intercept_check_maintenance_mode(true);
     cy.visit('http://localhost:3000');
 
-    cy.wait(200)
+    cy.wait(300)
 
     cy.get('h1').contains('Temporarily Unavailable');
     cy.url().should('eq', 'http://localhost:3000/service-unavailable')
@@ -67,7 +67,17 @@ describe('App', () => {
     intercept_check_maintenance_mode(false);
     cy.visit('http://localhost:3000');
 
-    cy.wait(200)
+    cy.wait(300)
+
+    cy.get('h1').contains('Request a repair');
+    cy.url().should('eq', 'http://localhost:3000/')
+  })
+
+  it('doesn\'t redirect to maintenance page when request fails', () => {
+    intercept_check_maintenance_mode(false, 500);
+    cy.visit('http://localhost:3000');
+
+    cy.wait(300)
 
     cy.get('h1').contains('Request a repair');
     cy.url().should('eq', 'http://localhost:3000/')
