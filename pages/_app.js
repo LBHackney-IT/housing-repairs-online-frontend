@@ -5,6 +5,7 @@ import App from 'next/app'
 import Header from '../compoments/header';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar'
+import redirectIfMaintenanceMode from '../helpers/redirectIfMaintenanceMode';
 
 function MyApp({ Component, pageProps, err  }) {
   const enableJavascript = () => {
@@ -14,6 +15,9 @@ function MyApp({ Component, pageProps, err  }) {
   useEffect(() => {
     hotjar.initialize(3085563, 6)
   }, [])
+
+  useEffect(redirectIfMaintenanceMode, [])
+
   return <>
     <Header/>
     <div className="govuk-width-container">

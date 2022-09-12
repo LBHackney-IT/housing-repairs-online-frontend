@@ -1,3 +1,5 @@
+import { intercept_check_maintenance_mode } from '../support/helpers'
+
 describe('App', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/');
@@ -50,4 +52,34 @@ describe('App', () => {
   it('has an accessibility link', () => {
     cy.get('a').contains('Accessibility').should('have.attr', 'href', 'https://hackney.gov.uk/accessibility-help');
   });
+
+  it('redirects to maintenance page when enabled', () => {
+    intercept_check_maintenance_mode(true);
+    cy.visit('http://localhost:3000');
+
+    cy.wait(300)
+
+    cy.get('h1').contains('Temporarily Unavailable');
+    cy.url().should('eq', 'http://localhost:3000/service-unavailable')
+  })
+
+  it('doesn\'t redirect to maintenance page when disabled', () => {
+    intercept_check_maintenance_mode(false);
+    cy.visit('http://localhost:3000');
+
+    cy.wait(300)
+
+    cy.get('h1').contains('Request a repair');
+    cy.url().should('eq', 'http://localhost:3000/')
+  })
+
+  it('doesn\'t redirect to maintenance page when request fails', () => {
+    intercept_check_maintenance_mode(false, 500);
+    cy.visit('http://localhost:3000');
+
+    cy.wait(300)
+
+    cy.get('h1').contains('Request a repair');
+    cy.url().should('eq', 'http://localhost:3000/')
+  })
 });
