@@ -18,7 +18,7 @@ export default function Home() {
           This service can only be used to request one repair at a time to a council property.
         </WarningText>
         <p className={'lbh-body-m'}>
-          If you <strong>own the property</strong>, please see our <TextLink href="https://hackney.gov.uk/leaseholders-and-freeholders" target={'_blank'}>leaseholder contact details page </TextLink>.
+          If you <strong>own the property</strong>, please see our <TextLink href="https://hackney.gov.uk/leaseholders-and-freeholders" target={'_blank'}>leaseholder contact details page</TextLink>.
         </p>
         <p className={'lbh-body-m'}>
         To request a repair for a <strong>communal area</strong>, please call customer services <strong>{customerServicesTelephoneNumber}</strong>.
