@@ -1,5 +1,5 @@
-import '../styles/globals.css'
 import '../styles/globals.scss'
+import '../styles/globals.css'
 import React from 'react';
 import App from 'next/app'
 import Header from '../compoments/header';
