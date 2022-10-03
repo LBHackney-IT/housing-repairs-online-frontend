@@ -5,9 +5,9 @@ import { interceptAuthenticationRequest } from './helpers/helper'
 
 jest.mock('axios');
 
-const availableAppointmentData = [{ 
-    someData: "blah blah blah"
- }];
+const availableAppointmentData = [{
+  someData: 'blah blah blah'
+}];
 
 describe('/api/availability', () => {
   beforeEach(() => {
@@ -19,13 +19,13 @@ describe('/api/availability', () => {
     // Arrange
     const req = createRequest({
       method: 'get',
-      query: { 
-        repairLocation: "location",
-        repairProblem: "problem",
-        repairIssue: "issue",
-        locationId: "locationId", 
-        fromDate: "fromDate"
-     },
+      query: {
+        repairLocation: 'location',
+        repairProblem: 'problem',
+        repairIssue: 'issue',
+        locationId: 'locationId',
+        fromDate: 'fromDate'
+      },
     });
 
     const res = createResponse();
@@ -53,13 +53,13 @@ describe('/api/availability', () => {
 
     const req = createRequest({
       method: 'get',
-      query: { 
-        repairLocation: "location",
-        repairProblem: "problem",
-        repairIssue: "issue",
-        locationId: "locationId", 
-        fromDate: "fromDate"
-     },
+      query: {
+        repairLocation: 'location',
+        repairProblem: 'problem',
+        repairIssue: 'issue',
+        locationId: 'locationId',
+        fromDate: 'fromDate'
+      },
     });
 
     const res = createResponse();

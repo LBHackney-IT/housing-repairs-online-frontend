@@ -5,17 +5,17 @@ import { interceptAuthenticationRequest } from './helpers/helper'
 
 jest.mock('axios');
 
-const requestId = "1234"
-const raiseRepairData = { 
-    postcode: "postcode",
-    address: "address",
-    location: "location",
-    problem: "problem",
-    issue: "issue",
-    contactPersonNumber: "contact person number",
-    description: "description",
-    contactDetails: "contactDetails",
-    time: "time"
+const requestId = '1234'
+const raiseRepairData = {
+  postcode: 'postcode',
+  address: 'address',
+  location: 'location',
+  problem: 'problem',
+  issue: 'issue',
+  contactPersonNumber: 'contact person number',
+  description: 'description',
+  contactDetails: 'contactDetails',
+  time: 'time'
 };
 
 describe('/api/repair', () => {
@@ -53,9 +53,9 @@ describe('/api/repair', () => {
     // Arrange
 
     const req = createRequest({
-        method: 'post',
-        data: raiseRepairData
-      });
+      method: 'post',
+      data: raiseRepairData
+    });
     const res = createResponse();
 
     axios.post.mockImplementationOnce(() => Promise.reject());
