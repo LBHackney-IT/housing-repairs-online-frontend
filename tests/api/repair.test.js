@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { createMocks, createRequest, createResponse } from 'node-mocks-http';
+import { createRequest, createResponse } from 'node-mocks-http';
 import handleRepair from '../../pages/api/repair/index';
+import { interceptAuthenticationRequest } from './helpers/helper'
 
 jest.mock('axios');
 
@@ -19,17 +20,8 @@ const raiseRepairData = {
 
 describe('/api/repair', () => {
   beforeEach(() => {
-    // Mock auth request
     axios.create = jest.fn(() => axios);
-
-    const mockJwt = 'token';
-
-    const response = {
-      status: 200,
-      data: mockJwt,
-    };
-
-    axios.post.mockImplementationOnce(() => Promise.resolve(response));
+    interceptAuthenticationRequest();
   });
 
   test('when called - raises a repair', async () => {

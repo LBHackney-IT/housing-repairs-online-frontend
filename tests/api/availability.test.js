@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { createMocks, createRequest, createResponse } from 'node-mocks-http';
+import { createRequest, createResponse } from 'node-mocks-http';
 import handleAvailability from '../../pages/api/availability/index';
+import { interceptAuthenticationRequest } from './helpers/helper'
 
 jest.mock('axios');
-
 
 const availableAppointmentData = [{ 
     someData: "blah blah blah"
@@ -11,17 +11,8 @@ const availableAppointmentData = [{
 
 describe('/api/availability', () => {
   beforeEach(() => {
-    // Mock auth request
     axios.create = jest.fn(() => axios);
-
-    const mockJwt = 'token';
-
-    const response = {
-      status: 200,
-      data: mockJwt,
-    };
-
-    axios.post.mockImplementationOnce(() => Promise.resolve(response));
+    interceptAuthenticationRequest();
   });
 
   test('when called - returns appointment availability', async () => {
