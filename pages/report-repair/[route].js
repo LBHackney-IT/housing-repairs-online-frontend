@@ -373,10 +373,14 @@ function ReportRepair() {
           handleChange={handleChange}
           values={values}
           options = {[
-            { value: 'smashed', title: 'Smashed window(s)'},
-            { value: 'stuckOpen', title: 'Window stuck open'},
-            { value: 'stuckShut', title: 'Window stuck shut'},
-            { value: 'condensation', title: 'Condensation'}
+            { value: 'smashed-UPVC', title: 'Smashed window(s) (UPVC)'},
+            { value: 'stuckOpen-UPVC', title: 'Window stuck open (UPVC)'},
+            { value: 'stuckShut-UPVC', title: 'Window stuck shut (UPVC)'},
+            { value: 'condensation-UPVC', title: 'Condensation (UPVC)'},
+            { value: 'smashed-wooden', title: 'Smashed window(s) (Wooden)'},
+            { value: 'stuckOpen-wooden', title: 'Window stuck open (Wooden)'},
+            { value: 'stuckShut-wooden', title: 'Window stuck shut (Wooden)'},
+            { value: 'condensation-wooden', title: 'Condensation (Wooden)'}
           ]}
         />
       )

@@ -144,10 +144,14 @@ class Flow {
       ]},
       'repair-window-problems': { prevSteps: 'repair-location',
         nextStep: [
-          {condition: 'smashed', nextStep: 'emergency-repair'},
-          {condition: 'stuckOpen', nextStep: 'emergency-repair'},
-          {condition: 'stuckShut', nextStep: 'repair-description'},
-          {condition: 'condensation', nextStep: 'repair-description'}
+          {condition: 'smashed-UPVC', nextStep: 'emergency-repair'},
+          {condition: 'stuckOpen-UPVC', nextStep: 'emergency-repair'},
+          {condition: 'stuckShut-UPVC', nextStep: 'repair-description'},
+          {condition: 'condensation-UPVC', nextStep: 'repair-description'},
+          {condition: 'smashed-wooden', nextStep: 'emergency-repair'},
+          {condition: 'stuckOpen-wooden', nextStep: 'emergency-repair'},
+          {condition: 'stuckShut-wooden', nextStep: 'repair-description'},
+          {condition: 'condensation-wooden', nextStep: 'repair-description'}
         ]
       },
       'repair-bedroom-lighting-problems': { prevStep: 'repair-bedroom-problems', nextStep: 'repair-description'},

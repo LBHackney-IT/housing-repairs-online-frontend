@@ -259,7 +259,7 @@ describe('Flow', () => {
           step: 'repair-kitchen-problems',
           data: {
             'repairProblem': 'windows',
-            'repairProblemBestDescription': 'stuckOpen'
+            'repairProblemBestDescription': 'stuckOpen-UPVC'
           },
           prevStep: 'repair-kitchen-problems',
         }
