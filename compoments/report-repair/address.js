@@ -9,20 +9,21 @@ import { customerServicesTelephoneNumber } from '../../globals';
 import axios from 'axios';
 
 const Address = ({ handleChange, values }) => {
+  const name = 'address';
   const [state, setState] = useState({ error: {}, value: 'null' });
   const [error, setError] = useState(null)
   const [data, setData] = useState(null)
+  const [validProperty, setValidProperty] = useState(false)
 
   useEffect(() => {
     axios.get(`/api/address?postcode=${values.postcode}`)
-    .then(res => {
-      setData(res.data)
-    })
-    .catch(err => {
-      console.error(err)
-      setError(err)
-    })
-
+      .then(res => {
+        setData(res.data)
+      })
+      .catch(err => {
+        console.error(err)
+        setError(err)
+      })
   }, [])
 
   if (error)
@@ -51,8 +52,22 @@ const Address = ({ handleChange, values }) => {
     setState({ error: {}, value: JSON.parse(e.target.value) });
   };
 
-  const Continue = (e) => {
+  const verifyPropertyEligibility = (e) => {
     e.preventDefault();
+
+    axios.get(`/api/verifypropertyeligibility?propertyid=${state.value.locationId}`)
+      .then(res => {
+        setValidProperty(res.PropertyEligible)
+        Continue();
+      })
+      .catch(err => {
+        console.error(err)
+        setValidProperty(false)
+        setError(err)
+      })
+  }
+
+  const Continue = () => {
 
     if (state.value === 'null') {
       return setState({
@@ -63,9 +78,18 @@ const Address = ({ handleChange, values }) => {
       });
     }
 
-    return handleChange('address', {
+    if (!validProperty) {
+      return handleChange(name, {
+        addressLine1: state.value.addressLine1,
+        postCode: state.value.postCode,
+        locationId: state.value.locationId,
+        value: 'invalidProperty'
+      });
+    }
+    return handleChange(name, {
       display: state.value.display,
       locationId: state.value.locationId,
+      value: 'validProperty'
     });
   };
 
@@ -106,7 +130,7 @@ const Address = ({ handleChange, values }) => {
           </TextLink>
           <br />
           <br />
-          <Button onClick={Continue}>Continue</Button>
+          <Button onClick={verifyPropertyEligibility}>Continue</Button>
         </form>
       </div>
     </div>
