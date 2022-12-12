@@ -181,8 +181,7 @@ function ReportRepair() {
       )
     case 'not-eligible-invalid-property':
       return (
-        <NotEligibleInvalidProperty
-          property={values}/>
+        <NotEligibleInvalidProperty/>
       )
     case 'unable-to-book':
       return (
