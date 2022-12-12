@@ -55,20 +55,6 @@ const Address = ({ handleChange, values }) => {
   const verifyPropertyEligibility = (e) => {
     e.preventDefault();
 
-    axios.get(`/api/verifypropertyeligibility?propertyid=${state.value.locationId}`)
-      .then(res => {
-        setValidProperty(res.PropertyEligible)
-        Continue();
-      })
-      .catch(err => {
-        console.error(err)
-        setValidProperty(false)
-        setError(err)
-      })
-  }
-
-  const Continue = () => {
-
     if (state.value === 'null') {
       return setState({
         error: {
@@ -76,7 +62,22 @@ const Address = ({ handleChange, values }) => {
           touched: true,
         },
       });
+    } else {
+      axios.get(`/api/verifypropertyeligibility?propertyid=${state.value.locationId}`)
+      .then(res => {
+        console.log(res)
+        setValidProperty(res.data.propertyEligible)
+        Continue();
+      })
+      .catch(err => {
+        console.error(err)
+        setValidProperty(false)
+        setError(err)
+      })
     }
+  }
+
+  const Continue = () => {
 
     if (!validProperty) {
       return handleChange(name, {
