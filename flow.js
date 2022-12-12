@@ -160,11 +160,11 @@ class Flow {
         nextStep: [
         {condition: 'floorTiles', nextStep: 'unable-to-book'},
         {condition: 'skirtingBoardArchitrave', nextStep: 'unable-to-book'},
-        {condition: 'wallTiles', nextStep: 'unable-to-book'},
+        {condition: 'wallTiles', nextStep: 'repair-description'},
         {condition: 'lightFitting', nextStep: 'repair-description'},
         {condition: 'plasteringCeiling', nextStep: 'repair-description'},
         {condition: 'plasteringWalls', nextStep: 'repair-description'},
-        {condition: 'woodenFloorboards', nextStep: 'unable-to-book'},
+        {condition: 'woodenFloorboards', nextStep: 'repair-description'},
         ]
       },
       'repair-kitchen-cupboard-problems': { prevStep: 'repair-kitchen-problems', 
