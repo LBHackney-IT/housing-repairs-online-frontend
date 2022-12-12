@@ -292,7 +292,6 @@ class Flow {
     if (nextFlowStep) {
       if (Array.isArray(nextFlowStep)) {
         let condition
-        console.log('handleChange value', value)
         if(typeof value === 'object'){
           condition = nextFlowStep.find(o => o.condition === value.value)
         }else{
