@@ -5,7 +5,8 @@ function intercept_address_search(
   numberOfResults = 2,
   postcode='SW1A 2AA',
   nullAddressLine1 = false,
-  nullAddressLine2 = false
+  nullAddressLine2 = false,
+  locationId = 12341000
 ) {
   const api_url = 'http://localhost:3000/api';
   const response = [];
@@ -14,7 +15,8 @@ function intercept_address_search(
     response.push({
       addressLine1: !nullAddressLine1 ? `${i+1} Downing Street` : undefined,
       addressLine2: !nullAddressLine2 ? 'London' : undefined,
-      postCode: postcode
+      postCode: postcode,
+      locationId: locationId + i
     });
   }
   cy.intercept('GET', `${api_url}/address?*`, {
