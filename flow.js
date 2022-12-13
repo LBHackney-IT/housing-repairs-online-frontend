@@ -117,7 +117,6 @@ class Flow {
         {condition: 'dampOrMould', nextStep: 'damp-mould-problems'},
         {condition: 'stairs', nextStep: 'repair-stairs-problems'},
         {condition: 'heating', nextStep: 'unable-to-book'},
-        {condition: 'windows', nextStep: 'emergency-repair'},
       ]},
       'repair-bathroom-electric-problems': { prevStep: 'repair-bathroom-problems', nextStep: [
         {condition: 'spotLights', nextStep: 'unable-to-book'},
