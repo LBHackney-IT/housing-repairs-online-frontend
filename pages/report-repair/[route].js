@@ -266,7 +266,6 @@ function ReportRepair() {
             commonProblems.dampOrMould,
             { value: 'stairs', title: 'Stairs (including handrail)'},
             commonProblems.heating,
-            commonProblems.windows,
           ]}
         />
       )
