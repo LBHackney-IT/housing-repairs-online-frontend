@@ -9,6 +9,18 @@ function setup_addresses_search(setup_addresses_API) {
   cy.get('[data-cy=address]', { timeout: 10000 }).then(($loadedSection) => {});
 }
 
+function propertyEligibilityValidationMock(propertyEligible, identifier) {
+  const propertyEligibleResult = {
+    propertyEligible: propertyEligible,
+    reason: "Example Reason"
+  };
+
+  cy.intercept('GET', `http://localhost:3000/api/propertyeligible?propertyId=12341000`, {
+    statusCode: 200,
+    body: propertyEligibleResult
+  }).as(identifier);
+}
+
 describe('address', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/report-repair/');
@@ -45,10 +57,22 @@ describe('address', () => {
     });
 
     context('When a user selects an option', ()=>{
-      it('next page is shown',  () => {
+      it('repair location page is shown if the property is eligible',  () => {
+        propertyEligibilityValidationMock(true, "propertyEligibleTrue")
+
         cy.get('select').select('1 Downing Street, London, SW1A 2AA')
         cy.get('button').click()
+        cy.wait("@propertyEligibleTrue")
         cy.url().should('include', '/report-repair/repair-location');
+      });
+
+      it('ineligible property page is shown if the property is not eligible',  () => {
+        propertyEligibilityValidationMock(false, "propertyEligibleFalse")
+
+        cy.get('select').select('1 Downing Street, London, SW1A 2AA')
+        cy.get('button').click()
+        cy.wait("@propertyEligibleFalse")
+        cy.url().should('include', '/report-repair/not-eligible-invalid-property');
       });
     });
   });
