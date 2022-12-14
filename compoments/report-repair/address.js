@@ -13,7 +13,6 @@ const Address = ({ handleChange, values }) => {
   const [state, setState] = useState({ error: {}, value: 'null' });
   const [error, setError] = useState(null)
   const [data, setData] = useState(null)
-  const [validProperty, setValidProperty] = useState(false)
 
   useEffect(() => {
     axios.get(`/api/address?postcode=${values.postcode}`)
@@ -63,23 +62,21 @@ const Address = ({ handleChange, values }) => {
         },
       });
     } else {
-      axios.get(`/api/verifypropertyeligibility?propertyid=${state.value.locationId}`)
+      axios.get(`/api/propertyeligible?propertyId=${state.value.locationId}`)
       .then(res => {
-        console.log(res)
-        setValidProperty(res.data.propertyEligible)
-        Continue();
+        const isPropertyEligible = res.data.propertyEligible
+        Continue(isPropertyEligible);
       })
       .catch(err => {
         console.error(err)
-        setValidProperty(false)
         setError(err)
       })
     }
   }
 
-  const Continue = () => {
+  const Continue = (isPropertyEligible = false) => {
 
-    if (!validProperty) {
+    if (!isPropertyEligible) {
       return handleChange(name, {
         addressLine1: state.value.addressLine1,
         postCode: state.value.postCode,
