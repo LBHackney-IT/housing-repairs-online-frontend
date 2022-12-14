@@ -9,20 +9,20 @@ import { customerServicesTelephoneNumber } from '../../globals';
 import axios from 'axios';
 
 const Address = ({ handleChange, values }) => {
+  const name = 'address';
   const [state, setState] = useState({ error: {}, value: 'null' });
   const [error, setError] = useState(null)
   const [data, setData] = useState(null)
 
   useEffect(() => {
     axios.get(`/api/address?postcode=${values.postcode}`)
-    .then(res => {
-      setData(res.data)
-    })
-    .catch(err => {
-      console.error(err)
-      setError(err)
-    })
-
+      .then(res => {
+        setData(res.data)
+      })
+      .catch(err => {
+        console.error(err)
+        setError(err)
+      })
   }, [])
 
   if (error)
@@ -51,7 +51,7 @@ const Address = ({ handleChange, values }) => {
     setState({ error: {}, value: JSON.parse(e.target.value) });
   };
 
-  const Continue = (e) => {
+  const verifyPropertyEligibility = (e) => {
     e.preventDefault();
 
     if (state.value === 'null') {
@@ -61,11 +61,33 @@ const Address = ({ handleChange, values }) => {
           touched: true,
         },
       });
+    } else {
+      axios.get(`/api/propertyeligible?propertyId=${state.value.locationId}`)
+      .then(res => {
+        const isPropertyEligible = res.data.propertyEligible
+        Continue(isPropertyEligible);
+      })
+      .catch(err => {
+        console.error(err)
+        setError(err)
+      })
     }
+  }
 
-    return handleChange('address', {
+  const Continue = (isPropertyEligible = false) => {
+
+    if (!isPropertyEligible) {
+      return handleChange(name, {
+        addressLine1: state.value.addressLine1,
+        postCode: state.value.postCode,
+        locationId: state.value.locationId,
+        value: 'invalidProperty'
+      });
+    }
+    return handleChange(name, {
       display: state.value.display,
       locationId: state.value.locationId,
+      value: 'validProperty'
     });
   };
 
@@ -106,7 +128,7 @@ const Address = ({ handleChange, values }) => {
           </TextLink>
           <br />
           <br />
-          <Button onClick={Continue}>Continue</Button>
+          <Button onClick={verifyPropertyEligibility}>Continue</Button>
         </form>
       </div>
     </div>

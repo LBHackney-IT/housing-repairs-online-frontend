@@ -5,7 +5,8 @@ function intercept_address_search(
   numberOfResults = 2,
   postcode='SW1A 2AA',
   nullAddressLine1 = false,
-  nullAddressLine2 = false
+  nullAddressLine2 = false,
+  locationId = 47009990
 ) {
   const api_url = 'http://localhost:3000/api';
   const response = [];
@@ -14,7 +15,8 @@ function intercept_address_search(
     response.push({
       addressLine1: !nullAddressLine1 ? `${i+1} Downing Street` : undefined,
       addressLine2: !nullAddressLine2 ? 'London' : undefined,
-      postCode: postcode
+      postCode: postcode,
+      locationId: locationId
     });
   }
   cy.intercept('GET', `${api_url}/address?*`, {
@@ -72,6 +74,7 @@ const convertDateToDisplayDate = (date) => {
 
 const navigateToLocation = () => {
   intercept_address_search();
+  interceptPropertyEligibilityCheck(true);
   cy.visit('http://localhost:3000/report-repair/');
 
   navigateToPageSelectRadioOptionAndContinue({
@@ -104,6 +107,20 @@ function intercept_check_maintenance_mode(enable, statusCode = 200) {
   }).as('maintenance');
 }
 
+function interceptPropertyEligibilityCheck(propertyEligible) {
+  const propertyEligibleResult = {
+    propertyEligible: propertyEligible,
+    reason: "Example Reason"
+  };
+
+  const identifier = propertyEligible ? "propertyEligibleTrue" : "propertyEligibleFalse"
+
+  cy.intercept('GET', `http://localhost:3000/api/propertyeligible?propertyId=47009990`, {
+    statusCode: 200,
+    body: propertyEligibleResult
+  }).as(identifier);
+}
+
 export {
   intercept_address_search,
   intercept_availability_search,
@@ -113,5 +130,6 @@ export {
   intercept_save_repair,
   continueOnPage,
   navigateToLocation,
-  intercept_check_maintenance_mode
+  intercept_check_maintenance_mode,
+  interceptPropertyEligibilityCheck
 }

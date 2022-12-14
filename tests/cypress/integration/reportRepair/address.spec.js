@@ -1,4 +1,4 @@
-import {intercept_address_search} from '../../support/helpers';
+import {intercept_address_search, interceptPropertyEligibilityCheck} from '../../support/helpers';
 
 function setup_addresses_search(setup_addresses_API) {
   setup_addresses_API();
@@ -45,10 +45,22 @@ describe('address', () => {
     });
 
     context('When a user selects an option', ()=>{
-      it('next page is shown',  () => {
+      it('repair location page is shown if the property is eligible',  () => {
+        interceptPropertyEligibilityCheck(true)
+
         cy.get('select').select('1 Downing Street, London, SW1A 2AA')
         cy.get('button').click()
+        cy.wait("@propertyEligibleTrue")
         cy.url().should('include', '/report-repair/repair-location');
+      });
+
+      it('ineligible property page is shown if the property is not eligible',  () => {
+        interceptPropertyEligibilityCheck(false)
+
+        cy.get('select').select('1 Downing Street, London, SW1A 2AA')
+        cy.get('button').click()
+        cy.wait("@propertyEligibleFalse")
+        cy.url().should('include', '/report-repair/not-eligible-invalid-property');
       });
     });
   });

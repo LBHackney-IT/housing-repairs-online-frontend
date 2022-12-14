@@ -23,6 +23,7 @@ import ContactDetails from '../../compoments/report-repair/contact-details';
 import Confirmation from '../../compoments/report-repair/confirmation';
 import Error from '../../compoments/error';
 import NotEligibleNonEmergency from '../../compoments/report-repair/not-eligible-non-emergency';
+import NotEligibleInvalidProperty from '../../compoments/report-repair/not-eligible-invalid-property';
 import UnableToBook from '../../compoments/report-repair/unable-to-book';
 import {customerServicesTelephoneNumber} from '../../globals';
 
@@ -177,6 +178,10 @@ function ReportRepair() {
     case 'not-eligible-communal-repairs':
       return (
         <NotEligibleCommunalRepairs/>
+      )
+    case 'not-eligible-invalid-property':
+      return (
+        <NotEligibleInvalidProperty/>
       )
     case 'unable-to-book':
       return (
@@ -620,6 +625,7 @@ export async function getStaticPaths() {
     {params: { route: 'not-eligible'} },
     {params: { route: 'not-eligible-non-emergency'} },
     {params: { route: 'not-eligible-communal-repairs'} },
+    {params: { route: 'not-eligible-invalid-property'} },
     {params: { route: 'unable-to-book'} },
     {params: { route: 'postcode'} },
     {params: { route: 'priority-list'} },

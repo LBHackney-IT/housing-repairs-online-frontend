@@ -23,7 +23,10 @@ class Flow {
         {condition: 'no', nextStep: 'postcode'}
       ]},
       'postcode': {prevStep: 'communal', nextStep: 'address'},
-      'address': {prevStep: 'postcode', nextStep: 'repair-location'},
+      'address': {prevStep: 'postcode', nextStep: [
+        {condition: 'validProperty', nextStep: 'repair-location'},
+        {condition: 'invalidProperty', nextStep: 'not-eligible-invalid-property'}
+      ]},
       'repair-location': { prevStep: 'address', nextStep: [
         {condition: 'kitchen', nextStep: 'repair-kitchen-problems'},
         {condition: 'bathroom', nextStep: 'repair-bathroom-problems'},
@@ -155,7 +158,7 @@ class Flow {
       },
       'repair-bedroom-lighting-problems': { prevStep: 'repair-bedroom-problems', nextStep: 'repair-description'},
       'repair-living-areas-lighting-problems': { prevStep: 'repair-living-areas-problems', nextStep: 'repair-description'},
-      'wall-floor-ceiling-problems': { prevStep: 'repair-location',    
+      'wall-floor-ceiling-problems': { prevStep: 'repair-location',
         nextStep: [
         {condition: 'floorTiles', nextStep: 'unable-to-book'},
         {condition: 'skirtingBoardArchitrave', nextStep: 'unable-to-book'},
@@ -166,7 +169,7 @@ class Flow {
         {condition: 'woodenFloorboards', nextStep: 'repair-description'},
         ]
       },
-      'repair-kitchen-cupboard-problems': { prevStep: 'repair-kitchen-problems', 
+      'repair-kitchen-cupboard-problems': { prevStep: 'repair-kitchen-problems',
         nextStep: [
           {condition: 'doorHangingOff', nextStep: 'repair-description'},
           {condition: 'doorMissing', nextStep: 'unable-to-book'},
