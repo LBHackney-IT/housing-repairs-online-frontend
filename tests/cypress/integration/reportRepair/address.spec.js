@@ -1,4 +1,4 @@
-import {intercept_address_search} from '../../support/helpers';
+import {intercept_address_search, propertyEligibilityValidationMock} from '../../support/helpers';
 
 function setup_addresses_search(setup_addresses_API) {
   setup_addresses_API();
@@ -7,18 +7,6 @@ function setup_addresses_search(setup_addresses_API) {
     cy.get('button').click();
   });
   cy.get('[data-cy=address]', { timeout: 10000 }).then(($loadedSection) => {});
-}
-
-function propertyEligibilityValidationMock(propertyEligible, identifier) {
-  const propertyEligibleResult = {
-    propertyEligible: propertyEligible,
-    reason: "Example Reason"
-  };
-
-  cy.intercept('GET', `http://localhost:3000/api/propertyeligible?propertyId=12341000`, {
-    statusCode: 200,
-    body: propertyEligibleResult
-  }).as(identifier);
 }
 
 describe('address', () => {

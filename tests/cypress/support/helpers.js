@@ -106,6 +106,18 @@ function intercept_check_maintenance_mode(enable, statusCode = 200) {
   }).as('maintenance');
 }
 
+function propertyEligibilityValidationMock(propertyEligible, identifier) {
+  const propertyEligibleResult = {
+    propertyEligible: propertyEligible,
+    reason: "Example Reason"
+  };
+
+  cy.intercept('GET', `http://localhost:3000/api/propertyeligible?propertyId=12341000`, {
+    statusCode: 200,
+    body: propertyEligibleResult
+  }).as(identifier);
+}
+
 export {
   intercept_address_search,
   intercept_availability_search,
@@ -115,5 +127,6 @@ export {
   intercept_save_repair,
   continueOnPage,
   navigateToLocation,
-  intercept_check_maintenance_mode
+  intercept_check_maintenance_mode,
+  propertyEligibilityValidationMock
 }
