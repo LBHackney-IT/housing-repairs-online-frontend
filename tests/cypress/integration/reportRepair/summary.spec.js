@@ -4,7 +4,8 @@ import {
   navigateToPageSelectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
   convertDateToDisplayDate,
-  continueOnPage
+  continueOnPage,
+  interceptPropertyEligibilityCheck
 } from '../../support/helpers';
 
 describe('summary', () => {
@@ -17,6 +18,7 @@ describe('summary', () => {
   beforeEach(() => {
     intercept_availability_search();
     intercept_address_search();
+    interceptPropertyEligibilityCheck(true)
     cy.visit('http://localhost:3000/report-repair/');
 
     navigateToPageSelectRadioOptionAndContinue({
@@ -115,7 +117,6 @@ describe('summary', () => {
         cy.get('select').select(newAddress);
         cy.get('button').click();
       });
-
       cy.get('[data-cy=repair-location]', {timeout: 10000}).then(() => {
         cy.get('button').click();
       });

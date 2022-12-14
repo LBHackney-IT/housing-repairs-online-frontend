@@ -1,4 +1,4 @@
-import {intercept_address_search, propertyEligibilityValidationMock} from '../../support/helpers';
+import {intercept_address_search, interceptPropertyEligibilityCheck} from '../../support/helpers';
 
 function setup_addresses_search(setup_addresses_API) {
   setup_addresses_API();
@@ -46,7 +46,7 @@ describe('address', () => {
 
     context('When a user selects an option', ()=>{
       it('repair location page is shown if the property is eligible',  () => {
-        propertyEligibilityValidationMock(true, "propertyEligibleTrue")
+        interceptPropertyEligibilityCheck(true)
 
         cy.get('select').select('1 Downing Street, London, SW1A 2AA')
         cy.get('button').click()
@@ -55,7 +55,7 @@ describe('address', () => {
       });
 
       it('ineligible property page is shown if the property is not eligible',  () => {
-        propertyEligibilityValidationMock(false, "propertyEligibleFalse")
+        interceptPropertyEligibilityCheck(false)
 
         cy.get('select').select('1 Downing Street, London, SW1A 2AA')
         cy.get('button').click()
