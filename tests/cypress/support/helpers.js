@@ -113,7 +113,7 @@ function interceptPropertyEligibilityCheck(propertyEligible) {
     reason: "Example Reason"
   };
 
-  const identifier = propertyEligible ? "propertyEligibileTrue" : "propertyEligibileFalse"
+  const identifier = propertyEligible ? "propertyEligibleTrue" : "propertyEligibleFalse"
 
   cy.intercept('GET', `http://localhost:3000/api/propertyeligible?propertyId=47009990`, {
     statusCode: 200,
