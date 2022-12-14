@@ -74,6 +74,7 @@ const convertDateToDisplayDate = (date) => {
 
 const navigateToLocation = () => {
   intercept_address_search();
+  interceptPropertyEligibilityCheck(true);
   cy.visit('http://localhost:3000/report-repair/');
 
   navigateToPageSelectRadioOptionAndContinue({

@@ -3,7 +3,8 @@ import {
   intercept_availability_search,
   navigateToPageSelectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
-  intercept_save_repair
+  intercept_save_repair,
+  interceptPropertyEligibilityCheck
 } from '../../support/helpers';
 
 const address = '1 Downing Street, London, SW1A 2AA';
@@ -85,6 +86,7 @@ describe('confirmation', () => {
   before(() => {
     intercept_availability_search();
     intercept_address_search();
+    interceptPropertyEligibilityCheck(true);
     intercept_save_repair(repairID);
     completeJourney();
   });
@@ -112,6 +114,7 @@ describe('confirmation', () => {
     before(() => {
       intercept_availability_search();
       intercept_address_search();
+      interceptPropertyEligibilityCheck(true);
       intercept_save_repair(repairID);
       completeJourney(true);
     });
