@@ -11,7 +11,7 @@ const PriorityList = ({handleChange, values}) => {
     { value: 'emergency/2', title: 'I have no heating in the property'},
     { value: 'emergency/3', title: 'I have no water in the property'},
     { value: 'emergency/4', title: 'I have no electricity in the property'},
-    { value: 'emergency/5', title: 'I have water leaking on to electrics'},
+    { value: 'emergency/5', title: 'I have a leak'},
     { value: 'emergency/6', title: 'I can\'t lock the doors or windows in my property'},
     { value: 'emergency/7', title: 'I have exposed wires or sockets'},
     { value: 'emergency/8', title: 'My carbon monoxide or smoke alarm is beeping'},

@@ -46,9 +46,9 @@ describe('priorityList', () => {
     });
   });
 
-  context('When a user selects: I have water leaking on to electrics', ()=>{
+  context('When a user selects: I have a leak', ()=>{
     it('should redirect them to emergency page',  () => {
-      cy.contains('I have water leaking on to electrics').click();
+      cy.contains('I have a leak').click();
       cy.get('button').click()
       cy.url().should('include', '/report-repair/emergency-repair');
     });
