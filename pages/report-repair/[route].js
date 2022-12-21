@@ -61,6 +61,7 @@ function ReportRepair() {
   const [confirmation, setConfirmation] = useState('');
   const [formError, setFormError] = useState();
   const [requestId, setRequestId] = useState();
+  const [repairSubmitted, setRepairSubmitted] = useState(false);
 
   const cleanPayload = (payload) => {
     delete payload.availability.appointmentSlotKey
@@ -82,11 +83,11 @@ function ReportRepair() {
         time: values.availability
       }),
     }).then(response =>{
-      console.log(response)
       if (response.ok) {
         setShowBack(false);
         router.push('confirmation');
         setConfirmation(values.contactDetails.value);
+        setRepairSubmitted(true)
         return response.text().then((text)=> {
           setRequestId(text);
         });
@@ -128,6 +129,7 @@ function ReportRepair() {
           goToStep={goToStep}
           submit={submit}
           values={values}
+          repairSubmitted={repairSubmitted}
         />
       )
     case 'confirmation':

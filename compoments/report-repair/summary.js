@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import SummaryList from '../summaryList';
 import Button from '../button';
 
-const Summary = ({values, getNextStepFromCondition, submit, goToStep}) => {
+const Summary = ({values, getNextStepFromCondition, submit, goToStep, repairSubmitted}) => {
   let [repairProblemLink, setRepairProblemLink] = useState('')
   let [repairProblemBestDescriptionLink, setRepairProblemBestDescriptionLink] = useState('')
 
@@ -44,11 +44,17 @@ const Summary = ({values, getNextStepFromCondition, submit, goToStep}) => {
 
           </div>
         </div>
-        <Button
-          preventDoubleClick={true}
-          onClick={()=>{
-            submit(values);
-          }}>Continue</Button>
+        {repairSubmitted ?
+          <Button
+            repairSubmitted={true}
+            onClick={() => console.log("The repair has already been successfully submitted.")}
+            >Repair Submitted</Button> :
+          <Button
+            preventDoubleClick={true}
+            onClick={() => {
+              submit(values);
+            }}>Continue</Button>
+        }
       </div>
     )}
     </>

@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
-export default function Button({onClick, children, preventDoubleClick = false }) {
+export default function Button({onClick, children, preventDoubleClick = false, repairSubmitted = false }) {
   const [disabled, setDisabled] = useState(false);
   const [buttonText, setButtonText] = useState(children);
+
+  useEffect(() => {
+    if (repairSubmitted) setDisabled(true);
+  }, [])
+
   const click = (e) => {
     if (preventDoubleClick) {
       setDisabled(true);
