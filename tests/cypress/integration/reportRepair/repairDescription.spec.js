@@ -20,7 +20,7 @@ describe('repair description', () => {
   });
 
   it('displays button with correct text', () => {
-    cy.get('button').contains('Continue');
+    cy.get('button').contains('Submit');
   });
 
   context('When a user doesn\'t type anything', ()=>{
