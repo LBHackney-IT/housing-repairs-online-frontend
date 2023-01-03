@@ -141,7 +141,7 @@ const RepairDescription = ({handleChange, values}) => {
         )}
       </div>
       <br/>
-      <Button onClick={Continue} >Submit</Button>
+      <Button onClick={Continue} >Continue</Button>
     </div>
   </div>
 };
