@@ -9,6 +9,9 @@ const NotEligibleInvalidProperty = () => {
         <p>
             Unfortunately it is not possible to raise a repair on Repairs Online for the property at this address.
         </p>
+        <p>
+          If you think your property is eligible, please contact please call customer services on <b>0208 356 3691</b>
+        </p>
       </div>
     </div>
   );

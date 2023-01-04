@@ -14,6 +14,12 @@ export default function Home() {
       <div className="govuk-grid-column-two-thirds">
         <h1 className={'govuk-heading-xl lbh-heading-h1'}>Request a repair</h1>
         <h2 className={'lbh-heading-h2'}>Before you start</h2>
+        <p className={'lbh-body-m'}>
+        To request a repair for a <strong>communal area</strong>, please call customer services <strong>{customerServicesTelephoneNumber}</strong>.
+        </p>
+        <WarningText  testid="landing-page-report-limit-warning" className="govuk-!-margin-top-4 lbh-body lbh-!-font-weight-bold">
+          This service will allow you to raise all non-emergency repairs within your own home.
+        </WarningText>
         <WarningText  testid="landing-page-report-limit-warning" className="govuk-!-margin-top-4 lbh-body lbh-!-font-weight-bold">
           This service can only be used to request one repair at a time to a council property.
         </WarningText>
@@ -55,6 +61,9 @@ export default function Home() {
               Opening times:
             </p>
             <OpeningHours/>
+          </div>
+          <div>
+            For other emergency repairs such as no water, leaks, no heating or hot water, blocked drain please call customer services 0208 356 3691
           </div>
         </Details>
         <Link href="/report-repair/priority-list">

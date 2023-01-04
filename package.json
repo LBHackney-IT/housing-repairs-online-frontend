@@ -9,10 +9,13 @@
     "lint": "next lint",
     "test": "jest tests/unit",
     "lint:fix": "eslint --fix */**/*.js tests/**/*.js",
+    "lintfix": "eslint . --max-warnings 0 --ext .js,.jsx --fix",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test:integration": "start-server-and-test start http://localhost:3000 cy:open",
-    "test:headless:integration": "yarn build && start-server-and-test start http://localhost:3000 cy:run"
+    "test:headless:integration": "yarn build && start-server-and-test start http://localhost:3000 cy:run",
+    "test:unit-windows": "node ./node_modules/jest/bin/jest.js --runInBand",
+    "test:unit-win-upd": "node ./node_modules/jest/bin/jest.js --runInBand --updateSnapshot"
   },
   "dependencies": {
     "@sentry/nextjs": "^6.17.4",

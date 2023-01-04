@@ -53,7 +53,7 @@ const Summary = ({values, getNextStepFromCondition, submit, goToStep, repairSubm
             preventDoubleClick={true}
             onClick={() => {
               submit(values);
-            }}>Continue</Button>
+            }}>Submit</Button>
         }
       </div>
     )}

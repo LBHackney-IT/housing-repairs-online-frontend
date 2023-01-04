@@ -82,6 +82,8 @@ jobs:
       - run:
           name: Run integration test
           command: yarn test:headless:integration
+      - store_artifacts:
+          path: /tmp/artifacts
 
   deploy-to-development:
     executor: node
