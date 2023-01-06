@@ -4,7 +4,7 @@ describe('contactPerson', () => {
   });
 
   it('displays the question', () => {
-    cy.contains('What number should we call, if we need to get in touch?');
+    cy.contains('Who should we contact, if we need to get in touch?');
   });
 
   it('displays input label', () => {
@@ -18,13 +18,14 @@ describe('contactPerson', () => {
   context('When a user doesn\'t type anything', ()=>{
     it('an error should be shown',  () => {
       cy.get('button').click()
-      cy.contains('Required');
+      cy.contains('You must enter a contact name');
     });
   });
 
   context('When a user types in an invalid number', ()=>{
     it('an error is displayed', () => {
-      cy.get('input').type('12345');
+      cy.get('[id=phone-number]').type('12345');
+      cy.get('[id=contact-name]').type('Dave');
       cy.get('button').click()
       cy.contains('Not a valid uk number');
     });
@@ -32,11 +33,12 @@ describe('contactPerson', () => {
 
   context('When a user types invalid characters', ()=>{
     before(()=>{
-      cy.get('input').clear()
+      cy.get('[id=phone-number]').clear();
+      cy.get('[id=contact-name]').clear();
     })
     it('only numbers are accepted', () => {
-      cy.get('input').type('§§§+442031234567§§§§§');
-      cy.get('input').should('have.value', '+442031234567')
+      cy.get('input').type('§§§+447720926562§§§§§');
+      cy.get('input').should('have.value', '+447720926562')
     });
   });
 });

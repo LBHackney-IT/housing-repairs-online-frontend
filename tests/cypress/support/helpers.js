@@ -61,6 +61,11 @@ const navigateToPageTypeInputTextAndContinue = ({page, inputText}) => {
   });
 }
 
+const navigateToPageTypeInputByIdAndContinue = ({page, id, inputText}) => {
+    cy.get(`[id=${id}]`).type(inputText);
+    cy.get('button').click();
+}
+
 const convertDateToDisplayDate = (date) => {
   let dateArray = date?.split('-')
   let startDateTime = moment.unix(dateArray[0])
@@ -126,6 +131,7 @@ export {
   intercept_availability_search,
   navigateToPageSelectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
+  navigateToPageTypeInputByIdAndContinue,
   convertDateToDisplayDate,
   intercept_save_repair,
   continueOnPage,

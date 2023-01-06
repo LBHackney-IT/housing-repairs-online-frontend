@@ -87,14 +87,15 @@ class ContactDetailsInput extends Component {
       contactNameValue: this.state.contactNameValue,
       contactNumberValue: this.state.contactNumberValue
     }
-    // if (this.validation && !this.validation.isValid(this.state.value)) {
-    //   return this.setState({
-    //     error: {
-    //       msg: this.validation.errorMessage,
-    //       touched: true
-    //     }
-    //   })
-    // }
+    
+    if (this.validation && !this.validation.isValid(this.state.value)) {
+      return this.setState({
+        error: {
+          msg: this.validation.errorMessage,
+          touched: true
+        }
+      })
+    }
 
     return this.onSubmit(contactDetails)
   };

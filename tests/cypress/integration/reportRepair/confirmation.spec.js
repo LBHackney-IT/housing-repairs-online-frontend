@@ -3,6 +3,7 @@ import {
   intercept_availability_search,
   navigateToPageSelectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
+  navigateToPageTypeInputByIdAndContinue,
   intercept_save_repair,
   interceptPropertyEligibilityCheck
 } from '../../support/helpers';
@@ -12,6 +13,7 @@ const repairDescription = 'Eius postea venit saepius arcessitus.'
 const phoneNumber = '07512345678';
 const email = 'harrypotter@hogwarts.com';
 const repairID = '1234ABC'
+const contactName = "Dave"
 
 function completeJourney(contactPhone = false) {
 
@@ -54,9 +56,16 @@ function completeJourney(contactPhone = false) {
     cy.get('button').contains('Continue').click();
   });
 
-  navigateToPageTypeInputTextAndContinue({
+  navigateToPageTypeInputByIdAndContinue({
     page: 'contact-person',
+    id: 'phone-number',
     inputText: phoneNumber
+  })
+
+  navigateToPageTypeInputByIdAndContinue({
+    page: 'contact-person',
+    id: 'contact-name',
+    inputText: contactName
   })
 
   cy.get('[data-cy=contact-details]', {timeout: 10000}).then(() => {
