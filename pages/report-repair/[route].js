@@ -138,7 +138,6 @@ function ReportRepair() {
     flow.prevStep(state);
   };
   const values = state.data;
-  const changeLinkUrlValues = changeLinkUrls;
 
   const component = () => {
     switch (currentPath) {
