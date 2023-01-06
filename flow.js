@@ -16,9 +16,13 @@ class Flow {
         {condition: 'emergency/6', nextStep: 'emergency-repair'},
         {condition: 'emergency/7', nextStep: 'emergency-repair'},
         {condition: 'emergency/8', nextStep: 'emergency-repair'},
-        {condition: 'non-emergency/9', nextStep: 'communal'}
+        {condition: 'non-emergency/9', nextStep: 'existing-repair'}
       ]},
-      'communal': {prevStep: 'priority-list', nextStep: [
+      'existing-repair': {prevStep: 'priority-list', nextStep: [
+        {condition: 'yes', nextStep: 'communal'},
+        {condition: 'no', nextStep: 'not-eligible-previously-reported'}
+      ]},
+      'communal': {prevStep: 'existing-repair', nextStep: [
         {condition: 'yes', nextStep: 'not-eligible-communal-repairs'},
         {condition: 'no', nextStep: 'postcode'}
       ]},
