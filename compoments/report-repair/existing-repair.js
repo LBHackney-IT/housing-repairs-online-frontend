@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import Details from '../details';
 import RadioFieldSet from '../radioFieldSet';
 import React from 'react';
 
