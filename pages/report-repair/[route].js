@@ -141,8 +141,6 @@ function ReportRepair() {
   const changeLinkUrlValues = changeLinkUrls;
 
   const component = () => {
-    console.log({ currentPath });
-
     switch (currentPath) {
       case 'summary':
         return (
