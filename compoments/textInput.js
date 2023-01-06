@@ -27,10 +27,10 @@ class TextInput extends Component {
     id: this.name,
     onChange: this.setValue.bind(this)
   }
-  
+
   componentDidMount() {
     var textLabel = document.getElementById(`${this.name}-label`)
-    textLabel.setAttribute("for", this.name)
+    textLabel.setAttribute('for', this.name)
   }
 
   setValue(event) {

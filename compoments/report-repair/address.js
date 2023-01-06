@@ -63,14 +63,14 @@ const Address = ({ handleChange, values }) => {
       });
     } else {
       axios.get(`/api/propertyeligible?propertyId=${state.value.locationId}`)
-      .then(res => {
-        const isPropertyEligible = res.data.propertyEligible
-        Continue(isPropertyEligible);
-      })
-      .catch(err => {
-        console.error(err)
-        setError(err)
-      })
+        .then(res => {
+          const isPropertyEligible = res.data.propertyEligible
+          Continue(isPropertyEligible);
+        })
+        .catch(err => {
+          console.error(err)
+          setError(err)
+        })
     }
   }
 
