@@ -218,7 +218,7 @@ describe('Flow', () => {
             'field': 'value'
           }
         });
-        expect(historySpy.push).toHaveBeenCalledWith('communal');
+        expect(historySpy.push).toHaveBeenCalledWith('existing-repair');
       });
     })
 
