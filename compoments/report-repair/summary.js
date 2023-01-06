@@ -47,8 +47,8 @@ const Summary = ({values, getNextStepFromCondition, submit, goToStep, repairSubm
         {repairSubmitted ?
           <Button
             repairSubmitted={true}
-            onClick={() => console.log("The repair has already been successfully submitted.")}
-            >Repair Submitted</Button> :
+            onClick={() => console.log('The repair has already been successfully submitted.')}
+          >Repair Submitted</Button> :
           <Button
             preventDoubleClick={true}
             onClick={() => {
