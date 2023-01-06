@@ -5,6 +5,9 @@ describe('communal', () => {
     cy.visit('http://localhost:3000/report-repair/');
     cy.contains('Something else').click();
     cy.get('button').click()
+
+    cy.contains('New repair').click();
+    cy.get('button').click()
   });
 
   it('displays the question', () => {

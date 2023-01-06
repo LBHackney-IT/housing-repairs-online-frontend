@@ -82,7 +82,7 @@ describe('priorityList', () => {
     it('should redirect them to communal page',  () => {
       cy.contains('Something else').click();
       cy.get('button').click()
-      cy.url().should('include', '/report-repair/communal');
+      cy.url().should('include', '/report-repair/existing-repair');
     });
   })
 
