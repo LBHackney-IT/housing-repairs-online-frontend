@@ -62,8 +62,8 @@ const navigateToPageTypeInputTextAndContinue = ({page, inputText}) => {
 }
 
 const navigateToPageTypeInputByIdAndContinue = ({page, id, inputText}) => {
-    cy.get(`[id=${id}]`).type(inputText);
-    cy.get('button').click();
+  cy.get(`[id=${id}]`).type(inputText);
+  cy.get('button').click();
 }
 
 const navigateToPageClearAndTypeInputByIdAndContinue = ({page, id, inputText}) => {

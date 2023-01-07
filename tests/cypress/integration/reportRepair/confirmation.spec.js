@@ -13,7 +13,7 @@ const repairDescription = 'Eius postea venit saepius arcessitus.'
 const phoneNumber = '07512345678';
 const email = 'harrypotter@hogwarts.com';
 const repairID = '1234ABC'
-const contactName = "Dave"
+const contactName = 'Dave'
 
 function completeJourney(contactPhone = false) {
 

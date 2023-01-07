@@ -91,7 +91,7 @@ describe('repair availability', () => {
     const repairDescription = 'Eius postea venit saepius arcessitus.'
     const phoneNumber = '02085548333';
     const email = 'harrypotter@hogwarts.com';
-    const contactName = "Elliot Carver"
+    const contactName = 'Elliot Carver'
 
     before(() => {
       intercept_availability_search();
@@ -136,7 +136,7 @@ describe('repair availability', () => {
         id: 'phone-number',
         inputText: phoneNumber
       })
-    
+
       navigateToPageTypeInputByIdAndContinue({
         page: 'contact-person',
         id: 'contact-name',

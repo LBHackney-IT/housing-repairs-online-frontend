@@ -3,7 +3,7 @@ import SummaryList from '../summaryList';
 import Button from '../button';
 
 const Summary = ({values, getNextStepFromCondition, submit, goToStep, repairSubmitted}) => {
-  
+
   let [repairProblemLink, setRepairProblemLink] = useState('')
   let [repairProblemBestDescriptionLink, setRepairProblemBestDescriptionLink] = useState('')
 
