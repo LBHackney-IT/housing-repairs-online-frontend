@@ -66,6 +66,12 @@ const navigateToPageTypeInputByIdAndContinue = ({page, id, inputText}) => {
     cy.get('button').click();
 }
 
+const navigateToPageClearAndTypeInputByIdAndContinue = ({page, id, inputText}) => {
+  cy.get(`[id=${id}]`).clear()
+  cy.get(`[id=${id}]`).type(inputText);
+  cy.get('button').click();
+}
+
 const convertDateToDisplayDate = (date) => {
   let dateArray = date?.split('-')
   let startDateTime = moment.unix(dateArray[0])
