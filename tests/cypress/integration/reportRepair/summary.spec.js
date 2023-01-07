@@ -3,6 +3,7 @@ import {
   intercept_availability_search,
   navigateToPageSelectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
+  navigateToPageTypeInputByIdAndContinue,
   convertDateToDisplayDate,
   continueOnPage,
   interceptPropertyEligibilityCheck
@@ -14,6 +15,7 @@ describe('summary', () => {
   const repairDescription = 'Eius postea venit saepius arcessitus.'
   const phoneNumber = '02085548333';
   const email = 'harrypotter@hogwarts.com';
+  const contactName = "Elliot Carver"
 
   beforeEach(() => {
     intercept_availability_search();
@@ -57,9 +59,16 @@ describe('summary', () => {
       cy.get('button').contains('Continue').click();
     });
 
-    navigateToPageTypeInputTextAndContinue({
+    navigateToPageTypeInputByIdAndContinue({
       page: 'contact-person',
+      id: 'phone-number',
       inputText: phoneNumber
+    })
+  
+    navigateToPageTypeInputByIdAndContinue({
+      page: 'contact-person',
+      id: 'contact-name',
+      inputText: contactName
     })
 
     cy.get('[data-cy=contact-details]', {timeout: 10000}).then(() => {
@@ -130,6 +139,17 @@ describe('summary', () => {
         cy.get('button').contains('Continue').click();
       });
       cy.get('[data-cy=contact-person]', {timeout: 10000}).then(() => {
+        navigateToPageTypeInputByIdAndContinue({
+          page: 'contact-person',
+          id: 'phone-number',
+          inputText: phoneNumber
+        })
+      
+        navigateToPageTypeInputByIdAndContinue({
+          page: 'contact-person',
+          id: 'contact-name',
+          inputText: contactName
+        })
         cy.get('button').click();
       });
       cy.get('[data-cy=contact-details]', {timeout: 10000}).then(() => {
@@ -211,9 +231,7 @@ describe('summary', () => {
       cy.get('textarea').clear();
       cy.get('textarea').type(newText);
       cy.get('button').contains('Continue').click();
-      cy.get('[data-cy=contact-person]', {timeout: 10000}).then(() => {
-        cy.get('button').click();
-      });
+      cy.get('button').contains('Continue').click();
       cy.get('[data-cy=contact-details]', {timeout: 10000}).then(() => {
         cy.get('button').click();
       });

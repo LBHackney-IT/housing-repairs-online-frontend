@@ -3,7 +3,8 @@ import {
   intercept_address_search,
   intercept_availability_search,
   navigateToPageSelectRadioOptionAndContinue,
-  navigateToPageTypeInputTextAndContinue
+  navigateToPageTypeInputTextAndContinue,
+  navigateToPageTypeInputByIdAndContinue
 } from '../../support/helpers';
 
 
@@ -90,6 +91,7 @@ describe('repair availability', () => {
     const repairDescription = 'Eius postea venit saepius arcessitus.'
     const phoneNumber = '02085548333';
     const email = 'harrypotter@hogwarts.com';
+    const contactName = "Elliot Carver"
 
     before(() => {
       intercept_availability_search();
@@ -129,9 +131,16 @@ describe('repair availability', () => {
         cy.get('button').contains('Continue').click();
       });
 
-      navigateToPageTypeInputTextAndContinue({
+      navigateToPageTypeInputByIdAndContinue({
         page: 'contact-person',
+        id: 'phone-number',
         inputText: phoneNumber
+      })
+    
+      navigateToPageTypeInputByIdAndContinue({
+        page: 'contact-person',
+        id: 'contact-name',
+        inputText: contactName
       })
 
       cy.get('[data-cy=contact-details]', {timeout: 10000}).then(() => {

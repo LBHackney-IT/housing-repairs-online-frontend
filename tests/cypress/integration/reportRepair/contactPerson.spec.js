@@ -37,8 +37,8 @@ describe('contactPerson', () => {
       cy.get('[id=contact-name]').clear();
     })
     it('only numbers are accepted', () => {
-      cy.get('input').type('§§§+447720926562§§§§§');
-      cy.get('input').should('have.value', '+447720926562')
+      cy.get('[id=phone-number]').type('§§§+447720926562§§§§§');
+      cy.get('[id=phone-number]').should('have.value', '+447720926562')
     });
   });
 });

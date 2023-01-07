@@ -87,8 +87,8 @@ class ContactDetailsInput extends Component {
       contactNameValue: this.state.contactNameValue,
       contactNumberValue: this.state.contactNumberValue
     }
-    
-    if (this.validation && !this.validation.isValid(this.state.value)) {
+
+    if (this.validation && !this.validation.isValid(this.state.contactNumberValue)) {
       return this.setState({
         error: {
           msg: this.validation.errorMessage,
