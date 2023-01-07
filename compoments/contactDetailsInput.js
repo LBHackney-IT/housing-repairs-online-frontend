@@ -28,6 +28,8 @@ class ContactDetailsInput extends Component {
     this.nameLabel = this.props.nameLabel;
     this.nameName = this.props.nameName;
     this.nameType = this.props.nameType;
+    this.numberValue = this.props.value;
+    this.nameValue = this.props.nameValue;
     this.state = {
       value: this.props.value || '',
       error: {}
@@ -42,6 +44,19 @@ class ContactDetailsInput extends Component {
   componentDidMount() {
     var textLabel = document.getElementById(`${this.name}-label`)
     textLabel.setAttribute('for', this.name)
+
+    if (this.numberValue !== undefined) {
+      this.setState({
+        contactNumberValue: this.numberValue,
+        error: {}
+      })
+    }
+    if (this.nameValue !== undefined) {
+      this.setState({
+        contactNameValue: this.nameValue,
+        error: {}
+      })
+    }
   }
 
   setNameValue(event) {
@@ -120,7 +135,7 @@ class ContactDetailsInput extends Component {
               name={this.name}
               type={this.type}
               onChange={(e) => this.setNumberValue(e)}
-              defaultValue={this.input.defaultValue}
+              defaultValue={this.numberValue}
               onWheel={(e) => e.target.blur()}
               onKeyPress={this.onKeyPress}
             />
@@ -131,7 +146,7 @@ class ContactDetailsInput extends Component {
               name={this.nameName}
               type={this.nameType}
               onChange={(e) => this.setNameValue(e)}
-              defaultValue={this.input.defaultValue}
+              defaultValue={this.nameValue}
               onWheel={(e) => e.target.blur()}
               onKeyPress={null}
             />
