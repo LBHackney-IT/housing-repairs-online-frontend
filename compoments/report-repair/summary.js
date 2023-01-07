@@ -14,8 +14,8 @@ const Summary = ({values, getNextStepFromCondition, submit, goToStep, repairSubm
 
   const personalDetailsSummary = [
     {pageName:'Repair address', value: values.address?.display, link: 'postcode'},
-    {pageName:'Appointment contact number', value: values.contactPerson?.contactNumberValue, link: 'contact-person-number'},
-    {pageName:'Appointment contact name', value: values.contactPerson?.contactNameValue, link: 'contact-person-name'},
+    {pageName:'Appointment contact: ', value: `${values.contactPerson?.contactNameValue} (${values.contactPerson?.contactNumberValue})`, link: 'contact-person' },
+
   ]
   const repairDetailsSummary = [
     { pageName:'Where is the repair?', value: values.repairLocation?.display, link:'repair-location'},
