@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
-import TextInput from '../textInput';
 import React from 'react';
 import {phoneOnKeyPress, phoneValidator} from '../../helpers/validators';
 import ContactDetailsInput from '../contactDetailsInput';
-
 
 const ContactPerson = ({handleChange, values}) => {
   const Continue = val => {
@@ -13,7 +11,7 @@ const ContactPerson = ({handleChange, values}) => {
   return <div className="govuk-grid-row" data-cy="contact-person">
     <div>
       <ContactDetailsInput
-        value={values.contactPerson?.contactPersonNumber}
+        value={values.contactPerson?.contactNumberValue}
         name={'phone-number'}
         onSubmit={Continue}
         validation={phoneValidator}
@@ -26,6 +24,7 @@ const ContactPerson = ({handleChange, values}) => {
         nameName={'contact-name'}
         nameType="text"
         nameLabel="Contact  name"
+        nameValue={values.contactPerson?.contactNameValue}
       ></ContactDetailsInput>
     </div>
   </div>
