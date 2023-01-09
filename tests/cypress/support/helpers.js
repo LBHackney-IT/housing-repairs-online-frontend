@@ -71,7 +71,7 @@ const navigateToPageClearAndTypeInputByIdAndContinue = ({page, id, inputText}) =
   cy.get(`[id=${id}]`).type(inputText);
   cy.get('button').click();
 }
-};
+
 
 const convertDateToDisplayDate = (date) => {
   let dateArray = date?.split('-');
