@@ -50,7 +50,7 @@ describe('address', () => {
 
         cy.get('select').select('1 Downing Street, London, SW1A 2AA')
         cy.get('button').click()
-        cy.wait("@propertyEligibleTrue")
+        cy.wait('@propertyEligibleTrue')
         cy.url().should('include', '/report-repair/repair-location');
       });
 
@@ -59,7 +59,7 @@ describe('address', () => {
 
         cy.get('select').select('1 Downing Street, London, SW1A 2AA')
         cy.get('button').click()
-        cy.wait("@propertyEligibleFalse")
+        cy.wait('@propertyEligibleFalse')
         cy.url().should('include', '/report-repair/not-eligible-invalid-property');
       });
     });

@@ -3,6 +3,7 @@ import SummaryList from '../summaryList';
 import Button from '../button';
 
 const Summary = ({values, getNextStepFromCondition, submit, goToStep, repairSubmitted}) => {
+
   let [repairProblemLink, setRepairProblemLink] = useState('')
   let [repairProblemBestDescriptionLink, setRepairProblemBestDescriptionLink] = useState('')
 
@@ -13,7 +14,8 @@ const Summary = ({values, getNextStepFromCondition, submit, goToStep, repairSubm
 
   const personalDetailsSummary = [
     {pageName:'Repair address', value: values.address?.display, link: 'postcode'},
-    {pageName:'Appointment contact number', value: values.contactPersonNumber, link: 'contact-person'},
+    {pageName:'Appointment contact: ', value: `${values.contactPerson?.contactNameValue} (${values.contactPerson?.contactNumberValue})`, link: 'contact-person' },
+
   ]
   const repairDetailsSummary = [
     { pageName:'Where is the repair?', value: values.repairLocation?.display, link:'repair-location'},
@@ -27,7 +29,7 @@ const Summary = ({values, getNextStepFromCondition, submit, goToStep, repairSubm
   ]
 
   return(
-    <>{ (
+    <>{(
       <div data-cy="summary">
         <div className="govuk-grid-row govuk-body-m">
           <div className="govuk-grid-column-two-thirds">
@@ -47,8 +49,8 @@ const Summary = ({values, getNextStepFromCondition, submit, goToStep, repairSubm
         {repairSubmitted ?
           <Button
             repairSubmitted={true}
-            onClick={() => console.log("The repair has already been successfully submitted.")}
-            >Repair Submitted</Button> :
+            onClick={() => console.log('The repair has already been successfully submitted.')}
+          >Repair Submitted</Button> :
           <Button
             preventDoubleClick={true}
             onClick={() => {

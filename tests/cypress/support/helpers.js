@@ -61,6 +61,17 @@ const navigateToPageTypeInputTextAndContinue = ({page, inputText}) => {
   });
 }
 
+const navigateToPageTypeInputByIdAndContinue = ({page, id, inputText}) => {
+  cy.get(`[id=${id}]`).type(inputText);
+  cy.get('button').click();
+}
+
+const navigateToPageClearAndTypeInputByIdAndContinue = ({page, id, inputText}) => {
+  cy.get(`[id=${id}]`).clear()
+  cy.get(`[id=${id}]`).type(inputText);
+  cy.get('button').click();
+}
+
 const convertDateToDisplayDate = (date) => {
   let dateArray = date?.split('-')
   let startDateTime = moment.unix(dateArray[0])
@@ -110,12 +121,12 @@ function intercept_check_maintenance_mode(enable, statusCode = 200) {
 function interceptPropertyEligibilityCheck(propertyEligible) {
   const propertyEligibleResult = {
     propertyEligible: propertyEligible,
-    reason: "Example Reason"
+    reason: 'Example Reason'
   };
 
-  const identifier = propertyEligible ? "propertyEligibleTrue" : "propertyEligibleFalse"
+  const identifier = propertyEligible ? 'propertyEligibleTrue' : 'propertyEligibleFalse'
 
-  cy.intercept('GET', `http://localhost:3000/api/propertyeligible?propertyId=47009990`, {
+  cy.intercept('GET', 'http://localhost:3000/api/propertyeligible?propertyId=47009990', {
     statusCode: 200,
     body: propertyEligibleResult
   }).as(identifier);
@@ -126,6 +137,7 @@ export {
   intercept_availability_search,
   navigateToPageSelectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
+  navigateToPageTypeInputByIdAndContinue,
   convertDateToDisplayDate,
   intercept_save_repair,
   continueOnPage,

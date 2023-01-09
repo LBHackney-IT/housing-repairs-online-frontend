@@ -1,28 +1,31 @@
 import PropTypes from 'prop-types';
-import TextInput from '../textInput';
 import React from 'react';
 import {phoneOnKeyPress, phoneValidator} from '../../helpers/validators';
-
+import ContactDetailsInput from '../contactDetailsInput';
 
 const ContactPerson = ({handleChange, values}) => {
   const Continue = val => {
-    handleChange('contactPersonNumber', val);
+    handleChange('contactPerson', val);
   }
 
   return <div className="govuk-grid-row" data-cy="contact-person">
     <div>
-      <TextInput
-        value={values.contactPersonNumber}
+      <ContactDetailsInput
+        value={values.contactPerson?.contactNumberValue}
         name={'phone-number'}
         onSubmit={Continue}
         validation={phoneValidator}
         type="tel"
         label="Please enter a UK landline or mobile phone number"
-        title="What number should we call, if we need to get in touch?"
+        title="Who should we contact, if we need to get in touch?"
         buttonText={'Continue'}
         long={true}
         onKeyPress={phoneOnKeyPress}
-      ></TextInput>
+        nameName={'contact-name'}
+        nameType="text"
+        nameLabel="Contact  name"
+        nameValue={values.contactPerson?.contactNameValue}
+      ></ContactDetailsInput>
     </div>
   </div>
 };
