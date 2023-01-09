@@ -1,16 +1,7 @@
 import PropTypes from 'prop-types';
 import Button from './button';
-import React, {useState} from 'react';
+import React from 'react';
 import {Component} from 'react';
-
-const onChangeName = (event) => {
-  console.log(`Name changed to ${event.target.value}`)
-}
-
-const onChangeNumber = (event) => {
-  console.log(`Number changed to ${event.target.value}`)
-}
-
 
 class ContactDetailsInput extends Component {
   constructor(props) {
@@ -76,11 +67,7 @@ class ContactDetailsInput extends Component {
 
   formSubmit = (e) => {
     e.preventDefault();
-    const mystate = this.state;
-    console.log(`state is to ${JSON.stringify(mystate)}`)
-    console.log(`name length is to ${this.state.contactNameValue?.length}`)
-    console.log(`name length is to ${this.state.contactNumberValue?.length}`)
-
+    
     if (this.state.contactNameValue?.length === undefined || this.state.contactNameValue?.length == 0) {
       return this.setState({
         error: {
