@@ -1,7 +1,7 @@
 import {
   intercept_address_search,
   intercept_availability_search,
-  navigateToPageSelectRadioOptionAndContinue,
+  selectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
   intercept_save_repair,
   interceptPropertyEligibilityCheck
@@ -17,12 +17,16 @@ function completeJourney(contactPhone = false) {
 
   cy.visit('http://localhost:3000/report-repair/');
 
-  navigateToPageSelectRadioOptionAndContinue({
+  selectRadioOptionAndContinue({
     page: 'priority-list',
     option: 'Something else'
   })
 
-  navigateToPageSelectRadioOptionAndContinue({
+  selectRadioOptionAndContinue({
+    page: 'existing-repair', option: 'New repair'
+  })
+
+  selectRadioOptionAndContinue({
     page: 'communal', option: 'No'
   })
 
@@ -35,16 +39,16 @@ function completeJourney(contactPhone = false) {
     cy.get('button').click();
   });
 
-  navigateToPageSelectRadioOptionAndContinue({
+  selectRadioOptionAndContinue({
     page: 'repair-location', option: 'Kitchen'
   })
 
-  navigateToPageSelectRadioOptionAndContinue({
+  selectRadioOptionAndContinue({
     page: 'repair-problem',
     option: 'Cupboards, including damaged cupboard doors'
   })
 
-  navigateToPageSelectRadioOptionAndContinue({
+  selectRadioOptionAndContinue({
     page: 'repair-problem-best-description', option: 'Hanging door'
   })
 

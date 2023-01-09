@@ -44,6 +44,7 @@ describe('repair description', () => {
   context('When a user uploads an image with the wrong format', ()=>{
     it('an error is shown', () => {
       cy.get('input').attachFile('wrong.png');
+
       cy.contains('The selected file must be a JPG');
     });
   });
