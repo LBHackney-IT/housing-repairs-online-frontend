@@ -1,7 +1,7 @@
 import {
   intercept_address_search,
   intercept_availability_search,
-  navigateToPageSelectRadioOptionAndContinue,
+  selectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
   convertDateToDisplayDate,
   continueOnPage,
@@ -21,12 +21,16 @@ describe('summary', () => {
     interceptPropertyEligibilityCheck(true)
     cy.visit('http://localhost:3000/report-repair/');
 
-    navigateToPageSelectRadioOptionAndContinue({
+    selectRadioOptionAndContinue({
       page: 'priority-list',
       option:'Something else'
     })
 
-    navigateToPageSelectRadioOptionAndContinue({
+    selectRadioOptionAndContinue({
+      page: 'existing-repair', option:'New repair'
+    })
+
+    selectRadioOptionAndContinue({
       page: 'communal', option:'No'
     })
 
@@ -39,15 +43,15 @@ describe('summary', () => {
       cy.get('button').click();
     });
 
-    navigateToPageSelectRadioOptionAndContinue({
+    selectRadioOptionAndContinue({
       page: 'repair-location', option:'Kitchen'
     })
 
-    navigateToPageSelectRadioOptionAndContinue({
+    selectRadioOptionAndContinue({
       page: 'repair-problem', option:'Cupboards, including damaged cupboard doors'
     })
 
-    navigateToPageSelectRadioOptionAndContinue({
+    selectRadioOptionAndContinue({
       page: 'repair-problem-best-description', option:'Hanging door'
     })
 
@@ -160,13 +164,13 @@ describe('summary', () => {
   context('Repair Details', () => {
     it('allows you to change location and problem',  () =>{
       cy.get('a[href*="repair-location"]').contains('Change').click();
-      navigateToPageSelectRadioOptionAndContinue({
+      selectRadioOptionAndContinue({
         page: 'repair-location', option:'Bathroom'
       })
-      navigateToPageSelectRadioOptionAndContinue({
+      selectRadioOptionAndContinue({
         page: 'repair-problem', option:'Bath, including taps'
       });
-      navigateToPageSelectRadioOptionAndContinue({
+      selectRadioOptionAndContinue({
         page: 'repair-problem-best-description', option:'Bath taps'
       })
 
@@ -182,7 +186,7 @@ describe('summary', () => {
       cy.get('a[href*="bath-problems"]').contains('Change').click();
       cy.location('href').should('eq', 'http://localhost:3000/report-repair/bath-problems');
 
-      navigateToPageSelectRadioOptionAndContinue({
+      selectRadioOptionAndContinue({
         page: 'repair-problem-best-description', option:'Bath taps'
       })
       continueOnPage('repair-description');
