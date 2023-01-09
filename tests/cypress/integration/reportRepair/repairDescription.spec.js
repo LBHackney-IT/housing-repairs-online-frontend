@@ -30,6 +30,22 @@ describe('repair description', () => {
     });
   });
 
+  context('When a user tries to raise a repair involving a leak', ()=>{
+    it('the unable to raise page should be shown',  () => {
+      cy.get('#description').type('Bare leak');
+      cy.get('button').click()
+      cy.contains('Your repair could not be booked');
+    });
+  });
+
+  context('When a user tries to raise a repair NOT involving a leak', ()=>{
+    it('the unable to raise page should be shown',  () => {
+      cy.get('#description').type('Bare peak');
+      cy.get('button').click()
+      cy.contains('Please select one of the below');
+    });
+  });
+
   context('When a types a description that\'s too long', ()=>{
     it('an error is shown',  () => {
       cy.get('textarea').type('Eius postea venit saepius arcessitus. dein ' +
