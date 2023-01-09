@@ -19,8 +19,8 @@ class Flow {
         {condition: 'non-emergency/9', nextStep: 'existing-repair'}
       ]},
       'existing-repair': {prevStep: 'priority-list', nextStep: [
-        {condition: 'yes', nextStep: 'communal'},
-        {condition: 'no', nextStep: 'not-eligible-previously-reported'}
+        {condition: 'new', nextStep: 'communal'},
+        {condition: 'existing', nextStep: 'not-eligible-previously-reported'}
       ]},
       'communal': {prevStep: 'existing-repair', nextStep: [
         {condition: 'yes', nextStep: 'not-eligible-communal-repairs'},

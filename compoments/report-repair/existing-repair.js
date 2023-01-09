@@ -7,8 +7,8 @@ const ExistingRepair = ({ handleChange, values }) => {
   const title =
     'Is this a new repair request or have you reported this before?';
   const options = [
-    { value: 'yes', title: 'New repair' },
-    { value: 'no', title: 'I have reported this repair before' },
+    { value: 'new', title: 'New repair' },
+    { value: 'existing', title: 'I have reported this repair before' },
   ];
 
   const Continue = ({ val }) => {
