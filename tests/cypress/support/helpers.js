@@ -48,13 +48,13 @@ const selectRadioOptionAndContinue = ({
 }) => {
   // cy.get(`[data-cy=${page}]`, { timeout: 10000 }).then(() => {
 
-    // if (confirmTitle !== null){
-    //   // confirm navigation
-    //   cy.contains(confirmTitle);
-    // }
+  // if (confirmTitle !== null){
+  //   // confirm navigation
+  //   cy.contains(confirmTitle);
+  // }
 
-    cy.contains(option).click();
-    cy.get('button').click();
+  cy.contains(option).click();
+  cy.get('button').click();
   // });
 };
 const continueOnPage = (page) => {

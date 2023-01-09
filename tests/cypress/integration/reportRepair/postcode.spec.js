@@ -27,7 +27,7 @@ describe('postcode', () => {
   it('displays button with correct text', () => {
     cy.get('button').contains('Continue');
   });
-  context("When a user doesn't type anything", () => {
+  context('When a user doesn\'t type anything', () => {
     it('an error should be shown', () => {
       cy.get('button').click();
       cy.contains('Required');

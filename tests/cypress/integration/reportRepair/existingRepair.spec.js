@@ -17,7 +17,7 @@ describe('existingRepair', () => {
     cy.get('button').contains('Continue');
   });
 
-  context("When a user doesn't select any option", () => {
+  context('When a user doesn\'t select any option', () => {
     it('an error should be shown', () => {
       // Confirm navigation
       cy.contains(

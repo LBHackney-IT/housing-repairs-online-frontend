@@ -40,7 +40,7 @@ describe('communal', () => {
     });
   });
 
-  context("When a user doesn't select any option", () => {
+  context('When a user doesn\'t select any option', () => {
     it('an error should be shown', () => {
 
       // confirm navigation
