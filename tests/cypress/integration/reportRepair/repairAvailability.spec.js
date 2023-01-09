@@ -2,7 +2,7 @@ import {
   interceptPropertyEligibilityCheck,
   intercept_address_search,
   intercept_availability_search,
-  navigateToPageSelectRadioOptionAndContinue,
+  selectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue
 } from '../../support/helpers';
 
@@ -97,12 +97,17 @@ describe('repair availability', () => {
       interceptPropertyEligibilityCheck(true);
       cy.visit('http://localhost:3000/report-repair/');
 
-      navigateToPageSelectRadioOptionAndContinue({
+      selectRadioOptionAndContinue({
         page: 'priority-list',
         option:'Something else'
       })
 
-      navigateToPageSelectRadioOptionAndContinue({
+      selectRadioOptionAndContinue({
+        page: 'existing-repair',
+        option:'New repair'
+      })
+
+      selectRadioOptionAndContinue({
         page: 'communal', option:'No'
       })
 
@@ -115,11 +120,11 @@ describe('repair availability', () => {
         cy.get('button').click();
       });
 
-      navigateToPageSelectRadioOptionAndContinue({
+      selectRadioOptionAndContinue({
         page: 'repair-location', option:'Kitchen'
       })
 
-      navigateToPageSelectRadioOptionAndContinue({
+      selectRadioOptionAndContinue({
         page: 'repair-problem', option:'Damaged worktop'
       })
 
