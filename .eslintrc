@@ -3,11 +3,10 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "node": true,
-    "jest": true
+    "node": true
   },
   "parser": "babel-eslint",
-  "plugins": ["react", "jest", "editorconfig"],
+  "plugins": ["react", "editorconfig"],
   "extends": [
     "eslint:recommended",
     "plugin:prettier/recommended",
