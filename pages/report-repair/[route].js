@@ -84,7 +84,7 @@ function ReportRepair() {
         location: values.repairLocation,
         problem: values.repairProblem,
         issue: values.repairProblemBestDescription,
-        contactPersonNumber: values.contactPersonNumber,
+        contactPerson: values.contactPerson,
         description: values.description,
         contactDetails: values.contactDetails,
         time: values.availability,

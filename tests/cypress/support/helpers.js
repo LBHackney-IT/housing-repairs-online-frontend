@@ -59,6 +59,18 @@ const navigateToPageTypeInputTextAndContinue = ({ page, inputText }) => {
     cy.get('input.govuk-input').type(inputText);
     cy.get('button').click();
   });
+}
+
+const navigateToPageTypeInputByIdAndContinue = ({page, id, inputText}) => {
+  cy.get(`[id=${id}]`).type(inputText);
+  cy.get('button').click();
+}
+
+const navigateToPageClearAndTypeInputByIdAndContinue = ({page, id, inputText}) => {
+  cy.get(`[id=${id}]`).clear()
+  cy.get(`[id=${id}]`).type(inputText);
+  cy.get('button').click();
+}
 };
 
 const convertDateToDisplayDate = (date) => {
@@ -139,6 +151,7 @@ export {
   intercept_availability_search,
   selectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
+  navigateToPageTypeInputByIdAndContinue,
   convertDateToDisplayDate,
   intercept_save_repair,
   continueOnPage,
