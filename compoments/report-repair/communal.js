@@ -1,17 +1,16 @@
-import PropTypes from 'prop-types';
-import Details from '../details';
-import RadioFieldSet from '../radioFieldSet';
-import React from 'react';
+import PropTypes from 'prop-types'
+import Details from '../details'
+import RadioFieldSet from '../radioFieldSet'
+import React from 'react'
 
-
-const Communal = ({handleChange, values}) => {
-  const name =  'communal';
-  const title =  'Is the repair in a communal area?';
-  const options =  [
-    { value: 'yes', title: 'Yes'},
-    { value: 'no', title: 'No'}
-  ];
-  const beforeButton =  (
+const Communal = ({ handleChange, values }) => {
+  const name = 'communal'
+  const title = 'Is the repair in a communal area?'
+  const options = [
+    { value: 'yes', title: 'Yes' },
+    { value: 'no', title: 'No' },
+  ]
+  const beforeButton = (
     <Details summary="What is a communal area?" testid="communal-area-prompt">
       <span data-testid="communal-area-info">
         <p>Communal repairs are usually in areas that people share.</p>
@@ -26,25 +25,29 @@ const Communal = ({handleChange, values}) => {
         </ul>
       </span>
     </Details>
-  );
+  )
 
-  const Continue = ({val}) => {
-    const selected = val[name];
-    handleChange(name, selected);
+  const Continue = ({ val }) => {
+    const selected = val[name]
+    handleChange(name, selected)
   }
 
-  return (<div className="govuk-grid-row"  data-cy="communal">
-    <div className="govuk-grid-column-two-thirds">
-      <RadioFieldSet name={name}
-        title={title}
-        options={options}
-        onSubmit={Continue} buttonText={'Continue'}
-        beforeButton={beforeButton}
-        checked={values[name]}
-      />
+  return (
+    <div className="govuk-grid-row" data-cy="communal">
+      <div className="govuk-grid-column-two-thirds">
+        <RadioFieldSet
+          name={name}
+          title={title}
+          options={options}
+          onSubmit={Continue}
+          buttonText={'Continue'}
+          beforeButton={beforeButton}
+          checked={values[name]}
+        />
+      </div>
     </div>
-  </div>)
-};
+  )
+}
 
 Communal.propTypes = {
   nextStep: PropTypes.func,
@@ -52,4 +55,4 @@ Communal.propTypes = {
   handleChange: PropTypes.func,
 }
 
-export default Communal;
+export default Communal

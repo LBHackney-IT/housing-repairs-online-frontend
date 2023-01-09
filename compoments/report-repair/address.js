@@ -1,25 +1,26 @@
-import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
-import Select from '../select';
-import TextLink from '../textLink';
-import Button from '../button';
-import Loader from '../loader';
-import Error from '../error';
-import { customerServicesTelephoneNumber } from '../../globals';
-import axios from 'axios';
+import PropTypes from 'prop-types'
+import React, { useState, useEffect } from 'react'
+import Select from '../select'
+import TextLink from '../textLink'
+import Button from '../button'
+import Loader from '../loader'
+import Error from '../error'
+import { customerServicesTelephoneNumber } from '../../globals'
+import axios from 'axios'
 
 const Address = ({ handleChange, values }) => {
-  const name = 'address';
-  const [state, setState] = useState({ error: {}, value: 'null' });
+  const name = 'address'
+  const [state, setState] = useState({ error: {}, value: 'null' })
   const [error, setError] = useState(null)
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    axios.get(`/api/address?postcode=${values.postcode}`)
-      .then(res => {
+    axios
+      .get(`/api/address?postcode=${values.postcode}`)
+      .then((res) => {
         setData(res.data)
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err)
         setError(err)
       })
@@ -32,27 +33,27 @@ const Address = ({ handleChange, values }) => {
         heading="An error occurred while looking for your address"
         body={`Please try again later or call ${customerServicesTelephoneNumber} to complete your repair request`}
       />
-    );
+    )
 
-  if (!data) return <Loader />;
+  if (!data) return <Loader />
 
   const addresses = data.map((a) => {
     a.display = [a.addressLine1, a.addressLine2, a.postCode]
       .filter((x) => x)
-      .join(', ');
-    return a;
-  });
+      .join(', ')
+    return a
+  })
 
   const found_addresses = `${addresses?.length} ${
     addresses?.length === 1 ? 'address' : 'addresses'
-  } found`;
+  } found`
 
   const onChange = (e) => {
-    setState({ error: {}, value: JSON.parse(e.target.value) });
-  };
+    setState({ error: {}, value: JSON.parse(e.target.value) })
+  }
 
   const verifyPropertyEligibility = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (state.value === 'null') {
       return setState({
@@ -60,36 +61,36 @@ const Address = ({ handleChange, values }) => {
           msg: 'Required',
           touched: true,
         },
-      });
+      })
     } else {
-      axios.get(`/api/propertyeligible?propertyId=${state.value.locationId}`)
-      .then(res => {
-        const isPropertyEligible = res.data.propertyEligible
-        Continue(isPropertyEligible);
-      })
-      .catch(err => {
-        console.error(err)
-        setError(err)
-      })
+      axios
+        .get(`/api/propertyeligible?propertyId=${state.value.locationId}`)
+        .then((res) => {
+          const isPropertyEligible = res.data.propertyEligible
+          Continue(isPropertyEligible)
+        })
+        .catch((err) => {
+          console.error(err)
+          setError(err)
+        })
     }
   }
 
   const Continue = (isPropertyEligible = false) => {
-
     if (!isPropertyEligible) {
       return handleChange(name, {
         addressLine1: state.value.addressLine1,
         postCode: state.value.postCode,
         locationId: state.value.locationId,
-        value: 'invalidProperty'
-      });
+        value: 'invalidProperty',
+      })
     }
     return handleChange(name, {
       display: state.value.display,
       locationId: state.value.locationId,
-      value: 'validProperty'
-    });
-  };
+      value: 'validProperty',
+    })
+  }
 
   return (
     <div className="govuk-grid-row" data-cy="address">
@@ -132,17 +133,17 @@ const Address = ({ handleChange, values }) => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Address.defaultProps = {
   addresses: [],
-};
+}
 
 Address.propTypes = {
   addresses: PropTypes.array,
   values: PropTypes.object,
   handleChange: PropTypes.func,
-};
+}
 
-export default Address;
+export default Address

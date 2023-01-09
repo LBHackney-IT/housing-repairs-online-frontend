@@ -1,7 +1,7 @@
-const path = require('path');
+const path = require('path')
 
-const { withSentryConfig } = require('@sentry/nextjs');
-const { prependOnceListener } = require('process');
+const { withSentryConfig } = require('@sentry/nextjs')
+const { prependOnceListener } = require('process')
 
 const moduleExports = {
   sassOptions: {
@@ -16,14 +16,14 @@ const moduleExports = {
         source: '/report-repair',
         destination: '/report-repair/priority-list',
         permanent: true,
-      }
-    ];
+      },
+    ]
   },
 
   images: {
     loader: 'default',
   },
-};
+}
 
 module.exports = withSentryConfig(moduleExports, {
   authToken:
@@ -32,4 +32,4 @@ module.exports = withSentryConfig(moduleExports, {
     process.env.NODE_ENV == 'development' ||
     process.env.NEXT_PUBLIC_APP_ENV == 'test',
   include: './.next',
-});
+})

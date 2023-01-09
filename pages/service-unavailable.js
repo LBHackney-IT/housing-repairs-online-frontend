@@ -1,5 +1,5 @@
-import WarningText from '../compoments/warningText';
-import React from 'react';
+import WarningText from '../compoments/warningText'
+import React from 'react'
 
 export default function ServiceUnavailable() {
   return (
@@ -18,5 +18,5 @@ export default function ServiceUnavailable() {
         </WarningText>
       </div>
     </div>
-  );
+  )
 }
