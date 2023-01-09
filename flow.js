@@ -287,7 +287,6 @@ class Flow {
   handleChange = (input, value, state) => {
     if (input == 'description' && value.text !== undefined) {
       if (value.text.toLowerCase().includes('leak')) {
-        console.log('Redriect to unable to book')
         return this.nextStep('unable-to-book', state)
       }
     }
