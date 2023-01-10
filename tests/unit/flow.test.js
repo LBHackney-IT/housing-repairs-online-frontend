@@ -213,12 +213,12 @@ describe('Flow', () => {
         flow.handleChange('field', 'value', {step: 'emergency', data: {}});
         expect(setStateSpy).toHaveBeenCalledWith({
           prevStep: 'priority-list',
-          step: 'communal',
+          step: 'existing-repair',
           data: {
             'field': 'value'
           }
         });
-        expect(historySpy.push).toHaveBeenCalledWith('communal');
+        expect(historySpy.push).toHaveBeenCalledWith('existing-repair');
       });
     })
 

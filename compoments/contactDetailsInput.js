@@ -67,7 +67,7 @@ class ContactDetailsInput extends Component {
 
   formSubmit = (e) => {
     e.preventDefault();
-    
+
     if (this.state.contactNameValue?.length === undefined || this.state.contactNameValue?.length == 0) {
       return this.setState({
         error: {
