@@ -1,12 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-export default function Select({input, children, label }) {
+export default function Select({ input, children, label }) {
   return (
     <>
       <label className="govuk-label lbh-label" htmlFor={input.name}>
         {label}
       </label>
-      <select className="govuk-select" id={input.name} name={input.name} onChange={input.onChange}>
+      <select
+        className="govuk-select"
+        id={input.name}
+        name={input.name}
+        onChange={input.onChange}
+      >
         {children}
       </select>
     </>

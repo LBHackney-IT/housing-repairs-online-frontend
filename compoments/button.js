@@ -1,17 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react'
 
-export default function Button({onClick, children, preventDoubleClick = false, repairSubmitted = false }) {
-  const [disabled, setDisabled] = useState(false);
-  const [buttonText, setButtonText] = useState(children);
+export default function Button({
+  onClick,
+  children,
+  preventDoubleClick = false,
+  repairSubmitted = false,
+}) {
+  const [disabled, setDisabled] = useState(false)
+  const [buttonText, setButtonText] = useState(children)
 
   useEffect(() => {
-    if (repairSubmitted) setDisabled(true);
+    if (repairSubmitted) setDisabled(true)
   }, [])
 
   const click = (e) => {
     if (preventDoubleClick) {
-      setDisabled(true);
-      setButtonText('Submitting');
+      setDisabled(true)
+      setButtonText('Submitting')
     }
     onClick(e)
   }
@@ -20,10 +25,13 @@ export default function Button({onClick, children, preventDoubleClick = false, r
     <button
       disabled={disabled ? 'disabled' : false}
       aria-disabled={disabled}
-      className={`govuk-button lbh-button ${disabled ? 'govuk-button--disabled lbh-button--disabled' : '' }`}
+      className={`govuk-button lbh-button ${
+        disabled ? 'govuk-button--disabled lbh-button--disabled' : ''
+      }`}
       data-prevent-double-click={preventDoubleClick}
       onClick={click}
-      data-module="govuk-button">
+      data-module="govuk-button"
+    >
       {buttonText}
     </button>
   )

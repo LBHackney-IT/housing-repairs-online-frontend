@@ -1,20 +1,19 @@
-import PropTypes from 'prop-types';
-import RadioFieldSet from '../radioFieldSet';
-import React from 'react';
+import PropTypes from 'prop-types'
+import RadioFieldSet from '../radioFieldSet'
+import React from 'react'
 
 const ExistingRepair = ({ handleChange, values }) => {
-  const name = 'existing-repair';
-  const title =
-    'Is this a new repair request or have you reported this before?';
+  const name = 'existing-repair'
+  const title = 'Is this a new repair request or have you reported this before?'
   const options = [
     { value: 'new', title: 'New repair' },
     { value: 'existing', title: 'I have reported this repair before' },
-  ];
+  ]
 
   const Continue = ({ val }) => {
-    const selected = val[name];
-    handleChange(name, selected);
-  };
+    const selected = val[name]
+    handleChange(name, selected)
+  }
 
   return (
     <div className="govuk-grid-row" data-cy="communal">
@@ -29,13 +28,13 @@ const ExistingRepair = ({ handleChange, values }) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
 ExistingRepair.propTypes = {
   nextStep: PropTypes.func,
   values: PropTypes.object,
   handleChange: PropTypes.func,
-};
+}
 
-export default ExistingRepair;
+export default ExistingRepair

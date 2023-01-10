@@ -1,5 +1,5 @@
-import dummyAppointments from '../../fixtures/availableAppointments.json';
-import moment from 'moment';
+import dummyAppointments from '../../fixtures/availableAppointments.json'
+import moment from 'moment'
 
 function intercept_address_search(
   numberOfResults = 2,
@@ -8,8 +8,8 @@ function intercept_address_search(
   nullAddressLine2 = false,
   locationId = 47009990
 ) {
-  const api_url = 'http://localhost:3000/api';
-  const response = [];
+  const api_url = 'http://localhost:3000/api'
+  const response = []
 
   for (let i = 0; i < numberOfResults; i++) {
     response.push({
@@ -17,124 +17,125 @@ function intercept_address_search(
       addressLine2: !nullAddressLine2 ? 'London' : undefined,
       postCode: postcode,
       locationId: locationId,
-    });
+    })
   }
   cy.intercept('GET', `${api_url}/address?*`, {
     statusCode: 201,
     body: response,
-  }).as('address');
+  }).as('address')
 }
 
 function intercept_availability_search(appointments = dummyAppointments) {
-  const api_url = 'http://localhost:3000/api';
+  const api_url = 'http://localhost:3000/api'
 
   cy.intercept('GET', `${api_url}/availability*`, {
     statusCode: 201,
     body: appointments,
-  }).as('availability');
+  }).as('availability')
 }
 
 function intercept_save_repair(repairId) {
-  const api_url = 'http://localhost:3000/api';
+  const api_url = 'http://localhost:3000/api'
 
   cy.intercept('POST', `${api_url}/repair`, {
     statusCode: 201,
     body: repairId,
-  }).as('saveRepair');
+  }).as('saveRepair')
 }
 
-const selectRadioOptionAndContinue = ({
-  option
-}) => {
-  cy.contains(option).click();
-  cy.get('button').click();
-};
+const selectRadioOptionAndContinue = ({ option }) => {
+  cy.contains(option).click()
+  cy.get('button').click()
+}
 const continueOnPage = (page) => {
   cy.get(`[data-cy=${page}]`, { timeout: 10000 }).then(() => {
-    cy.get('button').contains('Continue').click();
-  });
-};
+    cy.get('button').contains('Continue').click()
+  })
+}
 const navigateToPageTypeInputTextAndContinue = ({ page, inputText }) => {
   cy.get(`[data-cy=${page}]`, { timeout: 10000 }).then(() => {
-    cy.get('input.govuk-input').type(inputText);
-    cy.get('button').click();
-  });
+    cy.get('input.govuk-input').type(inputText)
+    cy.get('button').click()
+  })
 }
 
-const navigateToPageTypeInputByIdAndContinue = ({page, id, inputText}) => {
-  cy.get(`[id=${id}]`).type(inputText);
-  cy.get('button').click();
+const navigateToPageTypeInputByIdAndContinue = ({ page, id, inputText }) => {
+  cy.get(`[id=${id}]`).type(inputText)
+  cy.get('button').click()
 }
 
-const navigateToPageClearAndTypeInputByIdAndContinue = ({page, id, inputText}) => {
+const navigateToPageClearAndTypeInputByIdAndContinue = ({
+  page,
+  id,
+  inputText,
+}) => {
   cy.get(`[id=${id}]`).clear()
-  cy.get(`[id=${id}]`).type(inputText);
-  cy.get('button').click();
+  cy.get(`[id=${id}]`).type(inputText)
+  cy.get('button').click()
 }
-
 
 const convertDateToDisplayDate = (date) => {
-  let dateArray = date?.split('-');
-  let startDateTime = moment.unix(dateArray[0]);
-  let endDateTime = moment.unix(dateArray[1]);
-  const dateString = startDateTime.format('Do MMMM YYYY');
-  const startTime = startDateTime.format('h:mma');
-  const endTime = endDateTime.format('h:mma');
-  const timeString = `${startTime} to ${endTime}`;
-  return `${dateString} between ${timeString}`;
-};
+  let dateArray = date?.split('-')
+  let startDateTime = moment.unix(dateArray[0])
+  let endDateTime = moment.unix(dateArray[1])
+  const dateString = startDateTime.format('Do MMMM YYYY')
+  const startTime = startDateTime.format('h:mma')
+  const endTime = endDateTime.format('h:mma')
+  const timeString = `${startTime} to ${endTime}`
+  return `${dateString} between ${timeString}`
+}
 
 const navigateToLocation = () => {
-  intercept_address_search();
-  interceptPropertyEligibilityCheck(true);
-  cy.visit('http://localhost:3000/report-repair/');
+  intercept_address_search()
+  interceptPropertyEligibilityCheck(true)
+  cy.visit('http://localhost:3000/report-repair/')
 
   selectRadioOptionAndContinue({
     page: 'priority-list',
     option: 'Something else',
-  });
+  })
 
   selectRadioOptionAndContinue({
     page: 'existing-repair',
     option: 'New repair',
-  });
+  })
 
   selectRadioOptionAndContinue({
     page: 'communal',
     option: 'No',
-  });
+  })
 
   navigateToPageTypeInputTextAndContinue({
     page: 'postcode',
     inputText: 'SW1A 2AA',
-  });
+  })
 
   cy.get('[data-cy=address]', { timeout: 10000 }).then(() => {
-    cy.get('select').select('1 Downing Street, London, SW1A 2AA');
-    cy.get('button').click();
-  });
-};
+    cy.get('select').select('1 Downing Street, London, SW1A 2AA')
+    cy.get('button').click()
+  })
+}
 
 function intercept_check_maintenance_mode(enable, statusCode = 200) {
-  const api_url = 'http://localhost:3000/api';
+  const api_url = 'http://localhost:3000/api'
 
   cy.intercept('GET', `${api_url}/maintenance`, {
     statusCode: statusCode,
     body: {
       maintenanceModeEnabled: enable,
     },
-  }).as('maintenance');
+  }).as('maintenance')
 }
 
 function interceptPropertyEligibilityCheck(propertyEligible) {
   const propertyEligibleResult = {
     propertyEligible: propertyEligible,
     reason: 'Example Reason',
-  };
+  }
 
   const identifier = propertyEligible
     ? 'propertyEligibleTrue'
-    : 'propertyEligibleFalse';
+    : 'propertyEligibleFalse'
 
   cy.intercept(
     'GET',
@@ -143,7 +144,7 @@ function interceptPropertyEligibilityCheck(propertyEligible) {
       statusCode: 200,
       body: propertyEligibleResult,
     }
-  ).as(identifier);
+  ).as(identifier)
 }
 
 export {
@@ -158,4 +159,4 @@ export {
   navigateToLocation,
   intercept_check_maintenance_mode,
   interceptPropertyEligibilityCheck,
-};
+}

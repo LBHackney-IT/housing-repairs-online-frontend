@@ -1,31 +1,33 @@
-import PropTypes from 'prop-types';
-import React, {useState} from 'react';
-import Button from '../button';
-import imageToBase64 from 'image-to-base64/browser';
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+import Button from '../button'
+import imageToBase64 from 'image-to-base64/browser'
 
-const RepairDescription = ({handleChange, values}) => {
-  const [error, setError] = useState({});
-  const [selectedImage, setSelectedImage] = useState(values.description?.photo);
-  const [fileExtension, setFileExtension] = useState(values.description?.fileExtension);
-  const [base64img, setBase64img] = useState(values.description?.base64img);
+const RepairDescription = ({ handleChange, values }) => {
+  const [error, setError] = useState({})
+  const [selectedImage, setSelectedImage] = useState(values.description?.photo)
+  const [fileExtension, setFileExtension] = useState(
+    values.description?.fileExtension
+  )
+  const [base64img, setBase64img] = useState(values.description?.base64img)
   const [text, setText] = useState(values.description?.text)
-  const [textAreaCount, setTextAreaCount] = React.useState(0);
+  const [textAreaCount, setTextAreaCount] = React.useState(0)
   const textLimit = 255
 
   function textTooLong() {
     setError({
       text: `Description must be ${textLimit} characters or fewer`,
-      img: error.img
-    });
+      img: error.img,
+    })
   }
 
   const TextChange = (e) => {
     setText(e.target.value)
-    setTextAreaCount(e.target.value.length);
+    setTextAreaCount(e.target.value.length)
     if (e.target.value.length > textLimit) {
       return textTooLong()
     }
-    setError({text: false, img: error.img})
+    setError({ text: false, img: error.img })
   }
 
   const Continue = () => {
@@ -37,116 +39,133 @@ const RepairDescription = ({handleChange, values}) => {
         photo: selectedImage,
         text: text,
         fileExtension: fileExtension,
-        base64img: base64img
-      });
+        base64img: base64img,
+      })
     }
-    setError({text: 'Required', img: error.img})
+    setError({ text: 'Required', img: error.img })
   }
 
   const PhotoChange = (event) => {
     const file = event.target.files[0]
     if (file.type !== 'image/jpeg') {
-      return setError({img: 'The selected file must be a JPG', text: error.text})
+      return setError({
+        img: 'The selected file must be a JPG',
+        text: error.text,
+      })
     }
-    let size = (file.size / 1024 / 1024).toFixed(2);
+    let size = (file.size / 1024 / 1024).toFixed(2)
     if (size > 10) {
       return setError({
         img: `The selected file must be smaller than 10MB. Your file size is: ${size}MB`,
-        text: error.text
+        text: error.text,
       })
     }
     const image = URL.createObjectURL(file)
     imageToBase64(image)
-      .then(
-        (response) => {
-          setBase64img(response);
-          setSelectedImage(image);
-          setFileExtension(file.name.split('.').pop());
-          setError({img: false, text: error.text});
-        }
-      )
-      .catch(
-        (error) => {
-          console.log(error);
-        }
-      )
+      .then((response) => {
+        setBase64img(response)
+        setSelectedImage(image)
+        setFileExtension(file.name.split('.').pop())
+        setError({ img: false, text: error.text })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
-  return <div className="govuk-grid-row" data-cy="repair-description">
-    <div className="govuk-grid-column-two-thirds">
-      <h1 className="lbh-heading-h1">
-        Describe the repair required in more detail
-      </h1>
-      <div className={error.text ? 'govuk-form-group--error' : 'govuk-form-group'}>
-        <form action="" className='govuk-!-padding-0'>
-          <label className="govuk-label lbh-label" htmlFor="description">
-            <div>
-              <p className={'lbh-body govuk-body-m'}>Please describe:</p>
-              <ul className="govuk-list govuk-list--bullet lbh-list--bullet">
-                <li>the size and location of the repair</li>
-                <li>the source of the repair</li>
-                <li>when did the issue occur</li>
-                <li>how many items are damaged, for example 3 floor tiles</li>
-              </ul>
-              <div className="govuk-inset-text">
-                Please report <strong>only one repair</strong> at a time. You will have
-                a chance to report another repair after this one.
+  return (
+    <div className="govuk-grid-row" data-cy="repair-description">
+      <div className="govuk-grid-column-two-thirds">
+        <h1 className="lbh-heading-h1">
+          Describe the repair required in more detail
+        </h1>
+        <div
+          className={
+            error.text ? 'govuk-form-group--error' : 'govuk-form-group'
+          }
+        >
+          <form action="" className="govuk-!-padding-0">
+            <label className="govuk-label lbh-label" htmlFor="description">
+              <div>
+                <p className={'lbh-body govuk-body-m'}>Please describe:</p>
+                <ul className="govuk-list govuk-list--bullet lbh-list--bullet">
+                  <li>the size and location of the repair</li>
+                  <li>the source of the repair</li>
+                  <li>when did the issue occur</li>
+                  <li>how many items are damaged, for example 3 floor tiles</li>
+                </ul>
+                <div className="govuk-inset-text">
+                  Please report <strong>only one repair</strong> at a time. You
+                  will have a chance to report another repair after this one.
+                </div>
               </div>
+            </label>
+            <span id={'description-error'} className="govuk-error-message">
+              {error.text}
+            </span>
+            <textarea
+              className="govuk-textarea govuk-!-margin-bottom-0"
+              id="description"
+              name="description"
+              type="text"
+              onChange={TextChange}
+              defaultValue={text}
+              rows="5"
+            ></textarea>
+            <div
+              id="with-hint-info"
+              className="govuk-hint govuk-character-count__message  govuk-!-margin-bottom-6"
+              aria-live="polite"
+            >
+              You have {textLimit - textAreaCount} characters remaining
             </div>
+          </form>
+        </div>
+        <h3 className="lbh-heading-h2">Upload a photo (optional)</h3>
+        <div
+          className={error.img ? 'govuk-form-group--error' : 'govuk-form-group'}
+        >
+          <label className="govuk-label lbh-label" htmlFor="upload-a-photo">
+            Upload a file (file must be a JPG)
           </label>
-          <span id={'description-error'}
-            className="govuk-error-message">
-            {error.text}
+          <span id="upload-a-photo-error" className="govuk-error-message">
+            {error.img}
           </span>
-          <textarea className="govuk-textarea govuk-!-margin-bottom-0" id="description"
-            name="description" type="text" onChange={TextChange} defaultValue={text}
-            rows="5"></textarea>
-          <div id="with-hint-info"
-            className="govuk-hint govuk-character-count__message  govuk-!-margin-bottom-6"
-            aria-live="polite">You have {textLimit - textAreaCount} characters remaining
-          </div>
-        </form>
+          {selectedImage ? (
+            <table>
+              <tbody>
+                <tr>
+                  <td align="center" valign="center">
+                    <img alt="not fount" width="200px" src={selectedImage} />
+                  </td>
+                  <td align="center" valign="center">
+                    <button
+                      className="govuk-button lbh-button govuk-button--warning"
+                      onClick={() => setSelectedImage(null)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          ) : (
+            <input
+              className="govuk-file-upload govuk-file-upload--error"
+              id="upload-a-photo"
+              name="upload-a-photo"
+              type="file"
+              aria-describedby="upload-a-photo-error"
+              onChange={PhotoChange}
+            />
+          )}
+        </div>
+        <br />
+        <Button onClick={Continue}>Continue</Button>
       </div>
-      <h3 className="lbh-heading-h2">
-        Upload a photo (optional)
-      </h3>
-      <div className={error.img ? 'govuk-form-group--error' : 'govuk-form-group'}>
-        <label className="govuk-label lbh-label" htmlFor="upload-a-photo">
-          Upload a file (file must be a JPG)
-        </label>
-        <span id="upload-a-photo-error" className="govuk-error-message">
-          {error.img}
-        </span>
-        {selectedImage ? (
-          <table>
-            <tbody>
-              <tr>
-                <td align="center" valign="center">
-                  <img alt="not fount" width="200px" src={selectedImage} />
-                </td>
-                <td align="center" valign="center">
-                  <button
-                    className="govuk-button lbh-button govuk-button--warning"
-                    onClick={()=>setSelectedImage(null)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        ) : (
-          <input className="govuk-file-upload govuk-file-upload--error"
-            id="upload-a-photo" name="upload-a-photo" type="file"
-            aria-describedby="upload-a-photo-error" onChange={PhotoChange}/>
-        )}
-      </div>
-      <br/>
-      <Button onClick={Continue} >Continue</Button>
     </div>
-  </div>
-};
-
-
+  )
+}
 
 RepairDescription.propTypes = {
   storeAddresses: PropTypes.func,
@@ -154,4 +173,4 @@ RepairDescription.propTypes = {
   handleChange: PropTypes.func,
 }
 
-export default RepairDescription;
+export default RepairDescription

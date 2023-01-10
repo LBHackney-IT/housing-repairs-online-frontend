@@ -1,41 +1,41 @@
-import { useRouter } from 'next/router';
-import Address from '../../compoments/report-repair/address';
-import Communal from '../../compoments/report-repair/communal';
-import EmergencyRepair from '../../compoments/report-repair/emergency-repair';
-import NotEligible from '../../compoments/report-repair/not-eligible';
-import NotEligibleCommunalRepairs from '../../compoments/report-repair/not-eligible-communal-repairs';
-import Postcode from '../../compoments/report-repair/postcode';
-import PriorityList from '../../compoments/report-repair/priority-list';
-import RepairLocation from '../../compoments/report-repair/repair-location';
-import SmellGas from '../../compoments/report-repair/smell-gas';
-import Flow from '../../flow';
-import { useEffect, useState } from 'react';
-import React from 'react';
-import BackLink from '../../compoments/backLink';
-import RepairProblem from '../../compoments/report-repair/repair-problem';
-import RepairProblemBestDescription from '../../compoments/report-repair/repair-problem-best-description';
-import RepairDescription from '../../compoments/report-repair/repair-description';
-import RepairAvailability from '../../compoments/report-repair/repair-availability';
-import Summary from '../../compoments/report-repair/summary';
-import ContactPerson from '../../compoments/report-repair/contact-person';
-import ContactDetails from '../../compoments/report-repair/contact-details';
-import Confirmation from '../../compoments/report-repair/confirmation';
-import Error from '../../compoments/error';
-import NotEligibleNonEmergency from '../../compoments/report-repair/not-eligible-non-emergency';
-import NotEligibleInvalidProperty from '../../compoments/report-repair/not-eligible-invalid-property';
-import UnableToBook from '../../compoments/report-repair/unable-to-book';
-import { customerServicesTelephoneNumber } from '../../globals';
-import ExistingRepair from '../../compoments/report-repair/existing-repair';
-import NotEligiblePreviouslyReported from '../../compoments/report-repair/not-eligible-previously-reported';
+import { useRouter } from 'next/router'
+import Address from '../../compoments/report-repair/address'
+import Communal from '../../compoments/report-repair/communal'
+import EmergencyRepair from '../../compoments/report-repair/emergency-repair'
+import NotEligible from '../../compoments/report-repair/not-eligible'
+import NotEligibleCommunalRepairs from '../../compoments/report-repair/not-eligible-communal-repairs'
+import Postcode from '../../compoments/report-repair/postcode'
+import PriorityList from '../../compoments/report-repair/priority-list'
+import RepairLocation from '../../compoments/report-repair/repair-location'
+import SmellGas from '../../compoments/report-repair/smell-gas'
+import Flow from '../../flow'
+import { useEffect, useState } from 'react'
+import React from 'react'
+import BackLink from '../../compoments/backLink'
+import RepairProblem from '../../compoments/report-repair/repair-problem'
+import RepairProblemBestDescription from '../../compoments/report-repair/repair-problem-best-description'
+import RepairDescription from '../../compoments/report-repair/repair-description'
+import RepairAvailability from '../../compoments/report-repair/repair-availability'
+import Summary from '../../compoments/report-repair/summary'
+import ContactPerson from '../../compoments/report-repair/contact-person'
+import ContactDetails from '../../compoments/report-repair/contact-details'
+import Confirmation from '../../compoments/report-repair/confirmation'
+import Error from '../../compoments/error'
+import NotEligibleNonEmergency from '../../compoments/report-repair/not-eligible-non-emergency'
+import NotEligibleInvalidProperty from '../../compoments/report-repair/not-eligible-invalid-property'
+import UnableToBook from '../../compoments/report-repair/unable-to-book'
+import { customerServicesTelephoneNumber } from '../../globals'
+import ExistingRepair from '../../compoments/report-repair/existing-repair'
+import NotEligiblePreviouslyReported from '../../compoments/report-repair/not-eligible-previously-reported'
 
 function ReportRepair() {
-  const [state, setState] = useState({ data: {}, step: 'priority-list' });
-  const [changeLinkUrls, setChangeLinkUrls] = useState({});
-  const router = useRouter();
+  const [state, setState] = useState({ data: {}, step: 'priority-list' })
+  const [changeLinkUrls, setChangeLinkUrls] = useState({})
+  const router = useRouter()
 
-  const currentPath = router.query.route;
+  const currentPath = router.query.route
 
-  const [prevSteps, setPrevSteps] = useState([]);
+  const [prevSteps, setPrevSteps] = useState([])
 
   const flow = new Flow(
     setState,
@@ -43,39 +43,39 @@ function ReportRepair() {
     'report-repair',
     prevSteps,
     setPrevSteps
-  );
+  )
 
   useEffect(() => {
     router.beforePopState(({ as }) => {
-      flow.prevStep(state);
-      return true;
-    });
+      flow.prevStep(state)
+      return true
+    })
 
     return () => {
-      router.beforePopState(() => true);
-    };
-  }, [router]);
+      router.beforePopState(() => true)
+    }
+  }, [router])
 
   const handleChange = (input, value) => {
-    flow.handleChange(input, value, state);
-  };
+    flow.handleChange(input, value, state)
+  }
 
   const goToStep = (step, prevStep) => {
-    flow.nextStep(step, state, prevStep);
-  };
+    flow.nextStep(step, state, prevStep)
+  }
 
-  const [showBack, setShowBack] = useState(true);
-  const [confirmation, setConfirmation] = useState('');
-  const [formError, setFormError] = useState();
-  const [requestId, setRequestId] = useState();
-  const [repairSubmitted, setRepairSubmitted] = useState(false);
+  const [showBack, setShowBack] = useState(true)
+  const [confirmation, setConfirmation] = useState('')
+  const [formError, setFormError] = useState()
+  const [requestId, setRequestId] = useState()
+  const [repairSubmitted, setRepairSubmitted] = useState(false)
 
   const cleanPayload = (payload) => {
-    delete payload.availability.appointmentSlotKey;
-  };
+    delete payload.availability.appointmentSlotKey
+  }
 
   const submit = (values) => {
-    cleanPayload(values);
+    cleanPayload(values)
     fetch('/api/repair', {
       method: 'POST',
       body: JSON.stringify({
@@ -91,24 +91,24 @@ function ReportRepair() {
       }),
     }).then((response) => {
       if (response.ok) {
-        setShowBack(false);
-        router.push('confirmation');
-        setConfirmation(values.contactDetails.value);
-        setRepairSubmitted(true);
+        setShowBack(false)
+        router.push('confirmation')
+        setConfirmation(values.contactDetails.value)
+        setRepairSubmitted(true)
         return response.text().then((text) => {
-          setRequestId(text);
-        });
+          setRequestId(text)
+        })
       }
-      window.history.scrollRestoration = 'manual';
+      window.history.scrollRestoration = 'manual'
       setFormError(
         <Error
           name="summary"
           heading="An error occurred while processing your request"
           body={`Please call ${customerServicesTelephoneNumber} to complete your repair request`}
         />
-      );
-    });
-  };
+      )
+    })
+  }
 
   const commonProblems = {
     wallsFloorAndCeiling: {
@@ -131,13 +131,13 @@ function ReportRepair() {
       title: 'Heating or hot water',
     },
     heating: { value: 'heating', title: 'Heating' },
-  };
+  }
 
   const prevStep = (e) => {
-    e?.preventDefault();
-    flow.prevStep(state);
-  };
-  const values = state.data;
+    e?.preventDefault()
+    flow.prevStep(state)
+  }
+  const values = state.data
 
   const component = () => {
     switch (currentPath) {
@@ -150,41 +150,41 @@ function ReportRepair() {
           values={values}
           repairSubmitted={repairSubmitted}
         />
-      );
+      )
     case 'confirmation':
       return (
         <Confirmation requestId={requestId} confirmation={confirmation} />
-      );
+      )
     case 'contact-person':
-      return <ContactPerson handleChange={handleChange} values={values} />;
+      return <ContactPerson handleChange={handleChange} values={values} />
     case 'contact-details':
-      return <ContactDetails handleChange={handleChange} values={values} />;
+      return <ContactDetails handleChange={handleChange} values={values} />
     case 'address':
-      return <Address handleChange={handleChange} values={values} />;
+      return <Address handleChange={handleChange} values={values} />
     case 'communal':
-      return <Communal handleChange={handleChange} values={values} />;
+      return <Communal handleChange={handleChange} values={values} />
     case 'emergency-repair':
-      return <EmergencyRepair />;
+      return <EmergencyRepair />
     case 'not-eligible':
-      return <NotEligible />;
+      return <NotEligible />
     case 'not-eligible-non-emergency':
-      return <NotEligibleNonEmergency />;
+      return <NotEligibleNonEmergency />
     case 'not-eligible-communal-repairs':
-      return <NotEligibleCommunalRepairs />;
+      return <NotEligibleCommunalRepairs />
     case 'not-eligible-invalid-property':
-      return <NotEligibleInvalidProperty />;
+      return <NotEligibleInvalidProperty />
     case 'not-eligible-previously-reported':
-      return <NotEligiblePreviouslyReported />;
+      return <NotEligiblePreviouslyReported />
     case 'unable-to-book':
-      return <UnableToBook />;
+      return <UnableToBook />
     case 'postcode':
-      return <Postcode handleChange={handleChange} values={values} />;
+      return <Postcode handleChange={handleChange} values={values} />
     case 'priority-list':
-      return <PriorityList handleChange={handleChange} values={values} />;
+      return <PriorityList handleChange={handleChange} values={values} />
     case 'existing-repair':
-      return <ExistingRepair handleChange={handleChange} values={values} />;
+      return <ExistingRepair handleChange={handleChange} values={values} />
     case 'repair-location':
-      return <RepairLocation handleChange={handleChange} values={values} />;
+      return <RepairLocation handleChange={handleChange} values={values} />
     case 'repair-kitchen-problems':
       return (
         <RepairProblem
@@ -208,7 +208,7 @@ function ReportRepair() {
             commonProblems.dampOrMould,
           ]}
         />
-      );
+      )
     case 'repair-bathroom-problems':
       return (
         <RepairProblem
@@ -233,7 +233,7 @@ function ReportRepair() {
             commonProblems.heatingOrHotWater,
           ]}
         />
-      );
+      )
     case 'repair-bedroom-problems':
       return (
         <RepairProblem
@@ -248,7 +248,7 @@ function ReportRepair() {
             commonProblems.heating,
           ]}
         />
-      );
+      )
     case 'repair-living-areas-problems':
       return (
         <RepairProblem
@@ -264,7 +264,7 @@ function ReportRepair() {
             commonProblems.heating,
           ]}
         />
-      );
+      )
 
     case 'repair-stairs-problems':
       return (
@@ -278,7 +278,7 @@ function ReportRepair() {
             { value: 'stairRailLoose', title: 'Stair rail come loose' },
           ]}
         />
-      );
+      )
     case 'repair-toilet-problems':
       return (
         <RepairProblemBestDescription
@@ -295,7 +295,7 @@ function ReportRepair() {
             { value: 'seat', title: 'Toilet seat' },
           ]}
         />
-      );
+      )
     case 'repair-outside-problems':
       return (
         <RepairProblem
@@ -312,7 +312,7 @@ function ReportRepair() {
             { value: 'gatesAndPathways', title: 'Gates and pathways' },
           ]}
         />
-      );
+      )
     case 'repair-garage-problems':
       return (
         <RepairProblemBestDescription
@@ -326,7 +326,7 @@ function ReportRepair() {
             { value: 'securityLights', title: 'Outdoor security lights' },
           ]}
         />
-      );
+      )
     case 'outside-roof-problems':
       return (
         <RepairProblemBestDescription
@@ -340,7 +340,7 @@ function ReportRepair() {
             { value: 'securityLights', title: 'Outdoor security lights' },
           ]}
         />
-      );
+      )
     case 'gates-and-pathways-problems':
       return (
         <RepairProblemBestDescription
@@ -357,7 +357,7 @@ function ReportRepair() {
             { value: 'steps', title: 'Steps' },
           ]}
         />
-      );
+      )
     case 'outside-door-problems':
       return (
         <RepairProblemBestDescription
@@ -374,7 +374,7 @@ function ReportRepair() {
             { value: 'frenchDoors', title: 'French doors' },
           ]}
         />
-      );
+      )
     case 'repair-window-problems':
       return (
         <RepairProblemBestDescription
@@ -415,7 +415,7 @@ function ReportRepair() {
             },
           ]}
         />
-      );
+      )
     case 'repair-shower-problems':
       return (
         <RepairProblemBestDescription
@@ -431,7 +431,7 @@ function ReportRepair() {
             { value: 'showerDrainBlocked', title: 'Shower drain blocked' },
           ]}
         />
-      );
+      )
     case 'repair-door-problems':
       return (
         <RepairProblemBestDescription
@@ -450,7 +450,7 @@ function ReportRepair() {
             },
           ]}
         />
-      );
+      )
     case 'repair-living-area-door-problems':
       return (
         <RepairProblemBestDescription
@@ -469,7 +469,7 @@ function ReportRepair() {
             },
           ]}
         />
-      );
+      )
     case 'repair-bedroom-door-problems':
       return (
         <RepairProblemBestDescription
@@ -488,7 +488,7 @@ function ReportRepair() {
             { value: 'lockOnBedroomDoor', title: 'Lock on the door' },
           ]}
         />
-      );
+      )
     case 'repair-bedroom-lighting-problems':
       return (
         <RepairProblemBestDescription
@@ -499,7 +499,7 @@ function ReportRepair() {
             { value: 'sockets', title: 'Sockets' },
           ]}
         />
-      );
+      )
     case 'bathroom-damp-mould-problems':
       return (
         <RepairProblemBestDescription
@@ -513,7 +513,7 @@ function ReportRepair() {
             },
           ]}
         />
-      );
+      )
     case 'repair-living-areas-lighting-problems':
       return (
         <RepairProblemBestDescription
@@ -524,7 +524,7 @@ function ReportRepair() {
             { value: 'sockets', title: 'Sockets' },
           ]}
         />
-      );
+      )
     case 'repair-bathroom-electric-problems':
       return (
         <RepairProblemBestDescription
@@ -537,7 +537,7 @@ function ReportRepair() {
             { value: 'extractorFan', title: 'Extractor fan not working' },
           ]}
         />
-      );
+      )
     case 'repair-kitchen-cupboard-problems':
       return (
         <RepairProblemBestDescription
@@ -548,7 +548,7 @@ function ReportRepair() {
             { value: 'doorMissing', title: 'Missing door' },
           ]}
         />
-      );
+      )
     case 'kitchen-electrical-problems':
       return (
         <RepairProblemBestDescription
@@ -561,7 +561,7 @@ function ReportRepair() {
             { value: 'cookerSwitch', title: 'Cooker switch' },
           ]}
         />
-      );
+      )
     case 'bath-problems':
       return (
         <RepairProblemBestDescription
@@ -574,7 +574,7 @@ function ReportRepair() {
             { value: 'bathBlockage', title: 'Blockage' },
           ]}
         />
-      );
+      )
     case 'kitchen-door-problems':
       return (
         <RepairProblemBestDescription
@@ -592,7 +592,7 @@ function ReportRepair() {
             { value: 'sliding', title: 'Sliding door' },
           ]}
         />
-      );
+      )
     case 'wall-floor-ceiling-problems':
       return (
         <RepairProblemBestDescription
@@ -614,7 +614,7 @@ function ReportRepair() {
             { value: 'woodenFloorboards', title: 'Wooden floorboards' },
           ]}
         />
-      );
+      )
     case 'sink-problems':
       return (
         <RepairProblemBestDescription
@@ -627,7 +627,7 @@ function ReportRepair() {
             { value: 'damageSink', title: 'Damage to the sink' },
           ]}
         />
-      );
+      )
     case 'damp-mould-problems':
       return (
         <RepairProblemBestDescription
@@ -644,13 +644,11 @@ function ReportRepair() {
             },
           ]}
         />
-      );
+      )
     case 'smell-gas':
-      return <SmellGas />;
+      return <SmellGas />
     case 'repair-description':
-      return (
-        <RepairDescription handleChange={handleChange} values={values} />
-      );
+      return <RepairDescription handleChange={handleChange} values={values} />
     case 'repair-availability':
       return (
         <RepairAvailability
@@ -658,11 +656,11 @@ function ReportRepair() {
           values={values}
           fromDate={router.query.fromDate}
         />
-      );
+      )
     default:
-      return <div>Not found</div>;
+      return <div>Not found</div>
     }
-  };
+  }
 
   return (
     <>
@@ -676,7 +674,7 @@ function ReportRepair() {
         {component()}
       </div>
     </>
-  );
+  )
 }
 
 export async function getStaticPaths() {
@@ -729,12 +727,12 @@ export async function getStaticPaths() {
     { params: { route: 'repair-description' } },
     { params: { route: 'repair-availability' } },
     { params: { route: 'smell-gas' } },
-  ];
+  ]
 
-  return { paths, fallback: false };
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({}) {
-  return { props: {} };
+  return { props: {} }
 }
-export default ReportRepair;
+export default ReportRepair

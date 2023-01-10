@@ -1,11 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-export default function BackLink({href, target, onClick, children }) {
+export default function BackLink({ href, target, onClick, children }) {
   return (
     <>
-      <a href={href} className="govuk-back-link lbh-back-link" target={target} onClick={onClick}>{children}</a>
+      <a
+        href={href}
+        className="govuk-back-link lbh-back-link"
+        target={target}
+        onClick={onClick}
+      >
+        {children}
+      </a>
     </>
   )
 }
-
-

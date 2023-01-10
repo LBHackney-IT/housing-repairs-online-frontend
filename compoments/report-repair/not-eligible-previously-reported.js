@@ -1,6 +1,6 @@
-import React from 'react';
-import OpeningHours from './opening-hours';
-import { customerServicesTelephoneNumber } from '../../globals';
+import React from 'react'
+import OpeningHours from './opening-hours'
+import { customerServicesTelephoneNumber } from '../../globals'
 
 const NotEligiblePreviouslyReported = () => {
   return (
@@ -22,7 +22,7 @@ const NotEligiblePreviouslyReported = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NotEligiblePreviouslyReported;
+export default NotEligiblePreviouslyReported

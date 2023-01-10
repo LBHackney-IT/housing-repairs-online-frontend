@@ -1,39 +1,45 @@
 require('dotenv').config()
 
-module.exports = axios => {
+module.exports = (axios) => {
   return {
-    makeGetRequest: ({uri, params ={}}) =>{
+    makeGetRequest: ({ uri, params = {} }) => {
       var identifier = process.env.REPAIRS_API_IDENTIFIER
-      var baseUrl = process.env.REPAIRS_API_BASE_URL;
+      var baseUrl = process.env.REPAIRS_API_BASE_URL
       const axiosInstance = axios.create({
-        baseURL: baseUrl
+        baseURL: baseUrl,
       })
-      return axiosInstance.post(`/authentication?identifier=${identifier}`)
-        .then(response => {
-          var jwt = response.data;
-          axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
+      return axiosInstance
+        .post(`/authentication?identifier=${identifier}`)
+        .then((response) => {
+          var jwt = response.data
+          axiosInstance.defaults.headers.common[
+            'Authorization'
+          ] = `Bearer ${jwt}`
           return axiosInstance.get(uri, {
-            params: params
-          });
+            params: params,
+          })
         })
     },
 
-    makePostRequest: ({uri, body ={}, headers}) =>{
+    makePostRequest: ({ uri, body = {}, headers }) => {
       var identifier = process.env.REPAIRS_API_IDENTIFIER
-      var baseUrl = process.env.REPAIRS_API_BASE_URL;
+      var baseUrl = process.env.REPAIRS_API_BASE_URL
       const axiosInstance = axios.create({
-        baseURL: baseUrl
+        baseURL: baseUrl,
       })
-      return axiosInstance.post(`/authentication?identifier=${identifier}`)
-        .then(response => {
-          var jwt = response.data;
-          axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
-          if (headers){
-            return axiosInstance.post(uri, body, {headers: headers});
+      return axiosInstance
+        .post(`/authentication?identifier=${identifier}`)
+        .then((response) => {
+          var jwt = response.data
+          axiosInstance.defaults.headers.common[
+            'Authorization'
+          ] = `Bearer ${jwt}`
+          if (headers) {
+            return axiosInstance.post(uri, body, { headers: headers })
           } else {
-            return axiosInstance.post(uri, body);
+            return axiosInstance.post(uri, body)
           }
         })
-    }
+    },
   }
 }
