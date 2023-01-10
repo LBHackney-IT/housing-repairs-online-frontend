@@ -289,6 +289,12 @@ class Flow {
     }
   }
   handleChange = (input, value, state) => {
+    if (input == 'description' && value.text !== undefined) {
+      if (value.text.toLowerCase().includes('leak')) {
+        return this.nextStep('unable-to-book', state)
+      }
+    }
+
     let repairProblemChanged = input == 'repairProblem' && state.data[input] != value;
     state.data[input]= value
     let nextFlowStep =  this.flow[state.step]?.nextStep
