@@ -20,9 +20,9 @@ function MyApp({ Component, pageProps, err  }) {
   useEffect(redirectIfMaintenanceMode, [])
 
   let gtmToken = process.env.NEXT_PUBLIC_GTM_TOKEN_ID
-  
+
   return <>
-      <Script id="google-tag-manager" strategy="afterInteractive">
+    <Script id="google-tag-manager" strategy="afterInteractive">
       {`
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
