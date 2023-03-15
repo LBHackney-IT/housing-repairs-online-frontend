@@ -8,6 +8,8 @@ class MyDocument extends Document {
   }
 
   render() {
+    let gtmToken = process.env.NEXT_PUBLIC_GTM_TOKEN_ID
+
     return (
       <Html>
         <Head>
@@ -18,6 +20,11 @@ class MyDocument extends Document {
         <body className={'js-enabled lbh-body'}>
           <Main />
           <NextScript />
+          <noscript
+            dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmToken}" height="0" width="0" style="display: none; visibility: hidden;" />`,
+          }}
+  />
         </body>
       </Html>
     )
