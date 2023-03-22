@@ -247,7 +247,7 @@ describe('repairProblemBestDescription', () => {
       before(()=>{
         cy.go(-1);
         cy.contains('Damaged or stuck windows').click();
-        cy.get('button').click();
+        cy.contains('Continue').click();
       });
       testWindowOption();
     });
@@ -506,7 +506,7 @@ context('Bedroom', () => {
     before(()=>{
       cy.go(-1);
       cy.contains('Damaged or stuck windows').click();
-      cy.get('button').click();
+      cy.contains('Continue').click();
     });
     testWindowOption();
   });
