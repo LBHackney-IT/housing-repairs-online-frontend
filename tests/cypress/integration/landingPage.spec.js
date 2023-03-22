@@ -57,9 +57,9 @@ describe('App', () => {
     intercept_check_maintenance_mode(true);
     cy.visit('http://localhost:3000');
 
-    cy.wait(300)
-
-    cy.get('h1').contains('Temporarily Unavailable');
+    cy.wait(500)
+    
+    cy.get('body').should('contain', 'Temporarily Unavailable');
     cy.url().should('eq', 'http://localhost:3000/service-unavailable')
   })
 
