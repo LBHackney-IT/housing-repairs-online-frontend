@@ -23,6 +23,7 @@
     "axios": "^1.2.1",
     "babel-eslint": "^10.1.0",
     "body-parser": "^1.20.0",
+    "cookie-cutter": "^0.2.0",
     "dotenv": "^10.0.0",
     "govuk-frontend": "^3.14.0",
     "image-to-base64": "^2.2.0",

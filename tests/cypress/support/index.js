@@ -17,5 +17,13 @@
 import './commands'
 import 'cypress-react-selector';
 
+// Prevent cookie banner for E2E tests
+const COOKIE_ACCEPT_NAME = 'hrolAcceptCookies'
+const COOKIE_ACCEPT_VALUE = 'Accepted'
+
+Cypress.on("window:before:load", window => {
+    window.document.cookie = `${COOKIE_ACCEPT_NAME}=${COOKIE_ACCEPT_VALUE}`
+})
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
