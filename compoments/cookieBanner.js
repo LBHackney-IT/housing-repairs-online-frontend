@@ -14,7 +14,7 @@ export const CookieBanner = () => {
     if (cookies.get('hrolAcceptCookies') !== 'Accepted') {
         setShowBanner(true)
     }
-  })
+  }, [])
 
   return (
     <div >
