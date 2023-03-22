@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import cookies from 'cookie-cutter'
 import Link from 'next/link';
 
 export const CookieBanner = () => {
-  const [showBanner, setShowBanner] = useState(true)
+  const [showBanner, setShowBanner] = useState(false)
 
   const acceptCookies = () => {
+    cookies.set('hrolAcceptCookies','Accepted')
     setShowBanner(false)
   }
+
+  useEffect(() => {
+    if (cookies.get('hrolAcceptCookies') !== 'Accepted') {
+        setShowBanner(true)
+    }
+  })
 
   return (
     <div >
