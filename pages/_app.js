@@ -1,5 +1,6 @@
 import '../styles/globals.scss'
 import '../styles/globals.css'
+import '../styles/cookieBanner.css'
 import React from 'react';
 import App from 'next/app'
 import Header from '../compoments/header';
@@ -7,6 +8,7 @@ import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar'
 import redirectIfMaintenanceMode from '../helpers/redirectIfMaintenanceMode';
 import Script from 'next/script'
+import { CookieBanner } from '../compoments/cookieBanner'
 
 function MyApp({ Component, pageProps, err  }) {
   const enableJavascript = () => {
@@ -82,6 +84,7 @@ function MyApp({ Component, pageProps, err  }) {
         </div>
       </div>
     </footer>
+    <CookieBanner />
   </>
 }
 App.getInitialProps = async (appContext) => {

@@ -67,7 +67,7 @@ describe('repair availability', () => {
     })
     context('When a user select anything', () => {
       it('an error should be shown', () => {
-        cy.get('button').click()
+        cy.contains('Continue').click()
         cy.contains('Required');
       });
     });
