@@ -21,6 +21,12 @@ function MyApp({ Component, pageProps, err  }) {
 
   useEffect(redirectIfMaintenanceMode, [])
 
+  useEffect(() => {
+    var path = window.location.pathname === '/' ? ' index' :  window.location.pathname
+    var pageTitle = path.replaceAll('-',' ').replaceAll('/',' - ')
+    document.title = 'Housing Repairs' + pageTitle
+  })
+
   let gtmToken = process.env.NEXT_PUBLIC_GTM_TOKEN_ID
 
   return <>
