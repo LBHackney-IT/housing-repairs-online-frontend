@@ -1,42 +1,24 @@
-import Details from '../details';
 import React from 'react';
-import ContactNumbers from '../contactNumbers';
-import OpeningHours from './opening-hours';
-import {customerServicesTelephoneNumber} from '../../globals';
-
 
 const NotEligible = () => {
   return (
     <div className="govuk-grid-row lbh-body-m">
       <div className="govuk-grid-column-two-thirds">
-        <h1 className='govuk-heading-xl lbh-heading-h1'>The council may not be responsible for repairs at this property</h1>
-        <h3 className='lbh-heading-h2'>Emergencies</h3>
+        <h1 className="govuk-heading-xl lbh-heading-h1">
+          The council may not be responsible for repairs at this property
+        </h1>
+
+        <p>You cannot request emergency repairs online.</p>
+
         <p>
-          An emergency is defined as something which could cause danger to
-          someone’s health or safety or cause serious damage and destruction to
-          property.
+          Call <strong>020 8356 3691</strong> now. We're open 24 hours, 7 days a
+          week.
         </p>
-        <ContactNumbers/>
-        <Details summary="Opening times" testid="opening-times">
-          <OpeningHours/>
-        </Details>
+
         <p>
-          Please do not call the emergency out of hours number if the repair is
-          not urgent. We may charge you a fee if the repair is not deemed an
-          emergency.
-        </p>
-        <p>
-          If you suspect you have a gas leak, you must report it immediately to
-          the Gas Emergency Service <strong>0800 111 999</strong> or via textphone (minicom)
-          on <strong>0800 371 787</strong>
-        </p>
-        <hr></hr>
-        <h3>Non-emergency requests</h3>
-        <p>
-          If you think the council is responsible for your property, please call <strong>{customerServicesTelephoneNumber}</strong>.
-        </p>
-        <p>
-          If you are a leaseholder you can still report communal repairs on <strong>{customerServicesTelephoneNumber}</strong>.
+          If you can smell gas, report it immediately to the Gas Emergency
+          Service on <strong>0800 111 999</strong> or via textphone (minicom) on{' '}
+          <strong>0800 371 787</strong>.
         </p>
       </div>
     </div>
