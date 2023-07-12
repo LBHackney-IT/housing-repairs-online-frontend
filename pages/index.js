@@ -1,4 +1,4 @@
-import WarningText from '../compoments/warningText';
+import Details from '../compoments/details';
 import React from 'react';
 import Link from 'next/link';
 
@@ -10,28 +10,31 @@ export default function Home() {
         <h2 className={'lbh-heading-h2'}>Before you start</h2>
 
         <p className={'lbh-body-m'}>
-          Only council tenants can request repairs online. If you’re a council
-          tenant, you can request:
+          If you suspect you have a gas leak, you must report it immediately to the Gas Emergency Service (Cadent) on <strong>0800 111 999</strong> or via textphone (minicom) on <strong>0800 371 787</strong>
         </p>
-
-        <br />
-
-        <ul className={'govuk-list govuk-list--bullet lbh-list--bullet'}>
-          <li>non-emergency repairs</li>
-          <li>internal repairs</li>
-        </ul>
 
         <p className={'lbh-body-m'}>
-          If you own the property, you cannot request a repair online - call{' '}
-          <strong style={{ whiteSpace: 'nowrap' }}>020 8356 3691</strong>.
+          For other emergency repairs - e.g. water leaks, no water, no heating, blocked drains - please call <strong>0208 356 3691</strong>. They cannot be raised online.
         </p>
 
-        <WarningText
-          testid="landing-page-report-limit-warning"
-          className="govuk-!-margin-top-4 lbh-body lbh-!-font-weight-bold"
-        >
-          This service can only be used to request one repair at a time.
-        </WarningText>
+        <p className={'lbh-body-m'}>
+          To request a repair for a communal area outside of your dwelling, please call <strong>0208 356 3691</strong>. Leaseholders can also use this service.
+        </p>
+
+        <Details summary="What is a communal area?" className="govuk-!-margin-top-6" data-testid="landing-page-communal-prompt">
+          <div data-testid='landing-page-communal-info'>
+            <p>Communal repairs are usually in areas that people share.</p>
+            <p>They can include:</p>
+            <ul className={'govuk-list govuk-list--bullet lbh-list--bullet'}>
+              <li>repairs to door entry systems</li>
+              <li>lock repairs to communal doors</li>
+              <li>lighting repairs to shared areas</li>
+              <li>glazing repairs to shared doors or stairway windows</li>
+              <li>roof and gutter repairs</li>
+              <li>structure and external walls to your block</li>
+            </ul>
+          </div>
+        </Details>
 
         <Link href="/report-repair/priority-list">
           <a
