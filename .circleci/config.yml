@@ -13,7 +13,7 @@ executors:
       - image: circleci/node:14
   test:
     docker:
-      - image: circleci/node:14.21.1-browsers
+      - image: circleci/node:14
 
 references:
   workspace_root: &workspace_root '~'
