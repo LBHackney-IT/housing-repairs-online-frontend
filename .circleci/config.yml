@@ -116,24 +116,20 @@ jobs:
       - assume-role-and-persist-workspace:
           aws-account: $AWS_ACCOUNT_PRODUCTION
 
-
 workflows:
-  # check-and-deploy-development:
-  #   jobs:
-  #     - build-and-test:
-  #         filters:
-  #           branches:
-  #             only: development
-  #     - assume-role-development:
-  #         context: api-assume-role-housing-development-context
-  #         requires:
-  #           - build-and-test
-  #         filters:
-  #           branches:
-  #             only: development
-  #     - deploy-to-development:
-  #         requires:
-  #           - assume-role-development
+  check-and-deploy-development:
+    jobs:
+      - build-and-test
+      - assume-role-development:
+          context: api-assume-role-housing-development-context
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only: development
+      - deploy-to-development:
+          requires:
+            - assume-role-development
 
   check-and-deploy-staging-and-production:
     jobs:
