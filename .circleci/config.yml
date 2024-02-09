@@ -13,7 +13,7 @@ executors:
       - image: circleci/node:14
   test:
     docker:
-      - image: circleci/node:12.22-browsers
+      - image: circleci/node:14-browsers
 
 references:
   workspace_root: &workspace_root '~'
@@ -114,14 +114,10 @@ jobs:
       - assume-role-and-persist-workspace:
           aws-account: $AWS_ACCOUNT_PRODUCTION
 
-
 workflows:
   check-and-deploy-development:
     jobs:
-      - build-and-test:
-          filters:
-            branches:
-              only: development
+      - build-and-test
       - assume-role-development:
           context: api-assume-role-housing-development-context
           requires:
