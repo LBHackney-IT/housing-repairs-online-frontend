@@ -114,7 +114,6 @@ jobs:
       - assume-role-and-persist-workspace:
           aws-account: $AWS_ACCOUNT_PRODUCTION
 
-
 workflows:
   check-and-deploy-development:
     jobs:
