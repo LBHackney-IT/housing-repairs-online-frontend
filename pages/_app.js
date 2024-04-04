@@ -40,6 +40,9 @@ function MyApp({ Component, pageProps, err  }) {
       `}
     </Script>
     <Header/>
+    <main className="govuk-main-wrapper govuk-!-padding-0">
+        <Component {...pageProps} err={err} />
+    </main>
     <footer className="govuk-footer" role="contentinfo">
       <div className="govuk-width-container">
         <div className="govuk-footer__meta">
