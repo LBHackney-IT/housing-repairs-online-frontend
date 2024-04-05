@@ -9,10 +9,6 @@ describe('App', () => {
     cy.contains('Housing Repairs Online');
   });
 
-  it('displays correct phase banner', () => {
-    cy.contains('This is our new website design - it\'s work in progress');
-  });
-
   it('displays a start button', () => {
     cy.get('a').contains('Start now').should('have.attr', 'href', '/report-repair/priority-list');
   });

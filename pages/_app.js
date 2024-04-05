@@ -40,19 +40,9 @@ function MyApp({ Component, pageProps, err  }) {
       `}
     </Script>
     <Header/>
-    <div className="govuk-width-container">
-      <div className="govuk-phase-banner lbh-phase-banner lbh-container">
-        <p className="govuk-phase-banner__content">
-          <strong className="govuk-tag govuk-phase-banner__content__tag lbh-tag">
-            Beta
-          </strong>
-          <span className="govuk-phase-banner__text">This is our new website design - it&apos;s work in progress.<a href="mailto:repairshub.feedback@hackney.gov.uk" title="Tell us what you think">Tell us what you think</a>, your feedback will help us to improve it.</span>
-        </p>
-      </div>
-      <main className="govuk-main-wrapper govuk-!-padding-0">
-        <Component {...pageProps} err={err} />
-      </main>
-    </div>
+    <main className="govuk-main-wrapper govuk-!-padding-0">
+      <Component {...pageProps} err={err} />
+    </main>
     <footer className="govuk-footer" role="contentinfo">
       <div className="govuk-width-container">
         <div className="govuk-footer__meta">
