@@ -118,22 +118,12 @@ jobs:
 
 
 workflows:
-  test-staging-deploy:
+  check:
     jobs:
       - build-and-test:
           filters:
             branches:
               ignore: main
-      - assume-role-staging:
-          context: api-assume-role-housing-staging-context
-          # requires:
-          #   - build-and-test
-          filters:
-            branches:
-              ignore: main
-      - deploy-to-staging:
-          requires:
-            - assume-role-staging
 
   check-and-deploy-staging-and-production:
     jobs:
