@@ -8,8 +8,6 @@ class MyDocument extends Document {
   }
 
   render() {
-    let gtmToken = process.env.NEXT_PUBLIC_GTM_TOKEN_ID
-
     return (
       <Html>
         <Head>
@@ -22,7 +20,7 @@ class MyDocument extends Document {
           <NextScript />
           <noscript
             dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmToken}" height="0" width="0" style="display: none; visibility: hidden;" />`,
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGX2SMF2" height="0" width="0" style="display: none; visibility: hidden;" />`,
             }}
           />
         </body>
