@@ -10,10 +10,10 @@ executors:
       - image: circleci/python:3.7
   node:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:20
   test:
     docker:
-      - image: circleci/node:14-browsers
+      - image: circleci/node:20-browsers
 
 references:
   workspace_root: &workspace_root '~'
@@ -118,22 +118,22 @@ jobs:
 
 
 workflows:
-  # check-and-deploy-development:
-  #   jobs:
-  #     - build-and-test:
-  #         filters:
-  #           branches:
-  #             only: development
-  #     - assume-role-development:
-  #         context: api-assume-role-housing-development-context
-  #         requires:
-  #           - build-and-test
-  #         filters:
-  #           branches:
-  #             only: development
-  #     - deploy-to-development:
-  #         requires:
-  #           - assume-role-development
+  test-staging-deploy:
+    jobs:
+      - build-and-test:
+          filters:
+            branches:
+              ignore: main
+      - assume-role-staging:
+          context: api-assume-role-housing-staging-context
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only: main
+      - deploy-to-staging:
+          requires:
+            - assume-role-staging
 
   check-and-deploy-staging-and-production:
     jobs:
