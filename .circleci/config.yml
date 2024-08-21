@@ -48,7 +48,7 @@ commands:
       - setup_remote_docker
       - run:
           name: Install serverless CLI
-          command: sudo npm i -g serverless
+          command: sudo npm i -g serverless@3.38.0
       - run:
           name: Deploy application
           command: |
@@ -120,10 +120,10 @@ jobs:
 workflows:
   test-staging-deploy:
     jobs:
-      # - build-and-test:
-      #     filters:
-      #       branches:
-      #         ignore: main
+      - build-and-test:
+          filters:
+            branches:
+              ignore: main
       - assume-role-staging:
           context: api-assume-role-housing-staging-context
           # requires:
