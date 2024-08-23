@@ -25,7 +25,7 @@ const moduleExports = {
   },
 
   env: {
-    NEXT_ANALYTICS_ENABLED: process.env.NEXT_ANALYTICS_ENABLED || 'false',
+    ANALYTICS_ENABLED: process.env.ANALYTICS_ENABLED || 'false',
   }
 
 };
