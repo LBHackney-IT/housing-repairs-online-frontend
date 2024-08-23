@@ -25,7 +25,7 @@ const moduleExports = {
   },
 
   env: {
-    ANALYTICS_ENABLED: process.env.ANALYTICS_ENABLED == 'true' ? 'true' : 'false',
+    ANALYTICS_ENABLED: process.env.ANALYTICS_ENABLED == 'true',
   }
 
 };

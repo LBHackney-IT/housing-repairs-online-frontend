@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, err  }) {
   })
 
   return <>
-    { process.env.ANALYTICS_ENABLED === 'true' && (
+    { process.env.ANALYTICS_ENABLED && (
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
