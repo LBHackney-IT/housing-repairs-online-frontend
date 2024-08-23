@@ -23,6 +23,11 @@ const moduleExports = {
   images: {
     loader: 'default',
   },
+
+  env: {
+    NEXT_ANALYTICS_ENABLED: process.env.NEXT_ANALYTICS_ENABLED || 'false',
+  }
+
 };
 
 module.exports = withSentryConfig(moduleExports, {
