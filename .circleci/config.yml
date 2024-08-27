@@ -48,7 +48,7 @@ commands:
       - setup_remote_docker
       - run:
           name: Install serverless CLI
-          command: sudo npm i -g serverless
+          command: sudo npm i -g serverless@^3
       - run:
           name: Deploy application
           command: |
