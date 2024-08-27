@@ -30,6 +30,7 @@ functions:
     environment:
       REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
       REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/repairs-api-base-url}
+      NEXT_PUBLIC_GTM_TOKEN_ID: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/gtm-token-id}
     role: lambdaExecutionRole
     events:
       - httpApi:
