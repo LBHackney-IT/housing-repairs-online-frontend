@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps, err  }) {
     document.title = 'Housing Repairs' + pageTitle
   })
 
-  var gtmTokenId = process.env.NEXT_PUBLIC_GTM_TOKEN_ID || '';
+  var gtmTokenId = process.env.NEXT_PUBLIC_GTM_TOKEN_ID;
 
   return <>
     { gtmTokenId && (
