@@ -18,10 +18,10 @@ class MyDocument extends Document {
         <body className={'js-enabled lbh-body'}>
           <Main />
           <NextScript />
-          {process.env.ANALYTICS_ENABLED && (
+          {process.env.NEXT_PUBLIC_GTM_TOKEN_ID && (
             <noscript
               dangerouslySetInnerHTML={{
-                __html: '<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGX2SMF2" height="0" width="0" style="display: none; visibility: hidden;" />',
+                __html: '<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_TOKEN_ID}" height="0" width="0" style="display: none; visibility: hidden;" />',
               }}
             />
           )}
