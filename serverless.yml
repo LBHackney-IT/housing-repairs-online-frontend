@@ -13,6 +13,11 @@ package:
   patterns:
     - '!./**'
 
+custom:
+  analytics_enabled:
+    production: "true"
+    other: "false"
+
 functions:
   HousingRepairsOnlineFrontend:
     name: ${self:service}-${self:provider.stage}
@@ -30,6 +35,7 @@ functions:
     environment:
       REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
       REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/repairs-api-base-url}
+      ANALYTICS_ENABLED: ${self:custom.analytics_enabled.${self:provider.stage}}
     role: lambdaExecutionRole
     events:
       - httpApi:

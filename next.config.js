@@ -23,6 +23,11 @@ const moduleExports = {
   images: {
     loader: 'default',
   },
+
+  env: {
+    ANALYTICS_ENABLED: process.env.ANALYTICS_ENABLED == 'true',
+  }
+
 };
 
 module.exports = withSentryConfig(moduleExports, {
