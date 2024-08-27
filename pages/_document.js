@@ -8,23 +8,23 @@ class MyDocument extends Document {
   }
 
   render() {
+    let gtmToken = process.env.NEXT_PUBLIC_GTM_TOKEN_ID
+
     return (
       <Html>
         <Head>
           {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-          <script src='/js/all.js'></script>
-          <link rel='shortcut icon' href='/static/favicon.ico' />
+          <script src="/js/all.js"></script>
+          <link rel="shortcut icon" href="/static/favicon.ico" />
         </Head>
         <body className={'js-enabled lbh-body'}>
           <Main />
           <NextScript />
-          {process.env.ANALYTICS_ENABLED && (
-            <noscript
-              dangerouslySetInnerHTML={{
-                __html: '<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGX2SMF2" height="0" width="0" style="display: none; visibility: hidden;" />',
-              }}
-            />
-          )}
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmToken}" height="0" width="0" style="display: none; visibility: hidden;" />`,
+            }}
+          />
         </body>
       </Html>
     )
