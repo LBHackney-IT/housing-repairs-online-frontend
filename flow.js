@@ -103,7 +103,7 @@ class Flow {
         {condition: 'windows', nextStep: 'repair-window-problems'},
         {condition: 'dampOrMould', nextStep: 'bathroom-damp-mould-problems'},
         {condition: 'damagedOrStuckDoors', nextStep: 'repair-door-problems'},
-        {condition: 'showerIncludingTrayAndDoor', nextStep: 'repair-shower-problems'},
+        {condition: 'showerIncludingTrayAndDoor', nextStep: 'unable-to-book'},
         {condition: 'damagedOrStuckDoors', nextStep: 'repair-door-problems'},
         {condition: 'toilet', nextStep: 'repair-toilet-problems'},
         {condition: 'heatingOrHotWater', nextStep: 'unable-to-book'}
