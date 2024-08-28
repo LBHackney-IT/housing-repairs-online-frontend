@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps, err  }) {
     document.title = 'Housing Repairs' + pageTitle
   })
 
-  let gtmToken = process.env.GTM_TOKEN_ID
+  let gtmToken = process.env.NEXT_PUBLIC_GTM_TOKEN_ID
 
   return <>
     <Script id="google-tag-manager" strategy="afterInteractive">
