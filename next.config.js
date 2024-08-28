@@ -23,10 +23,6 @@ const moduleExports = {
   images: {
     loader: 'default',
   },
-
-  env: {
-    GTM_TOKEN_ID: process.env.GTM_TOKEN_ID,
-  },
 };
 
 module.exports = withSentryConfig(moduleExports, {
