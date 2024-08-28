@@ -8,7 +8,7 @@ class MyDocument extends Document {
   }
 
   render() {
-    let gtmToken = process.env.NEXT_PUBLIC_GTM_TOKEN_ID
+    let gtmToken = process.env.GTM_TOKEN_ID
 
     return (
       <Html>

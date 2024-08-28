@@ -25,7 +25,7 @@ const moduleExports = {
   },
 
   env: {
-    NEXT_PUBLIC_GTM_TOKEN_ID: process.env.NEXT_PUBLIC_GTM_TOKEN_ID,
+    GTM_TOKEN_ID: process.env.GTM_TOKEN_ID,
   },
 };
 
