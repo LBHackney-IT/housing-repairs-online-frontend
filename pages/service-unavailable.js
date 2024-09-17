@@ -12,8 +12,8 @@ export default function ServiceUnavailable() {
           testid="landing-page-report-limit-warning"
           className="govuk-!-margin-top-4 lbh-body lbh-!-font-weight-bold"
         >
-          We apologise for the inconvenience, our online Housing Repairs system
-          is currently unavailable. Please try back later, or call Repairs
+          We apologise for the inconvenience. Our online Housing Repairs system
+          is currently unavailable from 9th February until Monday 12th at 9am. Please try again later, or call Repairs
           Contact Centre on 0208 356 3691 to report your repair.
         </WarningText>
       </div>
