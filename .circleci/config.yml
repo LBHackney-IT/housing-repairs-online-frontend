@@ -4,6 +4,7 @@ orbs:
   cypress: cypress-io/cypress@1
   aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
   node: circleci/node@6.3.0
+  browser-tools: circleci/browser-tools@1.4.8
 
 executors:
   docker-python:
@@ -81,6 +82,8 @@ jobs:
             export SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
       - node/install-packages:
           pkg-manager: yarn
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - run:
           name: build
           command: yarn build
