@@ -45,7 +45,7 @@ Start the development function
 ```bash
 cd api/ && nvm use && yarn start
 ```
-> if the function doesn't start try switching your node version to 14.0.0 
+> if the function doesn't start try switching your node version to 20.0.0 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
