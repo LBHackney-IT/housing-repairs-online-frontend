@@ -11,7 +11,7 @@ import {
 describe('repair availability', () => {
   describe('with availability', () =>
   {
-    before(() => {
+    beforeEach(() => {
       intercept_availability_search();
       cy.visit('http://localhost:3000/report-repair/repair-availability');
     });
@@ -49,7 +49,7 @@ describe('repair availability', () => {
     });
 
     context('when user loads more timeslots', () => {
-      before(() => {
+      beforeEach(() => {
         intercept_availability_search();
         cy.get('a.govuk-button').click();
         cy.wait(100)
@@ -74,7 +74,7 @@ describe('repair availability', () => {
   });
 
   describe('without availability', () => {
-    before(() => {
+    beforeEach(() => {
       intercept_availability_search([]);
       cy.visit('http://localhost:3000/report-repair/repair-availability');
     })
@@ -93,7 +93,7 @@ describe('repair availability', () => {
     const email = 'harrypotter@hogwarts.com';
     const contactName = 'Elliot Carver'
 
-    before(() => {
+    beforeEach(() => {
       intercept_availability_search();
       intercept_address_search();
       interceptPropertyEligibilityCheck(true);

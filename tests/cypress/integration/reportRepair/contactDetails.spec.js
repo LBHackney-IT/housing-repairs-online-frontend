@@ -1,5 +1,5 @@
 describe('contactDetails', () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit('http://localhost:3000/report-repair/contact-details');
   });
 
@@ -66,7 +66,7 @@ describe('contactDetails', () => {
     });
 
     context('When a user types invalid characters', ()=>{
-      before(()=>{
+      beforeEach(()=>{
         cy.get('input#contactDetails-text').clear()
       })
       it('only numbers are accepted', () => {
@@ -76,7 +76,7 @@ describe('contactDetails', () => {
     });
 
     context('When a user types in a landline number', ()=>{
-      before(() => {
+      beforeEach(() => {
         cy.get('input#contactDetails-text').clear()
       })
       it('an error is displayed', () => {

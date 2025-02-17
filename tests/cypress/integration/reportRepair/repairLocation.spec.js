@@ -1,7 +1,7 @@
 import {navigateToLocation} from '../../support/helpers';
 
 describe('repairLocation', () => {
-  before(() => {
+  beforeEach(() => {
     navigateToLocation();
   });
 
