@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  cypress: cypress-io/cypress@1
+  # cypress: cypress-io/cypress@1
   aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
   node: circleci/node@6.3.0
   browser-tools: circleci/browser-tools@1.4.8
@@ -84,6 +84,9 @@ jobs:
           pkg-manager: yarn
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
+      - run:
+          name: Force install
+          command: yarn cypress install --force
       - run:
           name: build
           command: yarn build
