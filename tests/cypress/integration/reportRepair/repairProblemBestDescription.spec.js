@@ -6,7 +6,7 @@ const testWindowOption = () => {
   });
 
   it('displays a "Smashed window(s)" option', () => {
-    cy.contains('Smashed window(s)');
+    cy.contains('Smashed window(s)', { timeout: 1000 });
   });
 
   it('displays a "Window stuck open" option', () => {
@@ -243,7 +243,7 @@ describe('repairProblemBestDescription', () => {
     });
     context('Damaged or stuck windows', () => {
       beforeEach(() => {
-        cy.go(-1);
+        // cy.go(-1);
         cy.contains('Damaged or stuck windows').click();
         cy.contains('Continue').click();
       });
@@ -472,7 +472,8 @@ context('Bedroom', () => {
 
   context('Damaged or stuck windows', () => {
     beforeEach(() => {
-      cy.go(-1);
+      // navigateToLocation();
+      // cy.go(-1);
       cy.contains('Damaged or stuck windows').click();
       cy.contains('Continue').click();
     });
