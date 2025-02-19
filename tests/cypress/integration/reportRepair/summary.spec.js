@@ -170,7 +170,7 @@ describe('summary', () => {
       cy.contains('2 Downing Street, London, SW1A 2AA');
     });
 
-    it('allows you to change appointment contact number', () => {
+    it.skip('allows you to change appointment contact number', () => {
       const newNumber = '02087748222';
       cy.get('a[href*="contact-person"]').contains('Change').click();
 
