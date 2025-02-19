@@ -1,5 +1,5 @@
 describe('contactPerson', () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit('http://localhost:3000/report-repair/contact-person');
   });
 
@@ -32,7 +32,7 @@ describe('contactPerson', () => {
   });
 
   context('When a user types invalid characters', ()=>{
-    before(()=>{
+    beforeEach(()=>{
       cy.get('[id=phone-number]').clear();
       cy.get('[id=contact-name]').clear();
     })

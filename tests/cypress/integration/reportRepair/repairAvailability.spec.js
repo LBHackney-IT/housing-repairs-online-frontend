@@ -4,14 +4,12 @@ import {
   intercept_availability_search,
   selectRadioOptionAndContinue,
   navigateToPageTypeInputTextAndContinue,
-  navigateToPageTypeInputByIdAndContinue
+  navigateToPageTypeInputByIdAndContinue,
 } from '../../support/helpers';
 
-
 describe('repair availability', () => {
-  describe('with availability', () =>
-  {
-    before(() => {
+  describe('with availability', () => {
+    beforeEach(() => {
       intercept_availability_search();
       cy.visit('http://localhost:3000/report-repair/repair-availability');
     });
@@ -19,7 +17,7 @@ describe('repair availability', () => {
     it('api is called without from date ', () => {
       cy.wait('@availability')
         .its('request.url')
-        .should('not.include', 'fromDate=')
+        .should('not.include', 'fromDate=');
     });
 
     it('displays the question', () => {
@@ -27,8 +25,10 @@ describe('repair availability', () => {
     });
 
     it('displays information about who needs to be home', () => {
-      cy.contains('A responsible adult must be at the property for all of the ' +
-        'repair appointment time slot and during the repair appointment');
+      cy.contains(
+        'A responsible adult must be at the property for all of the ' +
+          'repair appointment time slot and during the repair appointment'
+      );
     });
 
     it('displays available time slots', () => {
@@ -49,51 +49,53 @@ describe('repair availability', () => {
     });
 
     context('when user loads more timeslots', () => {
-      before(() => {
+      beforeEach(() => {
         intercept_availability_search();
         cy.get('a.govuk-button').click();
-        cy.wait(100)
+        cy.wait(100);
       });
 
       it('api is called with appropriate from date ', () => {
-        cy.wait('@availability')
-          .its('request.url')
-          .should('include', 'fromDate=2017-07-23')
+        cy.get('@availability.all').then((interceptions) => {
+          const hasMatchingRequest = interceptions.some((intercept) =>
+            intercept.request.url.includes('fromDate=2017-07-23')
+          );
+          expect(hasMatchingRequest).to.be.true;
+        });
       });
 
       it('displays previous button with correct text', () => {
         cy.get('a.govuk-button').contains('Previous 5 days');
       });
-    })
+    });
     context('When a user select anything', () => {
       it('an error should be shown', () => {
-        cy.contains('Continue').click()
+        cy.contains('Continue').click();
         cy.contains('Required');
       });
     });
   });
 
   describe('without availability', () => {
-    before(() => {
+    beforeEach(() => {
       intercept_availability_search([]);
       cy.visit('http://localhost:3000/report-repair/repair-availability');
-    })
+    });
 
     it('displays unable to book page', () => {
       cy.wait('@availability');
-      cy.contains('Your repair could not be booked')
+      cy.contains('Your repair could not be booked');
     });
-
   });
 
   describe('for SOR with only location and problem', () => {
     const address = '1 Downing Street, London, SW1A 2AA';
-    const repairDescription = 'Eius postea venit saepius arcessitus.'
+    const repairDescription = 'Eius postea venit saepius arcessitus.';
     const phoneNumber = '02085548333';
     const email = 'harrypotter@hogwarts.com';
-    const contactName = 'Elliot Carver'
+    const contactName = 'Elliot Carver';
 
-    before(() => {
+    beforeEach(() => {
       intercept_availability_search();
       intercept_address_search();
       interceptPropertyEligibilityCheck(true);
@@ -101,36 +103,40 @@ describe('repair availability', () => {
 
       selectRadioOptionAndContinue({
         page: 'priority-list',
-        option:'Something else'
-      })
+        option: 'Something else',
+      });
 
       selectRadioOptionAndContinue({
         page: 'existing-repair',
-        option:'New repair'
-      })
+        option: 'New repair',
+      });
 
       selectRadioOptionAndContinue({
-        page: 'communal', option:'No'
-      })
+        page: 'communal',
+        option: 'No',
+      });
 
       navigateToPageTypeInputTextAndContinue({
-        page: 'postcode', inputText:'SW1A 2AA'
-      })
+        page: 'postcode',
+        inputText: 'SW1A 2AA',
+      });
 
-      cy.get('[data-cy=address]', {timeout: 10000}).then(() => {
-        cy.get('select').select(address)
+      cy.get('[data-cy=address]', { timeout: 10000 }).then(() => {
+        cy.get('select').select(address);
         cy.get('button').click();
       });
 
       selectRadioOptionAndContinue({
-        page: 'repair-location', option:'Kitchen'
-      })
+        page: 'repair-location',
+        option: 'Kitchen',
+      });
 
       selectRadioOptionAndContinue({
-        page: 'repair-problem', option:'Damaged worktop'
-      })
+        page: 'repair-problem',
+        option: 'Damaged worktop',
+      });
 
-      cy.get('[data-cy=repair-description]', {timeout: 10000}).then(() => {
+      cy.get('[data-cy=repair-description]', { timeout: 10000 }).then(() => {
         cy.get('textarea').type(repairDescription);
         cy.get('input').attachFile('good.jpg');
         cy.get('button').contains('Continue').click();
@@ -139,19 +145,21 @@ describe('repair availability', () => {
       navigateToPageTypeInputByIdAndContinue({
         page: 'contact-person',
         id: 'phone-number',
-        inputText: phoneNumber
-      })
+        inputText: phoneNumber,
+      });
 
       navigateToPageTypeInputByIdAndContinue({
         page: 'contact-person',
         id: 'contact-name',
-        inputText: contactName
-      })
+        inputText: contactName,
+      });
 
-      cy.get('[data-cy=contact-details]', {timeout: 10000}).then(() => {
-        cy.get('input#contactDetails-1').click().then(()=> {
-          cy.get('input#contactDetails-email').type(email);
-        })
+      cy.get('[data-cy=contact-details]', { timeout: 10000 }).then(() => {
+        cy.get('input#contactDetails-1')
+          .click()
+          .then(() => {
+            cy.get('input#contactDetails-email').type(email);
+          });
         cy.get('button').click();
       });
     });
@@ -159,7 +167,7 @@ describe('repair availability', () => {
     it('api is called without repair issue', () => {
       cy.wait('@availability')
         .its('request.url')
-        .should('not.include', 'repairIssue=')
+        .should('not.include', 'repairIssue=');
     });
-  })
+  });
 });

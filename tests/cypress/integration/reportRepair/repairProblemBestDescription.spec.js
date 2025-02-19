@@ -6,7 +6,7 @@ const testWindowOption = () => {
   });
 
   it('displays a "Smashed window(s)" option', () => {
-    cy.contains('Smashed window(s)');
+    cy.contains('Smashed window(s)', { timeout: 1000 });
   });
 
   it('displays a "Window stuck open" option', () => {
@@ -57,7 +57,7 @@ const testWallOption = () => {
 };
 
 const electricsOption = () => {
-  before(() => {
+  beforeEach(() => {
     cy.contains('Electrics, including lights and switches').click();
     cy.get('button').click();
   });
@@ -133,14 +133,14 @@ const testDampOrMouldOption = () => {
 
 describe('repairProblemBestDescription', () => {
   context('Kitchen', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Kitchen').click();
       cy.get('button').click();
     });
 
     context('Cupboards, including damaged cupboard doors', () => {
-      before(() => {
+      beforeEach(() => {
         cy.contains('Cupboards, including damaged cupboard doors').click();
         cy.get('button').click();
       });
@@ -159,7 +159,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Heating or hot water', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Kitchen').click();
         cy.get('button').click();
@@ -173,7 +173,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Electrical, including extractor fans and lightbulbs', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Kitchen').click();
         cy.get('button').click();
@@ -201,7 +201,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Damaged or stuck doors', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Kitchen').click();
         cy.get('button').click();
@@ -231,7 +231,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Walls, floor or ceiling, excluding damp', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Kitchen').click();
         cy.get('button').click();
@@ -242,8 +242,8 @@ describe('repairProblemBestDescription', () => {
       testWallOption();
     });
     context('Damaged or stuck windows', () => {
-      before(() => {
-        cy.go(-1);
+      beforeEach(() => {
+        // cy.go(-1);
         cy.contains('Damaged or stuck windows').click();
         cy.contains('Continue').click();
       });
@@ -251,7 +251,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Sink, including taps and drainage', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Kitchen').click();
         cy.get('button').click();
@@ -263,7 +263,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Damp or mould', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Kitchen').click();
         cy.get('button').click();
@@ -275,14 +275,14 @@ describe('repairProblemBestDescription', () => {
   });
 
   context('Bathroom', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Bathroom').click();
       cy.get('button').click();
     });
 
     context('Bath, including taps', () => {
-      before(() => {
+      beforeEach(() => {
         cy.contains('Bath, including taps').click();
         cy.get('button').click();
       });
@@ -309,7 +309,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Walls, floor or ceiling, excluding damp', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Bathroom').click();
         cy.get('button').click();
@@ -321,7 +321,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Sink, including taps and drainage', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Bathroom').click();
         cy.get('button').click();
@@ -333,7 +333,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Electrics, including extractor fan and pull cords', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Bathroom').click();
         cy.get('button').click();
@@ -375,7 +375,7 @@ describe('repairProblemBestDescription', () => {
     });
 
     context('Damaged or stuck doors', () => {
-      before(() => {
+      beforeEach(() => {
         navigateToLocation();
         cy.contains('Bathroom').click();
         cy.get('button').click();
@@ -387,7 +387,7 @@ describe('repairProblemBestDescription', () => {
   });
 
   context('Toilet', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Bathroom').click();
       cy.get('button').click();
@@ -421,7 +421,7 @@ describe('repairProblemBestDescription', () => {
   });
 
   context('Shower, including the tray and shower door', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Bathroom').click();
       cy.get('button').click();
@@ -436,14 +436,14 @@ describe('repairProblemBestDescription', () => {
 });
 
 context('Bedroom', () => {
-  before(() => {
+  beforeEach(() => {
     navigateToLocation();
     cy.contains('Bedroom').click();
     cy.get('button').click();
   });
 
   context('Walls, floor or ceiling, excluding damp', () => {
-    before(() => {
+    beforeEach(() => {
       cy.contains('Walls, floor or ceiling, excluding damp').click();
       cy.get('button').click();
     });
@@ -452,7 +452,7 @@ context('Bedroom', () => {
   });
 
   context('Electrics, including extractor fan and pull cords', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Bedroom').click();
       cy.get('button').click();
@@ -462,7 +462,7 @@ context('Bedroom', () => {
   });
 
   context('Electrical, including extractor fans and lightbulbs', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Bedroom').click();
       cy.get('button').click();
@@ -471,8 +471,9 @@ context('Bedroom', () => {
   });
 
   context('Damaged or stuck windows', () => {
-    before(() => {
-      cy.go(-1);
+    beforeEach(() => {
+      // navigateToLocation();
+      // cy.go(-1);
       cy.contains('Damaged or stuck windows').click();
       cy.contains('Continue').click();
     });
@@ -480,7 +481,7 @@ context('Bedroom', () => {
   });
 
   context('Damaged or stuck doors', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Bedroom').click();
       cy.get('button').click();
@@ -491,7 +492,7 @@ context('Bedroom', () => {
   });
 
   context('Damp or mould', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Bedroom').click();
       cy.get('button').click();
@@ -503,14 +504,14 @@ context('Bedroom', () => {
 });
 
 context('Living Area', () => {
-  before(() => {
+  beforeEach(() => {
     navigateToLocation();
     cy.contains('Living Area').click();
     cy.get('button').click();
   });
 
   context('Walls, floor or ceiling, excluding damp', () => {
-    before(() => {
+    beforeEach(() => {
       cy.contains('Walls, floor or ceiling, excluding damp').click();
       cy.get('button').click();
     });
@@ -518,7 +519,7 @@ context('Living Area', () => {
     testWallOption();
   });
   context('Electrics, including lights and switches', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Living Areas').click();
       cy.get('button').click();
@@ -528,7 +529,7 @@ context('Living Area', () => {
   });
 
   context('Damaged or stuck windows', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Living Areas').click();
       cy.get('button').click();
@@ -539,7 +540,7 @@ context('Living Area', () => {
   });
 
   context('Damaged or stuck doors', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Living Area').click();
       cy.get('button').click();
@@ -550,7 +551,7 @@ context('Living Area', () => {
   });
 
   context('Damp or mould', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Living Area').click();
       cy.get('button').click();
@@ -561,7 +562,7 @@ context('Living Area', () => {
   });
 
   context('Stairs (including handrail)', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Living Area').click();
       cy.get('button').click();

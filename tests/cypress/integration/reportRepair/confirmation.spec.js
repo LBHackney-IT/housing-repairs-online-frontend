@@ -96,7 +96,7 @@ function completeJourney(contactPhone = false) {
 }
 
 describe('confirmation', () => {
-  before(() => {
+  beforeEach(() => {
     intercept_availability_search();
     intercept_address_search();
     interceptPropertyEligibilityCheck(true);
@@ -110,7 +110,7 @@ describe('confirmation', () => {
   });
 
   it('Displays report another issue link', () => {
-    cy.get('a').contains('Report another issue').should('have.attr', 'href', '/');
+    cy.get('a', { timeout: 1000}).contains('Report another issue').should('have.attr', 'href', '/');
   });
 
   it('Does not display the back button', () => {
@@ -124,7 +124,7 @@ describe('confirmation', () => {
   });
 
   context('when user sends confirmation via text', ()=>{
-    before(() => {
+    beforeEach(() => {
       intercept_availability_search();
       intercept_address_search();
       interceptPropertyEligibilityCheck(true);

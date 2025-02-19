@@ -19,7 +19,7 @@ const genericWhatIsTheProblemOptions = () => {
 describe('repairProblem', () => {
 
   context('kitchen', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation()
       cy.contains('Kitchen').click();
       cy.get('button').click();
@@ -67,7 +67,7 @@ describe('repairProblem', () => {
   });
 
   context('Bathroom', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation()
       cy.contains('Bathroom').click();
       cy.get('button').click();
@@ -119,7 +119,7 @@ describe('repairProblem', () => {
   });
 
   context('Bedroom', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation()
       cy.contains('Bedroom').click();
       cy.get('button').click();
@@ -145,7 +145,7 @@ describe('repairProblem', () => {
   });
 
   context('Living Areas', () => {
-    before(() => {
+    beforeEach(() => {
       navigateToLocation();
       cy.contains('Living Areas').click();
       cy.get('button').click();
