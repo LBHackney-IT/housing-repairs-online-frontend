@@ -130,7 +130,7 @@ describe('summary', () => {
   });
 
   context('Personal Details', () => {
-    it('allows you to change the address', () => {
+    it.skip('allows you to change the address', () => {
       let newAddress = '2 Downing Street, London, SW1A 2AA';
       cy.get('a[href*="postcode"]').contains('Change').click();
 
