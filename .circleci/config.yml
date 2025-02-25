@@ -66,6 +66,7 @@ commands:
             fi
             yarn
             yarn build
+            rm -rf /node_modules
             yarn --production
             npx --yes serverless deploy --stage staging
             
