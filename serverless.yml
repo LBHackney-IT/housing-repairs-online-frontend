@@ -13,14 +13,16 @@ package:
   exclude:
     - ./**
 
+
 functions:
   HousingRepairsOnlineFrontend:
     name: ${self:service}-${self:provider.stage}
     handler: lambda.handler
     timeout: 30
     package:
+    
       include:
-        - src/lambda.js
+        - lambda.js
         - next.config.js
         - public/**
         - 'build/_next/BUILD_ID'
