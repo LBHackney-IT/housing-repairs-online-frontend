@@ -43,6 +43,7 @@ commands:
           paths:
             - .aws
   deploy-lambda:
+    executor: node-executor
     description: 'Deploys application'
     parameters:
       stage:
@@ -65,7 +66,10 @@ commands:
             yarn
             yarn build
             yarn --production
-            sls deploy --stage << parameters.stage >>
+            npx --yes serverless deploy --stage staging
+            
+            
+# sls deploy --stage << parameters.stage >>
 
 jobs:
   build-and-test:
