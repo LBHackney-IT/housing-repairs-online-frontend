@@ -10,8 +10,9 @@ provider:
 package:
   excludeDevDependencies: true
   individually: true
-  patterns:
-    - '!./**'
+  exclude:
+    - ./**
+
 
 functions:
   HousingRepairsOnlineFrontend:
@@ -19,14 +20,22 @@ functions:
     handler: lambda.handler
     timeout: 30
     package:
-      patterns:
-        - 'lambda.js'
-        - 'next.config.js'
-        - 'build/_next/**'
-        - 'public/**'
-        - 'node_modules/**'
-        - '!node_modules/@next/swc-darwin-arm64'       
-        - '!node_modules/@sentry/cli/sentry-cli'         
+    
+      include:
+        - lambda.js
+        - next.config.js
+        - public/**
+        - 'build/_next/BUILD_ID'
+        - 'build/_next/*.json'
+        - 'build/_next/server/**'
+        - 'build/_next/static/**'
+        - node_modules/**
+        - '!node_modules/@next/swc-darwin-arm64'
+        - '!node_modules/@next/swc-darwin-x64'
+        - '!node_modules/@next/swc-linux-x64-gnu'
+        - '!node_modules/@next/swc-win32-x64-msvc'
+        - '!node_modules/@sentry/cli/sentry-cli'
+        - '!node_modules/leaflet'    
     environment:
       REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
       REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/repairs-api-base-url}
