@@ -63,7 +63,6 @@ commands:
               export NEXT_PUBLIC_GTM_TOKEN_ID=GTM-PWLHK3C
             fi
             yarn build
-            rm -rf node_modules
             yarn --production
             sls deploy --stage << parameters.stage >>
 
