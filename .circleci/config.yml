@@ -52,7 +52,7 @@ commands:
       - *attach_workspace
       - checkout
       - setup_remote_docker
-      - node/install
+      # - node/install
       - run:
           name: Install serverless CLI
           command: sudo npm i -g serverless@^3
