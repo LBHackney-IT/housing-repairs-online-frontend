@@ -1,9 +1,8 @@
 version: 2.1
 
 orbs:
-  # cypress: cypress-io/cypress@1
   aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
-  node: circleci/node@6.3.0 # try different node version maybez
+  node: circleci/node@6.3.0
   browser-tools: circleci/browser-tools@1.4.8
 
 executors:
@@ -13,12 +12,6 @@ executors:
   node-executor:
     docker:
       - image: cimg/node:20.16.0-browsers
-  # node:
-  #   docker:
-  #     - image: circleci/node:14
-  # test:
-  #   docker:
-  #     - image: circleci/node:14-browsers
 
 references:
   workspace_root: &workspace_root '~'
@@ -43,7 +36,6 @@ commands:
           paths:
             - .aws
   deploy-lambda:
-    # executor: node-executor
     description: 'Deploys application'
     parameters:
       stage:
@@ -52,7 +44,6 @@ commands:
       - *attach_workspace
       - checkout
       - setup_remote_docker
-      # - node/install
       - run:
           name: Install serverless CLI
           command: sudo npm i -g serverless@^3
@@ -140,33 +131,33 @@ workflows:
 
   check-and-deploy-staging-and-production:
     jobs:
-      # - build-and-test:
-      #     filters:
-      #       branches:
-      #         only: main
+      - build-and-test:
+          filters:
+            branches:
+              only: main
       - assume-role-staging:
           context: api-assume-role-housing-staging-context
-          # requires:
-          #   - build-and-test
+          requires:
+            - build-and-test
       - deploy-to-staging:
           requires:
             - assume-role-staging
-      # - permit-production-release:
-      #     type: approval
-      #     requires:
-      #       - deploy-to-staging
-      # - assume-role-production:
-      #     context: api-assume-role-housing-production-context
-      #     requires:
-      #       - permit-production-release
-      #     filters:
-      #       branches:
-      #         only: main
-      # - deploy-to-production:
-      #     context: api-nuget-token-context
-      #     requires:
-      #       - permit-production-release
-      #       - assume-role-production
-      #     filters:
-      #       branches:
-      #         only: main
+      - permit-production-release:
+          type: approval
+          requires:
+            - deploy-to-staging
+      - assume-role-production:
+          context: api-assume-role-housing-production-context
+          requires:
+            - permit-production-release
+          filters:
+            branches:
+              only: main
+      - deploy-to-production:
+          context: api-nuget-token-context
+          requires:
+            - permit-production-release
+            - assume-role-production
+          filters:
+            branches:
+              only: main
