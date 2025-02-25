@@ -68,8 +68,6 @@ commands:
             yarn --production
             npx --yes serverless deploy --stage staging
             
-            
-# sls deploy --stage << parameters.stage >>
 
 jobs:
   build-and-test:
