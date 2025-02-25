@@ -64,12 +64,7 @@ commands:
             elif [ << parameters.stage >> = "staging" ]; then
               export NEXT_PUBLIC_GTM_TOKEN_ID=GTM-PWLHK3C
             fi
-            yarn
-            yarn build
-            rm -rf /node_modules
-            yarn --production
-            npx --yes serverless deploy --stage staging
-            
+            yarn build && yarn --production=true && npx --yes serverless deploy --stage staging
 
 jobs:
   build-and-test:
