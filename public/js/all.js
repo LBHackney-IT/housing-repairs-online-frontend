@@ -30,7 +30,7 @@
       var r = (d + Math.random() * 16) % 16 | 0;
       d = Math.floor(d / 16);
       return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
-    })
+    });
   }
 
   (function(undefined) {
@@ -39,7 +39,7 @@
     var detect = (
       // In IE8, defineProperty could only act on DOM elements, so full support
       // for the feature requires the ability to set a property on an arbitrary object
-      'defineProperty' in Object && (function() {
+      ('defineProperty' in Object && (function() {
   	try {
   		var a = {};
   		Object.defineProperty(a, 'test', {value:42});
@@ -47,7 +47,7 @@
   	} catch(e) {
   		return false
   	}
-      }())
+      }()))
     );
 
     if (detect) return
