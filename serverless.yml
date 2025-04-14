@@ -51,6 +51,17 @@ functions:
         - '**/node_modules/**/*.linux.node'
         - '**/node_modules/**/*.win.exe'
         - '**/node_modules/**/*.darwin.exe'
+    environment:
+      REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
+      REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/repairs-api-base-url}
+    role: lambdaExecutionRole
+    events:
+      - httpApi:
+          path: /
+          method: ANY
+      - httpApi:
+          path: /{any+}
+          method: ANY
 
 resources:
   Resources:
