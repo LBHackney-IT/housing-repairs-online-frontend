@@ -1,9 +1,9 @@
 const path = require('path');
 
 const { withSentryConfig } = require('@sentry/nextjs');
-const { prependOnceListener } = require('process');
 
 const moduleExports = {
+  output: 'standalone',
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
