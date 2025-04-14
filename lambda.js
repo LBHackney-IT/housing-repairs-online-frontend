@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 process.env.NODE_ENV = 'production';
 
-server.use('/_next/static', files(path.join(__dirname, 'build/static')));
+server.use('/_next/static', files(path.join(__dirname, 'build/_next/static')));
 server.use(files(path.join(__dirname, 'public')));
 
 const nextApp = require('./build/_next/standalone/server');
