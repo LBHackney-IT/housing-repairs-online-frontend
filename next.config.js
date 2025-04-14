@@ -1,7 +1,6 @@
 const path = require('path');
 
 const { withSentryConfig } = require('@sentry/nextjs');
-const { prependOnceListener } = require('process');
 
 const moduleExports = {
   sassOptions: {
@@ -23,6 +22,7 @@ const moduleExports = {
   images: {
     loader: 'default',
   },
+  output: 'standalone'
 };
 
 module.exports = withSentryConfig(moduleExports, {
