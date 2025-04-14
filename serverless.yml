@@ -23,34 +23,34 @@ functions:
         - lambda.js
         - next.config.js
         - public/**
-        - build/_next/BUILD_ID
-        - build/_next/*.json
-        - build/_next/server/**
-        - build/_next/static/**
-      exclude:
-        - '**/.git/**'
-        - '**/.next/cache/**'
-        - '**/.github/**'
-        - '**/test/**'
-        - '**/tests/**'
-        - '**/*.test.js'
-        - '**/*.spec.js'
-        - '**/*.stories.js'
-        - '**/node_modules/typescript/**'
-        - '**/node_modules/@types/**'
-        - '**/node_modules/.bin/**'
-        - '**/node_modules/.cache/**'
-        - '**/node_modules/@next/swc-darwin-arm64/**'
-        - '**/node_modules/@next/swc-darwin-x64/**'
-        - '**/node_modules/@next/swc-linux-x64-gnu/**'
-        - '**/node_modules/@next/swc-win32-x64-msvc/**'
-        - '**/node_modules/@sentry/cli/sentry-cli'
-        - '**/node_modules/leaflet/**'
-        - '**/node_modules/**/*.darwin.node'
-        - '**/node_modules/**/*.win32.node'
-        - '**/node_modules/**/*.linux.node'
-        - '**/node_modules/**/*.win.exe'
-        - '**/node_modules/**/*.darwin.exe'
+      #   - build/_next/BUILD_ID
+      #   - build/_next/*.json
+      #   - build/_next/server/**
+      #   - build/_next/static/**
+      # exclude:
+      #   - '**/.git/**'
+      #   - '**/.next/cache/**'
+      #   - '**/.github/**'
+      #   - '**/test/**'
+      #   - '**/tests/**'
+      #   - '**/*.test.js'
+      #   - '**/*.spec.js'
+      #   - '**/*.stories.js'
+      #   - '**/node_modules/typescript/**'
+      #   - '**/node_modules/@types/**'
+      #   - '**/node_modules/.bin/**'
+      #   - '**/node_modules/.cache/**'
+      #   - '**/node_modules/@next/swc-darwin-arm64/**'
+      #   - '**/node_modules/@next/swc-darwin-x64/**'
+      #   - '**/node_modules/@next/swc-linux-x64-gnu/**'
+      #   - '**/node_modules/@next/swc-win32-x64-msvc/**'
+      #   - '**/node_modules/@sentry/cli/sentry-cli'
+      #   - '**/node_modules/leaflet/**'
+      #   - '**/node_modules/**/*.darwin.node'
+      #   - '**/node_modules/**/*.win32.node'
+      #   - '**/node_modules/**/*.linux.node'
+      #   - '**/node_modules/**/*.win.exe'
+      #   - '**/node_modules/**/*.darwin.exe'
     environment:
       REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
       REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/repairs-api-base-url}
