@@ -22,7 +22,6 @@ const moduleExports = {
   images: {
     loader: 'default',
   },
-  output: 'standalone'
 };
 
 module.exports = withSentryConfig(moduleExports, {
