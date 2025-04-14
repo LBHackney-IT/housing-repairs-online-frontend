@@ -55,10 +55,25 @@ commands:
             elif [ << parameters.stage >> = "staging" ]; then
               export NEXT_PUBLIC_GTM_TOKEN_ID=GTM-PWLHK3C
             fi
+            
             yarn install --production=true
             yarn autoclean --force
-            yarn build 
+            npx nx run build
+            mkdir -p ./.open-next/zips
+            cd .open-next/server-function && zip -r ../zips/server-function.zip .
+            cd .open-next/image-optimization-function && zip -r ../zips/image-optimization-function.zip 
+
             npx --yes serverless deploy --stage <<parameters.stage>>
+          # command: |
+          #   if [ << parameters.stage >> = "production" ]; then
+          #     export NEXT_PUBLIC_GTM_TOKEN_ID=GTM-PWR54HF
+          #   elif [ << parameters.stage >> = "staging" ]; then
+          #     export NEXT_PUBLIC_GTM_TOKEN_ID=GTM-PWLHK3C
+          #   fi
+          #   yarn install --production=true
+          #   yarn autoclean --force
+          #   yarn build 
+          #   npx --yes serverless deploy --stage <<parameters.stage>>
 jobs:
   build-and-test:
     executor: node-executor
