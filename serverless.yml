@@ -25,6 +25,14 @@ functions:
       - public/**
       - build/_next/standalone/**
       - build/_next/static/**
+      - node_modules/restana/**
+      - node_modules/serve-static/**
+      - node_modules/body-parser/**
+      - node_modules/serverless-http/**
+      - node_modules/find-my-way/**
+      - node_modules/send/**
+      - node_modules/mime/**
+      - node_modules/raw-body/**
     exclude:
       - 'build/_next/standalone/node_modules/@next/swc-darwin-arm64/**'
       - 'build/_next/standalone/node_modules/@next/swc-darwin-x64/**'
