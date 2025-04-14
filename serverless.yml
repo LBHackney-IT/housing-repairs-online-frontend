@@ -26,7 +26,7 @@ functions:
         - 'build/_next/BUILD_ID'
         - 'build/_next/*.json'
         - 'build/_next/server/**'	
-        - 'build/_next/static/**'*
+        - 'build/_next/static/**'
         - node_modules/**
         - '!node_modules/@next/swc-darwin-arm64'
         - '!node_modules/@next/swc-darwin-x64'
