@@ -1,6 +1,7 @@
 const path = require('path');
 
 const { withSentryConfig } = require('@sentry/nextjs');
+const { prependOnceListener } = require('process');
 
 const moduleExports = {
   sassOptions: {
