@@ -31,7 +31,6 @@
     "libphonenumber-js": "^1.9.44",
     "moment": "^2.29.1",
     "next": "13",
-    "node-fetch": "2.6.1",
     "react": "18",
     "react-dom": "18",
     "react-gtm-module": "^2.0.11",
