@@ -90,16 +90,6 @@ jobs:
       - store_artifacts:
           path: /tmp/artifacts
 
-  deploy-to-development:
-    executor: node-executor
-    steps:
-      - deploy-lambda:
-          stage: 'development'
-  assume-role-development:
-    executor: docker-python
-    steps:
-      - assume-role-and-persist-workspace:
-          aws-account: $AWS_ACCOUNT_DEVELOPMENT
   deploy-to-staging:
     executor: node-executor
     steps:
