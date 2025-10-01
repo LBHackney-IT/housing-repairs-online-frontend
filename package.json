@@ -20,7 +20,7 @@
   "dependencies": {
     "@sentry/nextjs": "^6.17.4",
     "@sentry/node": "^6.19.5",
-    "axios": "^1.2.1",
+    "axios": "1.12.2",
     "babel-eslint": "^10.1.0",
     "body-parser": "^1.20.0",
     "cookie-cutter": "^0.2.0",
@@ -31,7 +31,6 @@
     "libphonenumber-js": "^1.9.44",
     "moment": "^2.29.1",
     "next": "13",
-    "node-fetch": "2.6.1",
     "react": "18",
     "react-dom": "18",
     "react-gtm-module": "^2.0.11",
