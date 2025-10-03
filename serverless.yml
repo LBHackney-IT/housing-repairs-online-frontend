@@ -157,5 +157,6 @@ custom:
     production: arn:aws:acm:us-east-1:282997303675:certificate/6714a979-786f-426b-9fe0-349b65ba825f
   gateway-id:
     development: n2sbci4mna
-    staging: 03aez9g0ka
+    staging: 0iow0m4lk1
+    # staging: 03aez9g0ka
     production: salzoo2y60
