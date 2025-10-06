@@ -138,6 +138,9 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: repairs-online-${opt:stage}-static-images
+        Tags:
+          - Key: Confidentiality
+            Value: Public
 
 custom:
   domain-name:
