@@ -112,12 +112,12 @@ jobs:
           aws-account: $AWS_ACCOUNT_PRODUCTION
 
 workflows:
-  check:
-    jobs:
-      - build-and-test:
-          filters:
-            branches:
-              ignore: main
+  # check:
+  #   jobs:
+  #     - build-and-test:
+  #         filters:
+  #           branches:
+  #             ignore: main
 
   check-and-deploy-staging-and-production:
     jobs:
