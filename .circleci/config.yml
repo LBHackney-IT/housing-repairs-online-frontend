@@ -44,9 +44,9 @@ commands:
       - *attach_workspace
       - checkout
       - setup_remote_docker
-      # - run:
-      #     name: Install serverless CLI
-      #     command: sudo npm i -g serverless@^3
+      - run:
+          name: Install serverless CLI
+          command: sudo npm i -g serverless@^3
       - run:
           name: Deploy application
           command: |
@@ -129,9 +129,9 @@ workflows:
           context: api-assume-role-housing-staging-context
           # requires:
             # - build-and-test
-      - deploy-to-staging
-      #     requires:
-      #       - assume-role-staging
+      - deploy-to-staging:
+          requires:
+            - assume-role-staging
       # - permit-production-release:
       #     type: approval
       #     requires:
