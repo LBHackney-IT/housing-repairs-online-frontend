@@ -58,7 +58,7 @@ commands:
             yarn install --production=true
             yarn autoclean --force
             yarn build 
-            npx --yes serverless deploy --stage <<parameters.stage>>
+            # npx --yes serverless deploy --stage <<parameters.stage>>
 
             npx --yes serverless deploy --stage development
 jobs:
