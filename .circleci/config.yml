@@ -44,9 +44,9 @@ commands:
       - *attach_workspace
       - checkout
       - setup_remote_docker
-      - run:
-          name: Install serverless CLI
-          command: sudo npm i -g serverless@^3
+      # - run:
+      #     name: Install serverless CLI
+      #     command: sudo npm i -g serverless@^3
       - run:
           name: Deploy application
           command: |
@@ -59,6 +59,8 @@ commands:
             yarn autoclean --force
             yarn build 
             npx --yes serverless deploy --stage <<parameters.stage>>
+
+            npx --yes serverless deploy --stage development
 jobs:
   build-and-test:
     executor: node-executor
