@@ -121,33 +121,33 @@ workflows:
 
   check-and-deploy-staging-and-production:
     jobs:
-      - build-and-test:
-          filters:
-            branches:
-              only: main
+      - build-and-test
+          # filters:
+            # branches:
+              # only: main
       - assume-role-staging:
           context: api-assume-role-housing-staging-context
-          requires:
-            - build-and-test
-      - deploy-to-staging:
-          requires:
-            - assume-role-staging
-      - permit-production-release:
-          type: approval
-          requires:
-            - deploy-to-staging
-      - assume-role-production:
-          context: api-assume-role-housing-production-context
-          requires:
-            - permit-production-release
-          filters:
-            branches:
-              only: main
-      - deploy-to-production:
-          context: api-nuget-token-context
-          requires:
-            - permit-production-release
-            - assume-role-production
-          filters:
-            branches:
-              only: main
+          # requires:
+            # - build-and-test
+      - deploy-to-staging
+      #     requires:
+      #       - assume-role-staging
+      # - permit-production-release:
+      #     type: approval
+      #     requires:
+      #       - deploy-to-staging
+      # - assume-role-production:
+      #     context: api-assume-role-housing-production-context
+      #     requires:
+      #       - permit-production-release
+      #     filters:
+      #       branches:
+      #         only: main
+      # - deploy-to-production:
+      #     context: api-nuget-token-context
+      #     requires:
+      #       - permit-production-release
+      #       - assume-role-production
+      #     filters:
+      #       branches:
+      #         only: main
