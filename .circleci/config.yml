@@ -142,6 +142,9 @@ workflows:
       - deploy-to-staging:
           requires:
             - assume-role-staging
+          context:
+            - "Serverless Framework"
+
       # - permit-production-release:
       #     type: approval
       #     requires:
