@@ -2,7 +2,8 @@ const server = require('restana')();
 const files = require('serve-static');
 const path = require('path');
 
-const standaloneDir = path.join(__dirname, '../build/_next/standalone');
+const standaloneDir = path.join(__dirname, 'build/_next/standalone');
+// const standaloneDir = path.join(__dirname, '../build/_next/standalone');
 const Next = require(path.join(standaloneDir, 'node_modules/next'));
 
 // https://github.com/vercel/next.js/issues/64031#issuecomment-2078708340
@@ -29,8 +30,10 @@ async function init() {
   }
 }
 
-server.use(files(path.join(__dirname, '../build')));
-server.use(files(path.join(__dirname, '../public')));
+// server.use(files(path.join(__dirname, '../build')));
+// server.use(files(path.join(__dirname, '../public')));
+server.use(files(path.join(__dirname, 'build')));
+server.use(files(path.join(__dirname, 'public')));
 
 server.all('*', async (req, res) => {
   await init();
