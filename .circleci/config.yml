@@ -36,6 +36,7 @@ commands:
           paths:
             - .aws
   deploy-lambda:
+    # executor: node-executor
     description: 'Deploys application'
     parameters:
       stage:
@@ -43,10 +44,13 @@ commands:
     steps:
       - *attach_workspace
       - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      # - aws-cli/install
       - setup_remote_docker
-      - run:
-          name: Install serverless CLI
-          command: sudo npm i -g serverless@^3
+      # - run:
+      #     name: Install serverless CLI
+      #     command: sudo npm i -g serverless@^3
       - run:
           name: Deploy application
           command: |
