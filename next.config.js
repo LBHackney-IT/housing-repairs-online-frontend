@@ -1,14 +1,16 @@
 const path = require('path');
 
 const { withSentryConfig } = require('@sentry/nextjs');
-const { prependOnceListener } = require('process');
 
 const moduleExports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  output: "standalone",
+  output: 'standalone',
+  swcMinify: true,
   reactStrictMode: true,
+  productionBrowserSourceMaps: false,
+
   distDir: 'build/_next',
   async redirects() {
     return [
@@ -16,7 +18,7 @@ const moduleExports = {
         source: '/report-repair',
         destination: '/report-repair/priority-list',
         permanent: true,
-      }
+      },
     ];
   },
 
