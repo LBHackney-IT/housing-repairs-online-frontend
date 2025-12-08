@@ -7,7 +7,7 @@ const moduleExports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-
+  output: "standalone",
   reactStrictMode: true,
   distDir: 'build/_next',
   async redirects() {
