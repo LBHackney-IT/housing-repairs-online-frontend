@@ -55,9 +55,15 @@ commands:
             elif [ << parameters.stage >> = "staging" ]; then
               export NEXT_PUBLIC_GTM_TOKEN_ID=GTM-PWLHK3C
             fi
-            yarn install --production=true
-            yarn autoclean --force
-            yarn build 
+
+            yarn build
+            # Fetch production dependencies
+            rm -rf node_modules
+            # node_modules specific for lambda.js
+            cd lambda
+            yarn install --production --frozen-lockfile
+            cd ..
+
             npx --yes serverless deploy --stage <<parameters.stage>>
 jobs:
   build-and-test:
