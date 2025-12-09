@@ -15,8 +15,6 @@ functions:
     package:
       excludeDevDependencies: true
       individually: true
-      # exclude:
-      #   - ./**
       patterns:
         - 'build/_next/standalone/**'
         - '!build/_next/standalone/.next/cache/**'    
@@ -26,18 +24,6 @@ functions:
         - public/**
         - '!node_modules/**'
         - 'lambda/node_modules/**'
-        # - 'build/_next/BUILD_ID'
-        # - 'build/_next/*.json'
-        # - 'build/_next/server/**'
-        # - 'build/_next/static/**'
-        # - node_modules/**
-        # - '!node_modules/@next/swc-darwin-arm64'
-        # - '!node_modules/@next/swc-darwin-x64'
-        # - '!node_modules/@next/swc-linux-x64-gnu'
-        # - '!node_modules/@next/swc-win32-x64-msvc'
-        # - '!node_modules/@next/swc-linux-x64-musl*/**'
-        # - '!node_modules/@sentry/cli/sentry-cli'
-        # - '!node_modules/leaflet'   
     environment:
       NODE_PATH: '/var/task/lambda/node_modules'
       REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
