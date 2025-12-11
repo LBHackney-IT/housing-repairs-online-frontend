@@ -64,7 +64,7 @@ commands:
             yarn install --production --frozen-lockfile
             cd ..
 
-            npx --yes serverless deploy --stage <<parameters.stage>>
+            npx --yes serverless deploy --stage <<parameters.\>>
 jobs:
   build-and-test:
     executor: node-executor
@@ -152,7 +152,9 @@ workflows:
             branches:
               only: main
       - deploy-to-production:
-          context: api-nuget-token-context
+          context: 
+            - api-nuget-token-context
+            - "Serverless Framework"
           requires:
             - permit-production-release
             - assume-role-production
