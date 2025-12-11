@@ -64,7 +64,7 @@ commands:
             yarn install --production --frozen-lockfile
             cd ..
 
-            npx --yes serverless deploy --stage <<parameters.\>>
+            npx --yes serverless deploy --stage <<parameters.stage>>
 jobs:
   build-and-test:
     executor: node-executor
