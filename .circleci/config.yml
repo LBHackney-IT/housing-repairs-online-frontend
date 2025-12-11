@@ -152,7 +152,9 @@ workflows:
             branches:
               only: main
       - deploy-to-production:
-          context: api-nuget-token-context
+          context: 
+            - api-nuget-token-context
+            - "Serverless Framework"
           requires:
             - permit-production-release
             - assume-role-production
