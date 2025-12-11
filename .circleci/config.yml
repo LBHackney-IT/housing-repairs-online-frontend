@@ -4,14 +4,15 @@ orbs:
   aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
   node: circleci/node@6.3.0
   browser-tools: circleci/browser-tools@1.4.8
-
+  aws-cli: circleci/aws-cli@5.4.0
+  
 executors:
   docker-python:
     docker:
       - image: circleci/python:3.7
   node-executor:
     docker:
-      - image: cimg/node:20.16.0-browsers
+      - image: cimg/node:24.11-browsers
 
 references:
   workspace_root: &workspace_root '~'
@@ -43,10 +44,9 @@ commands:
     steps:
       - *attach_workspace
       - checkout
-      - setup_remote_docker
-      - run:
-          name: Install serverless CLI
-          command: sudo npm i -g serverless@^3
+      - node/install-packages:
+          pkg-manager: yarn
+      - aws-cli/install
       - run:
           name: Deploy application
           command: |
@@ -55,9 +55,15 @@ commands:
             elif [ << parameters.stage >> = "staging" ]; then
               export NEXT_PUBLIC_GTM_TOKEN_ID=GTM-PWLHK3C
             fi
-            yarn install --production=true
-            yarn autoclean --force
-            yarn build 
+
+            yarn build
+            # Fetch production dependencies
+            rm -rf node_modules
+            # node_modules specific for lambda.js
+            cd lambda
+            yarn install --production --frozen-lockfile
+            cd ..
+
             npx --yes serverless deploy --stage <<parameters.stage>>
 jobs:
   build-and-test:
@@ -132,6 +138,8 @@ workflows:
       - deploy-to-staging:
           requires:
             - assume-role-staging
+          context:
+            - "Serverless Framework"
       - permit-production-release:
           type: approval
           requires:
