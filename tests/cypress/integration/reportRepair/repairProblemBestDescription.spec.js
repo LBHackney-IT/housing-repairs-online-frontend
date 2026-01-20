@@ -178,7 +178,7 @@ describe('repairProblemBestDescription', () => {
         cy.contains('Kitchen').click();
         cy.get('button').click();
         cy.contains(
-          'Electrical, including extractor fans and lightbulbs'
+          'Electrical, including extractor fans and lightbulbs',
         ).click();
         cy.get('button').click();
       });
@@ -338,7 +338,7 @@ describe('repairProblemBestDescription', () => {
         cy.contains('Bathroom').click();
         cy.get('button').click();
         cy.contains(
-          'Electrics, including extractor fan and pull cords'
+          'Electrics, including extractor fan and pull cords',
         ).click();
         cy.get('button').click();
       });
@@ -370,7 +370,9 @@ describe('repairProblemBestDescription', () => {
       it('displays a "Damp or mould caused by something else" option', () => {
         cy.contains('Damp or mould caused by something else').click();
         cy.get('button').click();
-        cy.url().should('include', '/report-repair/repair-description');
+
+        cy.url().should('include', '/report-repair/unable-to-book');
+        cy.contains('Your repair could not be booked');
       });
     });
 
