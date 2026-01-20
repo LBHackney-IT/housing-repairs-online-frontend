@@ -72,7 +72,8 @@ class Flow {
         {condition: 'seat', nextStep: 'unable-to-book'}]},
       'damp-mould-problems':  { prevSteps: '', nextStep: [
         {condition: 'dampMouldCausedByLeak', nextStep: 'emergency-repair'},
-        {condition: 'dampOrMould', nextStep: 'repair-description'}]},
+        // {condition: 'dampOrMould', nextStep: 'repair-description'}]},
+        {condition: 'dampOrMould', nextStep: 'unable-to-book'}]},
       'repair-shower-problems': { prevSteps: '', nextStep: [
         {condition: 'electricShowerUnit', nextStep: 'unable-to-book'},
         {condition: 'showerTap', nextStep: 'unable-to-book'},
@@ -182,7 +183,8 @@ class Flow {
       'bathroom-damp-mould-problems': { prevStep: 'repair-bathroom-problems',
         nextStep: [
           {condition: 'emergency', nextStep: 'emergency-repair'},
-          {condition: 'dampOrMould', nextStep: 'repair-description'}
+          // {condition: 'dampOrMould', nextStep: 'repair-description'}
+          {condition: 'dampOrMould', nextStep: 'unable-to-book'}
         ]
       },
       'repair-description-damp': {prevStep: 'repair-kitchen-types', nextStep: [
