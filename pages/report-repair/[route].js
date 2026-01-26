@@ -697,6 +697,7 @@ export async function getStaticPaths() {
     { params: { route: 'not-eligible-invalid-property' } },
     { params: { route: 'not-eligible-previously-reported' } },
     { params: { route: 'unable-to-book' } },
+    { params: { route: 'damp-and-mould-unable-to-book' } },
     { params: { route: 'postcode' } },
     { params: { route: 'priority-list' } },
     { params: { route: 'existing-repair' } },
