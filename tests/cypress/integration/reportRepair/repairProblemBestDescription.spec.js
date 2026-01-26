@@ -371,8 +371,14 @@ describe('repairProblemBestDescription', () => {
         cy.contains('Damp or mould caused by something else').click();
         cy.get('button').click();
 
-        cy.url().should('include', '/report-repair/unable-to-book');
+        cy.url().should(
+          'include',
+          '/report-repair/damp-and-mould-unable-to-book',
+        );
         cy.contains('Your repair could not be booked');
+        cy.contains(
+          'Reports of damp and mould are taken very seriously by the council.',
+        );
       });
     });
 
