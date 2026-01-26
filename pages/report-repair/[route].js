@@ -27,6 +27,7 @@ import UnableToBook from '../../compoments/report-repair/unable-to-book';
 import { customerServicesTelephoneNumber } from '../../globals';
 import ExistingRepair from '../../compoments/report-repair/existing-repair';
 import NotEligiblePreviouslyReported from '../../compoments/report-repair/not-eligible-previously-reported';
+import DampAndMouldUnableToBook from '../../compoments/report-repair/damp-and-mould-unable-to-book';
 
 function ReportRepair() {
   const [state, setState] = useState({ data: {}, step: 'priority-list' });
@@ -177,6 +178,8 @@ function ReportRepair() {
       return <NotEligiblePreviouslyReported />;
     case 'unable-to-book':
       return <UnableToBook />;
+    case 'damp-and-mould-unable-to-book':
+      return <DampAndMouldUnableToBook />;
     case 'postcode':
       return <Postcode handleChange={handleChange} values={values} />;
     case 'priority-list':
