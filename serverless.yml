@@ -105,7 +105,7 @@ resources:
             ViewerProtocolPolicy: 'redirect-to-https'
             AllowedMethods:
               - GET
-              - HEADmy-custom-origin
+              - HEAD
               - OPTIONS
               - PUT
               - PATCH
