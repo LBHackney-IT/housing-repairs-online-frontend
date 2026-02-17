@@ -105,7 +105,7 @@ resources:
             ViewerProtocolPolicy: 'redirect-to-https'
             AllowedMethods:
               - GET
-              - HEAD
+              - HEADmy-custom-origin
               - OPTIONS
               - PUT
               - PATCH
@@ -122,7 +122,7 @@ resources:
           Origins:
             - Id: my-custom-origin-for-repairs-online
               DomainName: x5sak19vzh.execute-api.eu-west-2.amazonaws.com
-              OriginPath: /production
+              # OriginPath: /production
               CustomOriginConfig:
                 HTTPPort: 80
                 HTTPSPort: 443
