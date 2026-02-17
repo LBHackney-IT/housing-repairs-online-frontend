@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
   node: circleci/node@6.3.0
-  browser-tools: circleci/browser-tools@1.4.8
   aws-cli: circleci/aws-cli@5.4.0
   
 executors:
@@ -66,98 +65,26 @@ commands:
 
             npx --yes serverless deploy --stage <<parameters.stage>>
 jobs:
-  build-and-test:
-    executor: node-executor
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Set up sentry cli
-          command: |
-            export SENTRY_ORG=$SENTRY_ORG
-            export SENTRY_PROJECT=$SENTRY_PROJECT
-            export SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
-      - node/install-packages:
-          pkg-manager: yarn
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
-      - run:
-          name: Force install
-          command: yarn cypress install --force
-      - run:
-          name: build
-          command: yarn build
-      - run:
-          name: Run tests
-          command: yarn test
-      - run:
-          name: Run integration test
-          command: yarn test:headless:integration
-      - store_artifacts:
-          path: /tmp/artifacts
-
-  deploy-to-staging:
-    executor: node-executor
-    steps:
-      - deploy-lambda:
-          stage: 'staging'
-  assume-role-staging:
-    executor: docker-python
-    steps:
-      - assume-role-and-persist-workspace:
-          aws-account: $AWS_ACCOUNT_STAGING
-  deploy-to-production:
+  deploy-to-dr:
     executor: node-executor
     steps:
       - deploy-lambda:
           stage: 'production'
-  assume-role-production:
+
+  assume-role-dr:
     executor: docker-python
     steps:
       - assume-role-and-persist-workspace:
-          aws-account: $AWS_ACCOUNT_PRODUCTION
+          aws-account: $AWS_ACCOUNT_DISASTER_RECOVERY
 
 workflows:
-  check:
-    jobs:
-      - build-and-test:
-          filters:
-            branches:
-              ignore: main
-
   check-and-deploy-staging-and-production:
     jobs:
-      - build-and-test:
-          filters:
-            branches:
-              only: main
-      - assume-role-staging:
-          context: api-assume-role-housing-staging-context
-          requires:
-            - build-and-test
-      - deploy-to-staging:
-          requires:
-            - assume-role-staging
-          context:
-            - "Serverless Framework"
-      - permit-production-release:
-          type: approval
-          requires:
-            - deploy-to-staging
-      - assume-role-production:
-          context: api-assume-role-housing-production-context
-          requires:
-            - permit-production-release
-          filters:
-            branches:
-              only: main
-      - deploy-to-production:
+      - assume-role-dr:
+          context: api-assume-role-disaster-recovery-context
+      - deploy-to-dr:
           context: 
             - api-nuget-token-context
             - "Serverless Framework"
           requires:
-            - permit-production-release
-            - assume-role-production
-          filters:
-            branches:
-              only: main
+            - assume-role-dr
