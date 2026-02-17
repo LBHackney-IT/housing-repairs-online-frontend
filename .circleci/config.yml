@@ -78,7 +78,7 @@ jobs:
           aws-account: $AWS_ACCOUNT_DISASTER_RECOVERY
 
 workflows:
-  check-and-deploy-staging-and-production:
+  deploy-dr:
     jobs:
       - assume-role-dr:
           context: api-assume-role-disaster-recovery-context
