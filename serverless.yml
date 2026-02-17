@@ -101,7 +101,7 @@ resources:
           #   MinimumProtocolVersion: TLSv1.2_2018
           #   SslSupportMethod: sni-only
           DefaultCacheBehavior:
-            TargetOriginId: my-custom-origin
+            TargetOriginId: my-custom-origin-for-repairs-online
             ViewerProtocolPolicy: 'redirect-to-https'
             AllowedMethods:
               - GET
@@ -120,9 +120,9 @@ resources:
                 Forward: all
           Enabled: true
           Origins:
-            - Id: my-custom-origin
+            - Id: my-custom-origin-for-repairs-online
               DomainName: x5sak19vzh.execute-api.eu-west-2.amazonaws.com
-              # OriginPath: /production
+              OriginPath: /production
               CustomOriginConfig:
                 HTTPPort: 80
                 HTTPSPort: 443
