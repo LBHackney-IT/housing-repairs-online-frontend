@@ -72,15 +72,15 @@ resources:
                           - Ref: 'AWS::Region'
                           - Ref: 'AWS::AccountId'
                           - 'log-group:/aws/lambda/*:*:*'
-                - Effect: 'Allow'
-                  Action:
-                    - 's3:PutObject'
-                    - 's3:GetObject'
-                  Resource:
-                    Fn::Join:
-                      - ''
-                      - - 'arn:aws:s3:::'
-                        - 'Ref': 'ServerlessDeploymentBucket'
+                # - Effect: 'Allow'
+                #   Action:
+                #     - 's3:PutObject'
+                #     - 's3:GetObject'
+                #   Resource:
+                #     Fn::Join:
+                #       - ''
+                #       - - 'arn:aws:s3:::'
+                #         - 'Ref': 'ServerlessDeploymentBucket'
           - PolicyName: lambdaInvocation
             PolicyDocument:
               Version: '2012-10-17'
@@ -93,15 +93,15 @@ resources:
       Type: AWS::CloudFront::Distribution
       Properties:
         DistributionConfig:
-          Aliases:
-            - ${self:custom.aliases.${self:provider.stage}}
+          # Aliases:
+            # - ${self:custom.aliases.${self:provider.stage}}
           PriceClass: PriceClass_100
-          ViewerCertificate:
-            AcmCertificateArn: ${self:custom.certificate-arn.${self:provider.stage}}
-            MinimumProtocolVersion: TLSv1.2_2018
-            SslSupportMethod: sni-only
+          # ViewerCertificate:
+          #   AcmCertificateArn: ${self:custom.certificate-arn.${self:provider.stage}}
+          #   MinimumProtocolVersion: TLSv1.2_2018
+          #   SslSupportMethod: sni-only
           DefaultCacheBehavior:
-            TargetOriginId: ${self:service}-${self:provider.stage}-custom-origin
+            TargetOriginId: my-custom-origin
             ViewerProtocolPolicy: 'redirect-to-https'
             AllowedMethods:
               - GET
@@ -120,8 +120,8 @@ resources:
                 Forward: all
           Enabled: true
           Origins:
-            - Id: ${self:service}-${self:provider.stage}-custom-origin
-              DomainName: ${self:custom.domain-name}
+            - Id: my-custom-origin
+              DomainName: placeholder.com
               CustomOriginConfig:
                 HTTPPort: 80
                 HTTPSPort: 443
@@ -129,7 +129,7 @@ resources:
     staticImagesBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: repairs-online-${opt:stage}-static-images
+        BucketName: repairs-online-dr-static-images
         Tags:
           - Key: Confidentiality
             Value: Public
@@ -143,14 +143,8 @@ custom:
         - eu-west-2
         - amazonaws.com
   aliases:
-    development: housingrepairs-development.hackney.gov.uk
-    staging: housingrepairs-staging.hackney.gov.uk
     production: housingrepairs.hackney.gov.uk
   certificate-arn:
-    development: arn:aws:acm:us-east-1:364864573329:certificate/a5935e70-ab94-4326-b2f0-c527eb7c214f
-    staging: arn:aws:acm:us-east-1:087586271961:certificate/ff3800a6-62f7-497a-a2d0-e482d76614ec
     production: arn:aws:acm:us-east-1:282997303675:certificate/6714a979-786f-426b-9fe0-349b65ba825f
   gateway-id:
-    development: n2sbci4mna
-    staging: 0iow0m4lk1
     production: salzoo2y60
