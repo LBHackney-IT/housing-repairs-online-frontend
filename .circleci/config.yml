@@ -3,8 +3,7 @@ version: 2.1
 orbs:
   aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
   node: circleci/node@6.3.0
-  aws-cli: circleci/aws-cli@5.4.0
-  
+
 executors:
   docker-python:
     docker:
@@ -35,8 +34,9 @@ commands:
           root: *workspace_root
           paths:
             - .aws
-  deploy-lambda:
-    description: 'Deploys application'
+
+  remove-lambda:
+    description: 'Removes application via Serverless'
     parameters:
       stage:
         type: string
@@ -45,45 +45,30 @@ commands:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
-      - aws-cli/install
       - run:
-          name: Deploy application
-          command: |
-            if [ << parameters.stage >> = "production" ]; then
-              export NEXT_PUBLIC_GTM_TOKEN_ID=GTM-PWR54HF
-            elif [ << parameters.stage >> = "staging" ]; then
-              export NEXT_PUBLIC_GTM_TOKEN_ID=GTM-PWLHK3C
-            fi
+          name: Remove application
+          command: npx --yes serverless remove --stage <<parameters.stage>>
 
-            yarn build
-            # Fetch production dependencies
-            rm -rf node_modules
-            # node_modules specific for lambda.js
-            cd lambda
-            yarn install --production --frozen-lockfile
-            cd ..
-
-            npx --yes serverless deploy --stage <<parameters.stage>>
 jobs:
-  deploy-to-dr:
-    executor: node-executor
-    steps:
-      - deploy-lambda:
-          stage: 'production'
-
   assume-role-dr:
     executor: docker-python
     steps:
       - assume-role-and-persist-workspace:
           aws-account: $AWS_ACCOUNT_DISASTER_RECOVERY
 
+  remove-lambda-dr:
+    executor: node-executor
+    steps:
+      - remove-lambda:
+          stage: 'production'
+
 workflows:
-  deploy-dr:
+  teardown-dr:
     jobs:
       - assume-role-dr:
           context: api-assume-role-disaster-recovery-context
-      - deploy-to-dr:
-          context: 
+      - remove-lambda-dr:
+          context:
             - api-nuget-token-context
             - "Serverless Framework"
           requires:
