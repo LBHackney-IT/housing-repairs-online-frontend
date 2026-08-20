@@ -23,9 +23,9 @@ functions:
         - next.config.js
         - public/**
         - '!node_modules/**'
-        - 'lambda/node_modules/**'
+        - 'lambda_deps/node_modules/**'
     environment:
-      NODE_PATH: '/var/task/lambda/node_modules'
+      NODE_PATH: '/var/task/lambda_deps/node_modules'
       REPAIRS_API_IDENTIFIER: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/authentication-identifier}
       REPAIRS_API_BASE_URL: ${ssm:/HousingRepairsOnlineApi/${self:provider.stage}/repairs-api-base-url}
     role: lambdaExecutionRole

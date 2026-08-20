@@ -60,7 +60,7 @@ commands:
             # Fetch production dependencies
             rm -rf node_modules
             # node_modules specific for lambda.js
-            cd lambda
+            cd lambda_deps
             yarn install --production --frozen-lockfile
             cd ..
 
