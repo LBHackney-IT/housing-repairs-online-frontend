@@ -142,6 +142,9 @@ workflows:
           type: approval
           requires:
             - deploy-to-staging
+          filters:
+            branches:
+              only: main
       - assume-role-production:
           context: api-assume-role-housing-production-context
           requires:
