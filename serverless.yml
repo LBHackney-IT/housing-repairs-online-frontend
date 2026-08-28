@@ -89,6 +89,15 @@ resources:
                   Action:
                     - 'lambda:InvokeFunction'
                   Resource: '*'
+    CloudFrontResponseHeadersPolicy:
+      Type: AWS::CloudFront::ResponseHeadersPolicy
+      Properties:
+        ResponseHeadersPolicyConfig:
+          Name: ${self:service}-${self:provider.stage}-response-headers
+          SecurityHeadersConfig:
+            ReferrerPolicy:
+              ReferrerPolicy: strict-origin
+              Override: true
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
@@ -103,6 +112,8 @@ resources:
           DefaultCacheBehavior:
             TargetOriginId: ${self:service}-${self:provider.stage}-custom-origin
             ViewerProtocolPolicy: 'redirect-to-https'
+            ResponseHeadersPolicyId:
+              Ref: CloudFrontResponseHeadersPolicy
             AllowedMethods:
               - GET
               - HEAD
