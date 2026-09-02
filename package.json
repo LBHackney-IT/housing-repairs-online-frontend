@@ -47,7 +47,7 @@
     "cypress": "13",
     "cypress-file-upload": "^5.0.8",
     "cypress-react-selector": "^2.3.11",
-    "eslint": "^10.9.1",
+    "eslint": "9",
     "eslint-config-next": "13",
     "eslint-plugin-editorconfig": "^3.0.2",
     "eslint-plugin-react": "^7.37.5",
