@@ -25,6 +25,7 @@ const moduleExports = {
   images: {
     loader: 'default',
   },
+   allowedDevOrigins: ['localdev.hackney.gov.uk'],
 };
 
 module.exports = withSentryConfig(moduleExports, {
