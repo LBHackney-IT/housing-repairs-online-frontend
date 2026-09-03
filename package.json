@@ -18,8 +18,9 @@
     "test:unit-win-upd": "node ./node_modules/jest/bin/jest.js --runInBand --updateSnapshot"
   },
   "dependencies": {
-    "@sentry/nextjs": "^6.17.4",
+    "@sentry/nextjs": "^10.73.0",
     "@sentry/node": "^6.19.5",
+    "axios": "^1.20.0",
     "axios": "^1.20.0",
     "babel-eslint": "^10.1.0",
     "body-parser": "^1.20.0",
@@ -27,12 +28,12 @@
     "dotenv": "^10.0.0",
     "govuk-frontend": "^3.14.0",
     "image-to-base64": "^2.2.0",
-    "lbh-frontend": "^3.6.1",
+    "lbh-frontend": "3.5.3",
     "libphonenumber-js": "^1.9.44",
     "moment": "^2.29.1",
-    "next": "15.5",
-    "react": "19",
-    "react-dom": "19",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "react-gtm-module": "^2.0.11",
     "react-hotjar": "^5.0.0",
     "restana": "^4.9.3",
@@ -43,19 +44,24 @@
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",
     "@testing-library/jest-dom": "^5.15.0",
-    "@zeit/next-sass": "^1.0.1",
     "cypress": "13",
     "cypress-file-upload": "^5.0.8",
     "cypress-react-selector": "^2.3.11",
-    "eslint": "^7.32.0",
-    "eslint-config-next": "13",
+    "eslint": "10.9.1",
+    "eslint-config-next": "16.3.4",
     "eslint-plugin-editorconfig": "^3.0.2",
-    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react": "^7.37.5",
     "express": "^4.17.1",
     "http-proxy-middleware": "^2.0.1",
     "jest": "^27.3.1",
-    "sass": "^1.54.9",
+    "sass": "1.29.0",
     "start-server-and-test": "^1.14.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "eslintConfig": {
     "extends": [
