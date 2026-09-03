@@ -27,7 +27,7 @@
     "dotenv": "^10.0.0",
     "govuk-frontend": "^3.14.0",
     "image-to-base64": "^2.2.0",
-    "lbh-frontend": "^3.6.1",
+    "lbh-frontend": "3.5.3",
     "libphonenumber-js": "^1.9.44",
     "moment": "^2.29.1",
     "next": "16.3.4",
@@ -43,7 +43,6 @@
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",
     "@testing-library/jest-dom": "^5.15.0",
-    "@zeit/next-sass": "^1.0.1",
     "cypress": "13",
     "cypress-file-upload": "^5.0.8",
     "cypress-react-selector": "^2.3.11",
@@ -54,7 +53,7 @@
     "express": "^4.17.1",
     "http-proxy-middleware": "^2.0.1",
     "jest": "^27.3.1",
-    "sass": "^1.54.9",
+    "sass": "1.29.0",
     "start-server-and-test": "^1.14.0"
   },
   "eslintConfig": {

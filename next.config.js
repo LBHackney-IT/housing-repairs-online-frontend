@@ -3,9 +3,6 @@ const path = require('path');
 const { withSentryConfig } = require('@sentry/nextjs');
 
 const moduleExports = {
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
   output: 'standalone',
   swcMinify: true,
   reactStrictMode: true,
@@ -25,7 +22,7 @@ const moduleExports = {
   images: {
     loader: 'default',
   },
-   allowedDevOrigins: ['localdev.hackney.gov.uk'],
+  allowedDevOrigins: ['localdev.hackney.gov.uk'],
 };
 
 module.exports = withSentryConfig(moduleExports, {
