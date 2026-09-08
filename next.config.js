@@ -19,6 +19,20 @@ const moduleExports = {
     ];
   },
 
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=15768000; includeSubDomains; preload',
+          },
+        ],
+      },
+    ];
+  },
+
   images: {
     loader: 'default',
   },
